@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>ProjetEncheresENI</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>Accueillir.java</welcome-file>
   </welcome-file-list>
+  
+<!-- /////////////////////////// SERVLET - ACCUEILLIR ////////////////////////// -->
+
+  <servlet>
+  	<servlet-name>Accueillir</servlet-name>
+  	<servlet-class>fr.eni.encheres.servlets.Accueillir</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Accueillir</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+<!-- /////////////////////////// SERVLET - CONNEXION ////////////////////////// -->
+
+  <servlet>
+  	<servlet-name>Connexion</servlet-name>
+  	<servlet-class>fr.eni.encheres.servlets.Connexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Connexion</servlet-name>
+  	<url-pattern>/Connexion</url-pattern>
+  </servlet-mapping>
+
+<!-- /////////////////////////// JSP - PAGE ACCUEIL CONNECTE ////////////////////////// -->
+
+   <servlet>
+  	<servlet-name>PageAccueilAnonyme</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/PageAccueilAnonyme.jsp</jsp-file>
+  </servlet>
+
+<!-- /////////////////////////// JSP - PAGE ACCUEIL ANONYME ////////////////////////// -->
+
+   <servlet>
+  	<servlet-name>PageAccueilConnecte</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/PageAccueilConnecte.jsp</jsp-file>
+  </servlet>
+
+<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
+
+   <servlet>
+  	<servlet-name>PageConnexion</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/PageConnexion.jsp</jsp-file>
+  </servlet>
 </web-app>

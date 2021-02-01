@@ -37,6 +37,38 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
+	 * Constructeur de la classe Utilisateur avec les paramètres suivants:
+	 *
+	 * @param noUtilisateur     le numéro de l'utilisateur
+	 * @param pseudo            le pseudo de l'utilisateur
+	 * @param nom               le nom de l'utilisateur
+	 * @param prenom            le prénom de l'utilisateur
+	 * @param email             l'adresse mail de l'utilisateur
+	 * @param telephone         le numéro de téléphone de l'utilisateur
+	 * @param rue               la rue de l'adresse de l'utilisateur
+	 * @param codePostal        le code postal de l'adresse de l'utilisateur
+	 * @param ville             la ville de l'utilisateur
+	 * @param motDePasse        le mot de passe de l'utilisateur
+	 * @param credit            le nombre de crédits (points) de l'utilisateur
+	 * @param estAdministrateur le caractère administrateur de l'utilisateur
+	 */
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, int credit, boolean estAdministrateur) {
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.credit = credit;
+		this.estAdministrateur = estAdministrateur;
+	}
+
+	/**
 	 * Constructeur complet de la classe Utilisateur avec les paramètres suivants:
 	 *
 	 * @param noUtilisateur       le numéro de l'utilisateur
@@ -76,7 +108,8 @@ public class Utilisateur implements Serializable {
 		this.listeEncheres = listeEncheres;
 	}
 
-	// Getters (Accesseurs) & Setters (Mutateurs)
+	// =================== Getters (Accesseurs) & Setters (Mutateurs)
+	// ===================
 
 	public int getNoUtilisateur() {
 		return noUtilisateur;

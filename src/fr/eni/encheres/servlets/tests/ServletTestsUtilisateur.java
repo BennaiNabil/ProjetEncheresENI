@@ -57,6 +57,29 @@ public class ServletTestsUtilisateur extends HttpServlet {
 			outPrintWriter.println("Test de la méthode selectById()");
 			outPrintWriter.println("-------------------------------" + "\n");
 			outPrintWriter.println(utilisateurDAO.selectById(4));
+			outPrintWriter.println("\n\n\n");
+
+			// selectByPseudo
+			outPrintWriter.println("Test de la méthode selectByPseudo()");
+			outPrintWriter.println("-----------------------------------" + "\n");
+			outPrintWriter.println("pseudo: felix");
+			outPrintWriter.print("Utilisateur associé: " + utilisateurDAO.selectByPseudo("felix"));
+			outPrintWriter.println("\n\n\n");
+
+			// sontBonsIdentifiantsDeConnexion
+			outPrintWriter.println("Test de la méthode sontBonsIdentifiantsDeConnexion()");
+			outPrintWriter.println("----------------------------------------------------" + "\n");
+			outPrintWriter.println("test #1: bons identifiants");
+			outPrintWriter.println("pseudo: felix");
+			outPrintWriter.println("mot de passe: Pa$$w0rd");
+			outPrintWriter.print("Bon couple d'identifiants? --> "
+					+ utilisateurDAO.sontBonsIdentifiantsDeConnexion("felix", "Pa$$w0rd"));
+			outPrintWriter.println("\n\ntest #2: mauvais identifiants");
+			outPrintWriter.println("pseudo: felix");
+			outPrintWriter.println("mot de passe: badmdp");
+			outPrintWriter.print("Bon couple d'identifiants? --> "
+					+ utilisateurDAO.sontBonsIdentifiantsDeConnexion("felix", "badmdp"));
+			outPrintWriter.println("\n\n\n");
 
 			// Libère une connexion
 			cnx.close();

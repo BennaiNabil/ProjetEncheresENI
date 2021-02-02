@@ -9,25 +9,35 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
 <meta charset="UTF-8">
 <title>Connexion</title>
-<!--  Script d'intégration de JQuery pour les méthodes d'affichage des modales -->
+
+<!-- Script JAVASCRIPT -->
+<!-- Script d'intégration de JQuery pour les méthodes d'affichage des modales -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+
 <!-- Script d'affichage de la fenetre modale au chargement de la page -->
 <script>
     	$(document).ready(function(){
         $("#fenetreModale").modal('show'); 							
     });
 </script>
+
 </head>
 <body>
+	  <!-- ************** -->
       <!-- Fenetre modale -->
+      <!-- ************** -->
       <div class="modal fade" id="fenetreModale">
          <div class="modal-dialog">
             <div class="modal-content">
+               <!-- ****** -->
                <!-- Header -->
+               <!-- ****** -->
                <div class="modal-header">
 					<p>Saisissez vos identifiants de connexion</p>                  
                </div>
+               <!-- **** -->
                <!-- body -->
+               <!-- **** -->
                <div class="modal-body">
                   	<form method="POST" action="<%= request.getContextPath() %>/Connexion">
 					<!--  Champs de saisie de l'identifiant utilisateur -->
@@ -41,9 +51,13 @@
 						<input class="col-6" type="password" name="mdp" id="mdp" required="required"/>
 					</div>
                </div>
+               <!-- ****** -->
                <!-- footer -->
+               <!-- ****** -->
                <div class="modal-footer">
+               	  <!-- Bouton de fermeture de la modale sans prise en compte des saisies -->
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
+                  <!-- Bouton de vaidation des infos saisie dans la modale -->
                   <button type="submit" class="btn btn-primary" value="Connexion">Connexion</button>
                   </form>
                </div>

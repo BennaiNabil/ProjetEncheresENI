@@ -87,6 +87,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	 * @param pseudo le pseudo recherché
 	 * @return utilisateur l'utilisateur recherché
 	 */
+	@Override
 	public Utilisateur selectByPseudo(String pseudo) {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -194,7 +195,17 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	 */
 	@Override
 	public boolean sontBonsIdentifiantsDeConnexion(String pseudoUtilisateur, String motDePasse) {
-		return selectByPseudo(pseudoUtilisateur).getMotDePasse().equals(motDePasse);
+		Utilisateur utilisateur = selectByPseudo(pseudoUtilisateur);
+		System.out.println(utilisateur);
+		if (utilisateur != null) {
+			String motDePasseAssocie = utilisateur.getMotDePasse();
+			System.out.println("utilisateur: " + utilisateur.getPseudo());
+			System.out.println("mot de passe associé: " + motDePasseAssocie);
+			System.out.println("mot de passe entré: " + motDePasse);
+			return motDePasseAssocie.equals(motDePasse);
+		} else {
+			return false;
+		}
 	}
 
 	/**

@@ -90,5 +90,12 @@
 		<jsp-file>/WEB-INF/jsp/PageInscription.jsp</jsp-file>
 	</servlet>
 	
+	<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageErreurInscription</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageErreurInscription.jsp</jsp-file>
+	</servlet>
+	
 
 </web-app>

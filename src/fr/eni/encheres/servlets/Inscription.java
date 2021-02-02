@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.encheres.bll.BLLException;
+import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.dal.DAOFactory;
-import fr.eni.encheres.dal.UtilisateurDAO;
 
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,11 +38,22 @@ public class Inscription extends HttpServlet {
 		mdp = request.getParameter("mdp");
 		conf = request.getParameter("conf");
 
-		Utilisateur utilisateur = new Utilisateur(-1, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, 0,
-				false);
+		// Si les mots de passe correspondent et que le pseudo est unique, on ajoute
+		// l'utilisateur
+		if (mdp.equals(conf)) {
+			Utilisateur utilisateur = new Utilisateur(-1, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp,
+					0, false);
+			UtilisateurManager utilisateurManager = new UtilisateurManager();
+			try {
+				utilisateurManager.nouvelUtilisateur(utilisateur);
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
+			rd.forward(request, response);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageErreurInscription.jsp");
+		rd.forward(request, response);
 
-		UtilisateurDAO utilisateurDAO = DAOFactory.getUtilisateurDAO();
-
-		utilisateurDAO.insert(utilisateur);
 	}
 }

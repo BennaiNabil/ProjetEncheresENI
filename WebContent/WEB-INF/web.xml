@@ -30,6 +30,17 @@
 		<servlet-name>Connexion</servlet-name>
 		<url-pattern>/Connexion</url-pattern>
 	</servlet-mapping>
+	
+	<!-- /////////////////////////// SERVLET - SERVLET TEST ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>ServletTestsUtilisateur</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.tests.ServletTestsUtilisateur</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletTestsUtilisateur</servlet-name>
+		<url-pattern>/ServletTestsUtilisateur</url-pattern>
+	</servlet-mapping>
 
 	<!-- /////////////////////////// JSP - PAGE ACCUEIL CONNECTE ////////////////////////// -->
 

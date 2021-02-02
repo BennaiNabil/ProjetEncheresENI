@@ -2,6 +2,8 @@
 	language="java"
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="fr.eni.encheres.bo.Enchere"%>
+<%@page import="java.util.List"%>	
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -47,6 +49,27 @@
 					</form>
 				</div>
 			</div>
+
+<%	
+	List<Enchere> listeEncheres = (List<Enchere>) request.getAttribute("listeEncheres");
+	if(listeEncheres!=null && listeEncheres.size()>0)
+	{%>
+		<ul>
+		<%
+		for (Enchere enchereCourante:listeEncheres)
+		{
+	%>
+	
+		<p> <%= enchereCourante.toString() %></p>
+		
+	<%
+		}
+		%>
+		</ul>
+	<%
+	}
+	%>
+
 
 		</header>
 

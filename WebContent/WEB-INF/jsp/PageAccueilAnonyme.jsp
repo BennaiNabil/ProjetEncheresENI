@@ -12,7 +12,6 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
-	
 
 
 </head>
@@ -21,9 +20,11 @@
 		<header>
 			<div class="row">
 				<div class="col-8">
+				<a href="${pageContext.request.contextPath}">
 					<img
 						alt="LOGO"
 						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+				</a>	
 				</div>
 				<div class="col-2">
 					<button

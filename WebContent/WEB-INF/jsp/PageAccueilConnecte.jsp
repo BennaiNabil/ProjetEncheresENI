@@ -19,9 +19,11 @@
 		<header>
 			<div class="row">
 				<div class="col-6">
+					<a href="${pageContext.request.contextPath}">
 					<img
 						alt="LOGO"
 						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+					</a>
 				</div>
 				<div class="col-1,5">
 					<button

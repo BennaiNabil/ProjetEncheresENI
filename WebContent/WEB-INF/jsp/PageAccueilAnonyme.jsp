@@ -27,9 +27,14 @@
 				</a>	
 				</div>
 				<div class="col-2">
-					<button
-						class="btn btn-secondary mt-5 mr-5"
-						type="submit">Inscription</button>
+					<form
+						method="GET"
+						action="<%=request.getContextPath()%>/Inscription">
+
+						<button
+							class="btn btn-primary mt-5"
+							type="submit">Inscription</button>
+					</form>
 				</div>
 				<div class="col-2">
 					<form

@@ -41,10 +41,22 @@
   	<jsp-file>/WEB-INF/jsp/PageAccueilConnecte.jsp</jsp-file>
   </servlet>
 
+
+
 <!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
 
    <servlet>
   	<servlet-name>PageConnexion</servlet-name>
   	<jsp-file>/WEB-INF/jsp/PageConnexion.jsp</jsp-file>
   </servlet>
+  
+  
+  
+  <!-- /////////////////////////// JSP - PAGE ERREUR CONNEXION ////////////////////////// -->
+
+   <servlet>
+  	<servlet-name>PageErreurConnexion</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/PageErreurConnexion.jsp</jsp-file>
+  </servlet>
+  
 </web-app>

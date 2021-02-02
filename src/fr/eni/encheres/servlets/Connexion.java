@@ -28,8 +28,6 @@ public class Connexion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// R�cup�re les donn�es de connexion de l'utilisateur (Nom et Mot de Passe).
-
 		String identifiant;
 		String mdp;
 

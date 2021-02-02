@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page
+	language="java"
+	contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,34 +11,45 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
+	
 <%@include file="../fragments/fragmentStyle.jspf"%>
+
 </head>
 <body>
 	<div class="container">
 		<header>
-			<form method="GET" action="<%=request.getContextPath()%>/Connexion">
-				<div class="row">
-					<div class="col-8">
-						<img alt="LOGO"
-							src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
-					</div>
-					<div class="col-2">
-						<button class="btn btn-primary mt-5 mr-5" type="submit">Inscription</button>
-					</div>
-					<div class="col-2">
-						<button class="btn btn-primary mt-5" type="submit">Connexion</button>
-					</div>
+			<div class="row">
+				<div class="col-8">
+					<img
+						alt="LOGO"
+						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
 				</div>
-			</form>
+				<div class="col-2">
+					<button
+						class="btn btn-primary mt-5 mr-5"
+						type="submit">Inscription</button>
+				</div>
+				<div class="col-2">
+					<form
+						method="GET"
+						action="<%=request.getContextPath()%>/Connexion">
+
+						<button
+							class="btn btn-primary mt-5"
+							type="submit">Connexion</button>
+					</form>
+				</div>
+			</div>
+
 		</header>
 
-		<main>
+		<!-- <main>
 
-			<!--Titre-->
+			Titre
 
 			<h1 class="text-center">Liste des enchères</h1>
 
-			<!--Recherche-->
+			Recherche
 
 			<div class="row mt-5">
 				<div class="col-6">
@@ -53,7 +67,7 @@
 			</div>
 
 
-		</main>
+		</main> -->
 
 		<!--<footer>-->
 		<!--	<footer class="bg-light text-center text-lg-start">-->

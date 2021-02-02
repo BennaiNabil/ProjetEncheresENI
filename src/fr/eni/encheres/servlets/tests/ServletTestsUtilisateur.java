@@ -9,7 +9,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -78,6 +77,17 @@ public class ServletTestsUtilisateur extends HttpServlet {
 			outPrintWriter.println("mot de passe: badmdp");
 			outPrintWriter.print("Bon couple d'identifiants? --> "
 					+ utilisateurDAO.sontBonsIdentifiantsDeConnexion("felix", "badmdp"));
+			outPrintWriter.println("\n\n\n");
+
+			// insert
+			outPrintWriter.println("Test de la méthode insert()");
+			outPrintWriter.println("-----------------------------------" + "\n");
+			Utilisateur userInsert = utilisateurDAO.selectById(2);
+			userInsert.setNom("Nouveau nom utilisateur");
+			utilisateurDAO.insert(userInsert);
+			for (Utilisateur utilisateur : utilisateurDAO.selectAll()) {
+				outPrintWriter.println(utilisateur + "\n");
+			}
 			outPrintWriter.println("\n\n\n");
 
 			// Libère une connexion

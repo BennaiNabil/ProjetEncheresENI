@@ -31,6 +31,17 @@
 		<url-pattern>/Connexion</url-pattern>
 	</servlet-mapping>
 	
+	<!-- /////////////////////////// SERVLET - INSCRIPTION ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>Inscription</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.Inscription</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Inscription</servlet-name>
+		<url-pattern>/Inscription</url-pattern>
+	</servlet-mapping>
+	
 	<!-- /////////////////////////// SERVLET - SERVLET TEST ////////////////////////// -->
 
 	<servlet>
@@ -71,5 +82,20 @@
 		<servlet-name>PageErreurConnexion</servlet-name>
 		<jsp-file>/WEB-INF/jsp/PageErreurConnexion.jsp</jsp-file>
 	</servlet>
+	
+		<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageInscription</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageInscription.jsp</jsp-file>
+	</servlet>
+	
+	<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageErreurInscription</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageErreurInscription.jsp</jsp-file>
+	</servlet>
+	
 
 </web-app>

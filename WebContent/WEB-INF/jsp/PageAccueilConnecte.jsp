@@ -6,7 +6,9 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
-<meta charset="ISO-8859-1">
+	
+<meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
 <title>Accueil</title>
 </head>
 <body>
@@ -17,9 +19,11 @@
 		<header>
 			<div class="row">
 				<div class="col-6">
+					<a href="${pageContext.request.contextPath}">
 					<img
 						alt="LOGO"
 						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+					</a>
 				</div>
 				<div class="col-1,5">
 					<button

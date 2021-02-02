@@ -11,8 +11,8 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
-	
-<%@include file="../fragments/fragmentStyle.jspf"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
+
 
 </head>
 <body>
@@ -20,13 +20,15 @@
 		<header>
 			<div class="row">
 				<div class="col-8">
+				<a href="${pageContext.request.contextPath}">
 					<img
 						alt="LOGO"
 						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+				</a>	
 				</div>
 				<div class="col-2">
 					<button
-						class="btn btn-primary mt-5 mr-5"
+						class="btn btn-secondary mt-5 mr-5"
 						type="submit">Inscription</button>
 				</div>
 				<div class="col-2">
@@ -80,5 +82,9 @@
 		<!--</footer>-->
 
 	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
 </body>
 </html>

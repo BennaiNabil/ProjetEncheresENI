@@ -11,8 +11,9 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
 	
-<%@include file="../fragments/fragmentStyle.jspf"%>
+
 
 </head>
 <body>
@@ -26,7 +27,7 @@
 				</div>
 				<div class="col-2">
 					<button
-						class="btn btn-primary mt-5 mr-5"
+						class="btn btn-secondary mt-5 mr-5"
 						type="submit">Inscription</button>
 				</div>
 				<div class="col-2">

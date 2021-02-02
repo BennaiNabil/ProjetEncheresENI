@@ -3,7 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
+<meta charset="UTF-8">
 <title>Connexion</title>
 </head>
 <body>
@@ -27,7 +31,5 @@
 		<input type="submit" value="Connexion" />
 		
 </form>
-
-
 </body>
 </html>

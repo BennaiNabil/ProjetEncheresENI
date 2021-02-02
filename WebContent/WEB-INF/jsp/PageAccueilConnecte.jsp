@@ -6,7 +6,9 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
-<meta charset="ISO-8859-1">
+	
+<meta charset="UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
 <title>Accueil</title>
 </head>
 <body>

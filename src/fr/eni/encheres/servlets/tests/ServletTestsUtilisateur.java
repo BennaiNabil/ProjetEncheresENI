@@ -19,7 +19,6 @@ import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.UtilisateurDAO;
 
-@WebServlet("/ServletTestUtilisateur")
 public class ServletTestsUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

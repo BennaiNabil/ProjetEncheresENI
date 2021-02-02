@@ -3,6 +3,6 @@
 	<Resource name="jdbc/pool_cnx"
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" type="javax.sql.DataSource"
 
-		url="jdbc:sqlserver://localhost;databasename=BDD_ENCHERES" username="adminEncheres"
+		url="jdbc:sqlserver://35.240.79.24;databasename=BDD_ENCHERES" username="adminEncheres"
 		password="password" maxTotal="100" maxIdle="30" maxWaitMillis="10000" />
 </Context>

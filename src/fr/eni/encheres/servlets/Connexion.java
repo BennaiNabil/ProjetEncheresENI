@@ -51,8 +51,10 @@ public class Connexion extends HttpServlet {
 			rd.forward(request, response);
 		} else {
 			// Si non : Affiche un message d'erreur.
-			request.getRequestDispatcher("/WEB-INF/jsp/PageErreurConnexion.jsp").forward(request, response);
-
+			request.setAttribute("erreurConnexion", "true");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageConnexion.jsp");
+			rd.forward(request, response);
+			//request.getRequestDispatcher("/WEB-INF/jsp/PageErreurConnexion.jsp").forward(request, response);
 		}
 
 	}

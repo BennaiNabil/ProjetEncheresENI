@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+		<%
+			String erreurConnexion = (String)request.getAttribute("erreurConnexion");
+		%>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -38,6 +41,13 @@
                <!-- **** -->
                <!-- body -->
                <!-- **** -->
+               <%
+						if (erreurConnexion == "true")
+						{%>
+							<div class="alert alert-danger" role="alert">
+							  Les données saisies sont incorrectes
+						<%}
+				%>
                <div class="modal-body">
                   	<form method="POST" action="<%= request.getContextPath() %>/Connexion">
 					<!--  Champs de saisie de l'identifiant utilisateur -->
@@ -64,6 +74,13 @@
             </div>
          </div>
       </div>
+      
+      <script>
+    	$(document).ready(function(){
+        $("#fenetreModale").modal('close'); 							
+    	});
+	  </script>
+      
       
 	<!-- Intégration de bootstrap javascript -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

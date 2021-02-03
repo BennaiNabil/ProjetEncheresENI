@@ -21,6 +21,33 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			+ "WHERE no_utilisateur = ?";
 	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=?";
+	private static final String UNIQUE_PSEUDO_EMAIL = "SELECT * FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
+
+	/**
+	 * Méthode qui vérifie l'unicité du pseudo et de l'email dans la base de donnée
+	 * 
+	 * @param pseudo
+	 * @param email
+	 * @return
+	 */
+	public boolean checkUnicity(String pseudo, String email) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(UNIQUE_PSEUDO_EMAIL);
+			preparedStatement.setString(1, pseudo);
+			preparedStatement.setString(2, email);
+			resultSet = preparedStatement.executeQuery();
+			if (!resultSet.next()) {
+				return true;
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
+		}
+		return false;
+	}
 
 	/**
 	 * Méthode qui permet d'insérer un utilisateur en base de données dans la table
@@ -194,17 +221,18 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	 *         valide
 	 */
 	@Override
-	public boolean sontBonsIdentifiantsDeConnexion(String pseudoUtilisateur, String motDePasse) {
+	public Utilisateur sontBonsIdentifiantsDeConnexion(String pseudoUtilisateur, String motDePasse) {
 		Utilisateur utilisateur = selectByPseudo(pseudoUtilisateur);
-		System.out.println(utilisateur);
+
 		if (utilisateur != null) {
 			String motDePasseAssocie = utilisateur.getMotDePasse();
-			System.out.println("utilisateur: " + utilisateur.getPseudo());
-			System.out.println("mot de passe associé: " + motDePasseAssocie);
-			System.out.println("mot de passe entré: " + motDePasse);
-			return motDePasseAssocie.equals(motDePasse);
+			if (motDePasseAssocie.equals(motDePasse)) {
+				return utilisateur;
+			} else {
+				return null;
+			}
 		} else {
-			return false;
+			return null;
 		}
 	}
 

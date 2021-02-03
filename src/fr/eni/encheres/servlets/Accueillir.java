@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.encheres.bll.EncheresManager;
+import fr.eni.encheres.bo.CodesResultat;
 import fr.eni.encheres.bo.Enchere;
 
 public class Accueillir extends HttpServlet {
@@ -18,20 +19,23 @@ public class Accueillir extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		// Affichage des Enchères
-		// 1. Recherche des enchères
-
+		
+		//Affichage des Enchères
+			//1. Recherche des enchères
+		
+		
 		EncheresManager encheresManager = new EncheresManager();
-		List<Enchere> listeEncheres = null;
-
+		List<Enchere> listeEncheres=null;
+		
 		listeEncheres = encheresManager.selectAll();
 		request.setAttribute("listeEncheres", listeEncheres);
-
-		// Renvoi vers la page d'accueil
+		
+		
+		
+		//Renvoi vers la page d'accueil
+		request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 		rd.forward(request, response);
-
 	}
 
 	@Override

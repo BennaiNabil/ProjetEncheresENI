@@ -26,6 +26,7 @@ public class Inscription extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, conf;
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
 
 		pseudo = request.getParameter("pseudo");
 		nom = request.getParameter("nom");
@@ -43,7 +44,6 @@ public class Inscription extends HttpServlet {
 		if (mdp.equals(conf)) {
 			Utilisateur utilisateur = new Utilisateur(-1, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp,
 					0, false);
-			UtilisateurManager utilisateurManager = new UtilisateurManager();
 			try {
 				utilisateurManager.nouvelUtilisateur(utilisateur);
 			} catch (BLLException e) {
@@ -51,9 +51,9 @@ public class Inscription extends HttpServlet {
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageErreurInscription.jsp");
+			rd.forward(request, response);
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageErreurInscription.jsp");
-		rd.forward(request, response);
-
 	}
 }

@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page
+	language="java"
+	contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -8,83 +10,63 @@
 	rel="stylesheet">
 
 <meta charset="UTF-8">
-<link rel="stylesheet"
+<link
+	rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/AccueilStyle.css" />
 <title>Accueil</title>
 </head>
 <body>
 
-
-
-	<div class="container">
-		<header>
-			<div class="row">
-				<div class="col-6">
-					<a href="${pageContext.request.contextPath}"> <img alt="LOGO"
-						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
-					</a>
-				</div>
-				<div class="col-1,5">
-					<button class="btn btn-primary mt-5 mr-2" type="submit">Enchères</button>
-				</div>
-				<div class="col-1,5">
-
-					<form method="GET"
-						action="<%=request.getContextPath()%>/MiseEnVente">
-						<button class="btn btn-primary mt-5 mr-2" type="submit">Vendre</button>
-					</form>
-				</div>	
-					
-					
-					<div class="col-1,5">
-
-						<button class="btn btn-primary mt-5 mr-2" type="submit">Mon
-							profil</button>
+	<header>
+		<div class="row">
+			<div class="col-6">
+				<div class="row">
+					<div class="col-8">
+						<a href="${pageContext.request.contextPath}"> <img
+							alt="LOGO"
+							src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+						</a>
 					</div>
-					<div class="col-1,5">
-
-						<button class="btn btn-primary mt-5" type="submit">Déconnexion</button>
+					<div
+						class="col-2"
+						style="color: white;">
+						<p class="mt-2">
+							<i>${pseudo}</i>
+						</p>
+						<p class="mt-n2">${credits}pts</p>
 					</div>
-				</div>
-		</header>
-
-		<!-- <main>
-
-			Titre
-
-			<h1 class="text-center">Liste des enchères</h1>
-
-			Recherche
-
-			<div class="row mt-5">
-				<div class="col-6">
-					<label for="">Rechercher une enchère</label> <input type="text">
-				</div>
-				<div class="col-1">
-					<p>OU/ET</p>
-				</div>
-				<div class="col-4">
-					<label for="">Dans la catégorie</label> <input type="text">
-				</div>
-				<div class="col-1">
-					<button class="btn btn-secondary" type="button">Recherche</button>
 				</div>
 			</div>
+			<div class="col-1,5">
+				<button
+					class="btn btn-primary mt-5 mr-2"
+					type="submit">Enchères</button>
+			</div>
+			<div class="col-1,5">
+
+				<form
+					method="GET"
+					action="<%=request.getContextPath()%>/MiseEnVente">
+					<button
+						class="btn btn-primary mt-5 mr-2"
+						type="submit">Vendre</button>
+				</form>
+			</div>
+			<div class="col-1,5">
+				<button
+					class="btn btn-primary mt-5 mr-2"
+					type="submit">Mon profil</button>
+			</div>
+			<div class="col-1,5">
+
+				<button
+					class="btn btn-primary mt-5"
+					type="submit">Déconnexion</button>
+			</div>
+		</div>
+	</header>
 
 
-		</main> -->
-
-		<!--<footer>-->
-		<!--	<footer class="bg-light text-center text-lg-start">-->
-		<!--		&lt;!&ndash; Copyright &ndash;&gt;-->
-		<!--		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">-->
-		<!--			Copyright © 2021 Léa Georges et Nabil-->
-		<!--		</div>-->
-		<!--		&lt;!&ndash; Copyright &ndash;&gt;-->
-		<!--	</footer>-->
-		<!--</footer>-->
-
-	</div>
 
 
 </body>

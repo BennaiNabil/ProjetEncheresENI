@@ -14,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO {
-	private static final String SELECT_ALL = "Select ARTICLES_VENDUS.nom_article, ARTICLES_VENDUS.description, ARTICLES_VENDUS.date_debut_encheres, ARTICLES_VENDUS.date_fin_encheres, ARTICLES_VENDUS.prix_initial, ARTICLES_VENDUS.no_utilisateur FROM ENCHERES\n"
-
-			+ "INNER JOIN ARTICLES_VENDUS on ENCHERES.no_article = ARTICLES_VENDUS.no_article;";
+	private static final String SELECT_ALL = "Select ARTICLES_VENDUS.nom_article, ARTICLES_VENDUS.description, ARTICLES_VENDUS.date_debut_encheres, ARTICLES_VENDUS.date_fin_encheres, ARTICLES_VENDUS.prix_initial, ARTICLES_VENDUS.no_utilisateur FROM ENCHERES"
+			+ " INNER JOIN ARTICLES_VENDUS on ENCHERES.no_article = ARTICLES_VENDUS.no_article;";
 
 	@Override
 	public void insert(Enchere object) {
@@ -37,11 +36,11 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(SELECT_ALL);
 
-			while (resultSet.next()) {
-				listeEncheres.add(new Enchere(resultSet.getObject("date_enchere", LocalDate.class),
-						resultSet.getInt("montant_enchere"), (Utilisateur) resultSet.getObject("encherisseur"),
-						(ArticleVendu) resultSet.getObject("no_article")));
-			}
+//			while (resultSet.next()) {
+//				listeEncheres.add(new Enchere(resultSet.getDate("date_debut_encheres").toLocalDate(),
+//						resultSet.getInt("prix_initial"), (Utilisateur) resultSet.getObject("no_utilisateur"),
+//						(ArticleVendu) resultSet.getObject("no_article")));
+//			}
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		} finally {
@@ -49,7 +48,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 		}
 		return listeEncheres;
 	}
-	
 
 	@Override
 	public void update(Enchere object) {

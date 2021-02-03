@@ -1,21 +1,20 @@
 package fr.eni.encheres.dal.jdbc;
 
-import fr.eni.encheres.bo.ArticleVendu;
-import fr.eni.encheres.bo.Enchere;
-import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.dal.EnchereDAO;
 import java.sql.Connection;
-import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.dal.EnchereDAO;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String SELECT_ALL = "Select ARTICLES_VENDUS.nom_article, ARTICLES_VENDUS.description, ARTICLES_VENDUS.date_debut_encheres, ARTICLES_VENDUS.date_fin_encheres, ARTICLES_VENDUS.prix_initial, ARTICLES_VENDUS.no_utilisateur FROM ENCHERES"
 			+ " INNER JOIN ARTICLES_VENDUS on ENCHERES.no_article = ARTICLES_VENDUS.no_article;";
+	private static final String DELETE = "DELETE FROM ENCHERES WHERE no_utilisateur=?";
 
 	@Override
 	public void insert(Enchere object) {
@@ -55,7 +54,17 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	}
 
 	@Override
-	public void delete(Enchere object) {
+	public void delete(Enchere enchere) {
+		PreparedStatement preparedStatement = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(DELETE);
+			preparedStatement.setInt(1, enchere.getEncherisseur().getNoUtilisateur());
+			preparedStatement.executeUpdate();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, null);
+		}
 
 	}
 

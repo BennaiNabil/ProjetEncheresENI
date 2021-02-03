@@ -2,6 +2,8 @@
 	language="java"
 	contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@page import="fr.eni.encheres.bo.Enchere"%>
+	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,6 +66,7 @@
 					type="submit">Déconnexion</button>
 			</div>
 		</div>
+		<%@include file="/WEB-INF/BandeauErreurs.html" %> <!-- Inclusion du bandeau d'erreurs éventuelles -->
 	</header>
 
 

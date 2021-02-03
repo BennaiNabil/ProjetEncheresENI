@@ -2,17 +2,58 @@
 	language="java"
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="fr.eni.encheres.bo.Enchere"%>
+	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Inscription</title>
+<!-- Bootstrap + CSS -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
+
 <!-- <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet"> -->
 </head>
 <body>
-
+	<div class="container">
+	<header>
+			<div class="row">
+					<div class="col-8">
+					<a href="${pageContext.request.contextPath}">
+						<img
+							alt="LOGO"
+							src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+					</a>	
+					</div>
+					<div class="col-2">
+						<form
+							method="GET"
+							action="<%=request.getContextPath()%>/Inscription">
+	
+							<button
+								class="btn btn-primary mt-5"
+								type="submit">Inscription</button>
+						</form>
+					</div>
+					<div class="col-2">
+						<form
+							method="GET"
+							action="<%=request.getContextPath()%>/Connexion">
+	
+							<button
+								class="btn btn-primary mt-5"
+								type="submit">Connexion</button>
+						</form>
+					</div>
+				</div>
+			<%@include file="/WEB-INF/BandeauErreurs.html" %> <!-- Inclusion du bandeau d'erreurs éventuelles -->
+		</header>
+	</div>
 	<form method="POST" class="form-horizontal" action="<%= request.getContextPath() %>/Inscription">
 		<fieldset>
 

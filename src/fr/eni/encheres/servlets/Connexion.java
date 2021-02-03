@@ -36,14 +36,14 @@ public class Connexion extends HttpServlet {
 
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
-			request.setAttribute("erreur", null); // passage du message 'pas d'erreur' à la JSP
+			request.setAttribute("erreur", null); // passage du message "pas d'erreur" à la JSP
 			request.setAttribute("pseudo", identifiant);
 			request.setAttribute("credits", utilisateurManager.recupererUtilisateurParPseudo(identifiant).getCredit());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("erreurConnexion", "true");
-			request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR); // passage du message 'erreur d'identifiants à la JSP
+			request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR); // passage du message "erreur d'identifiants" à la JSP
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		}

@@ -52,7 +52,7 @@
 						</form>
 					</div>
 				</div>
-			<%@include file="/WEB-INF/BandeauErreurs.html" %>
+			<%@include file="/WEB-INF/BandeauErreurs.html" %> <!-- Inclusion du bandeau d'erreurs éventuelles -->
 		</header>
 <%	
 	List<Enchere> listeEncheres = (List<Enchere>) request.getAttribute("listeEncheres");

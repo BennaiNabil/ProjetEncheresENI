@@ -42,7 +42,7 @@
 					<button class="btn btn-primary mt-5" type="submit">Déconnexion</button>
 				</div>
 			</div>
-
+		<%@include file="/WEB-INF/BandeauErreurs.html" %> <!-- Inclusion du bandeau d'erreurs éventuelles -->
 		</header>
 	</div>
 

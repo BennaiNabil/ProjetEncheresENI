@@ -12,12 +12,30 @@ public class UtilisateurManager {
 		daoUtilisateur = DAOFactory.getUtilisateurDAO();
 	}
 
+	/**
+	 * Méthode qui va venir vérifier et inscrire un utilisateur
+	 * 
+	 * @param utilisateur
+	 * @throws BLLException
+	 */
 	public void nouvelUtilisateur(Utilisateur utilisateur) throws BLLException {
-		if (daoUtilisateur.selectByPseudo(utilisateur.getPseudo()) == null) {
+		if (daoUtilisateur.checkUnicity(utilisateur.getPseudo(), utilisateur.getEmail())) {
 			daoUtilisateur.insert(utilisateur);
 		} else {
 			throw new BLLException();
 		}
+	}
+
+	/**
+	 * Méthode pour valdier la connexion de l'utilisateur
+	 * 
+	 * @param pseudo
+	 * @param mdp
+	 * @return
+	 */
+	public boolean validerConnexion(String pseudo, String mdp) {
+		return daoUtilisateur.sontBonsIdentifiantsDeConnexion(pseudo, mdp) != null;
+
 	}
 
 }

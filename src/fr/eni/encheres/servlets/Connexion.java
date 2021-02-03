@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.encheres.dal.DAOFactory;
-import fr.eni.encheres.dal.UtilisateurDAO;
+import fr.eni.encheres.bll.UtilisateurManager;
 
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,27 +33,14 @@ public class Connexion extends HttpServlet {
 		identifiant = request.getParameter("identifiant");
 		mdp = request.getParameter("mdp");
 
-		System.out.println("Identifiant : " + identifiant + " - Mot de passe : " + mdp);
-
-		/*
-		 * [NABIL]
-		 * 
-		 * On utilise la méthode sontBonsIdentifiantsDeConnexion pour vérifier si le
-		 * couple d'identifiant est correct
-		 */
-
-		UtilisateurDAO utilisateurDAO = DAOFactory.getUtilisateurDAO();
-		// Vérifie leur conformité à la base de données.
-		if (utilisateurDAO.sontBonsIdentifiantsDeConnexion(identifiant, mdp)) {
-			// Si oui : Redirection vers la page d'accueil Connecte.
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {
-			// Si non : Affiche un message d'erreur.
 			request.setAttribute("erreurConnexion", "true");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageConnexion.jsp");
 			rd.forward(request, response);
-			//request.getRequestDispatcher("/WEB-INF/jsp/PageErreurConnexion.jsp").forward(request, response);
 		}
 
 	}

@@ -52,6 +52,17 @@
 		<servlet-name>ServletTestsUtilisateur</servlet-name>
 		<url-pattern>/ServletTestsUtilisateur</url-pattern>
 	</servlet-mapping>
+	
+	<!-- /////////////////////////// SERVLET - MISE EN VENTE ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>MiseEnVente</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.MiseEnVente</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MiseEnVente</servlet-name>
+		<url-pattern>/MiseEnVente</url-pattern>
+	</servlet-mapping>
 
 	<!-- /////////////////////////// JSP - PAGE ACCUEIL CONNECTE ////////////////////////// -->
 

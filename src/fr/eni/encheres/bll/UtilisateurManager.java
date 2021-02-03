@@ -35,7 +35,20 @@ public class UtilisateurManager {
 	 */
 	public boolean validerConnexion(String pseudo, String mdp) {
 		return daoUtilisateur.sontBonsIdentifiantsDeConnexion(pseudo, mdp) != null;
+	}
 
+	/**
+	 * Méthode pour récupérer les informations d'un utilisateur lors de sa connexion
+	 * avec son pseudo
+	 * 
+	 * @param pseudo
+	 * @return
+	 */
+	public Utilisateur recupererUtilisateurParPseudo(String pseudo) {
+
+		Utilisateur utilisateur = daoUtilisateur.selectByPseudo(pseudo);
+
+		return utilisateur;
 	}
 
 }

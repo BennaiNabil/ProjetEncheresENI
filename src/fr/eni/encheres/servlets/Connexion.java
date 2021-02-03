@@ -35,6 +35,8 @@ public class Connexion extends HttpServlet {
 
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
+			request.setAttribute("pseudo", identifiant);
+			request.setAttribute("credits", utilisateurManager.recupererUtilisateurParPseudo(identifiant).getCredit());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {
@@ -42,7 +44,6 @@ public class Connexion extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageConnexion.jsp");
 			rd.forward(request, response);
 		}
-
 	}
 
 }

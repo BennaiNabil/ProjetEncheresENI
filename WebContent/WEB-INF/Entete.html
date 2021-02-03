@@ -1,6 +1,8 @@
+			
 			<%
 				String erreur = "";
-				erreur = (String)request.getAttribute("erreur");
+				if (request.getAttribute("erreur")!= null)
+					erreur = request.getAttribute("erreur").toString();
 			%>
 			<div class="row">
 				<div class="col-8">
@@ -32,10 +34,14 @@
 				</div>
 			</div>
 			<%
-				if (erreur != null)
+				if (erreur != "")
 				{
 			%>
-				<div class="alert alert-danger" role="alert"><%=erreur%></div>
+				<div class="alert alert-danger" role="alert">
+				<%=
+				LecteurMessage.getMessageErreur(Integer.parseInt(erreur))
+				%>
+				</div>
 			<%} else {
 			%>
 			<div>

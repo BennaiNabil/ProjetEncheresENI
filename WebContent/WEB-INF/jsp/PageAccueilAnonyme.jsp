@@ -23,7 +23,36 @@
 <body>
 	<div class="container">
 		<header>
-			<%@include file="/WEB-INF/Entete.html" %>
+			<div class="row">
+					<div class="col-8">
+					<a href="${pageContext.request.contextPath}">
+						<img
+							alt="LOGO"
+							src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+					</a>	
+					</div>
+					<div class="col-2">
+						<form
+							method="GET"
+							action="<%=request.getContextPath()%>/Inscription">
+	
+							<button
+								class="btn btn-primary mt-5"
+								type="submit">Inscription</button>
+						</form>
+					</div>
+					<div class="col-2">
+						<form
+							method="GET"
+							action="<%=request.getContextPath()%>/Connexion">
+	
+							<button
+								class="btn btn-primary mt-5"
+								type="submit">Connexion</button>
+						</form>
+					</div>
+				</div>
+			<%@include file="/WEB-INF/BandeauErreurs.html" %>
 		</header>
 <%	
 	List<Enchere> listeEncheres = (List<Enchere>) request.getAttribute("listeEncheres");

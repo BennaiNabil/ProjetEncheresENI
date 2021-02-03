@@ -33,7 +33,7 @@ public class Accueillir extends HttpServlet {
 		
 		
 		//Renvoi vers la page d'accueil
-		request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR);
+		request.setAttribute("erreur", null);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 		rd.forward(request, response);
 	}

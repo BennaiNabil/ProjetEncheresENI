@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.encheres.bll.UtilisateurManager;
+import fr.eni.encheres.bo.CodesResultat;
 
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,13 +36,15 @@ public class Connexion extends HttpServlet {
 
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
+			request.setAttribute("erreur", null); // passage du message 'pas d'erreur' à la JSP
 			request.setAttribute("pseudo", identifiant);
 			request.setAttribute("credits", utilisateurManager.recupererUtilisateurParPseudo(identifiant).getCredit());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("erreurConnexion", "true");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageConnexion.jsp");
+			request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR); // passage du message 'erreur d'identifiants à la JSP
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		}
 	}

@@ -25,6 +25,7 @@ public class Accueillir extends HttpServlet {
 		
 		EncheresManager encheresManager = new EncheresManager();
 		List<Enchere> listeEncheres=null;
+		
 		listeEncheres = encheresManager.selectAll();
 		request.setAttribute("listeEncheres", listeEncheres);
 		

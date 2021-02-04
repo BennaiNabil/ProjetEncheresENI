@@ -36,7 +36,11 @@
 		</ul>
 
 		<div class="row">
-			<button class="btn btn-secondary">Modifier</button>
+			<form
+				method="GET"
+				action="<%=request.getContextPath()%>/ModifierMonProfil">
+				<button class="btn btn-secondary">Modifier</button>
+			</form>
 			<button class="btn btn-secondary">Retour</button>
 		</div>
 	</div>

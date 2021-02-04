@@ -75,6 +75,17 @@
 		<url-pattern>/MiseEnVente</url-pattern>
 	</servlet-mapping>
 
+	<!-- /////////////////////////// SERVLET - SERVLET SUPPRIMER MON COMPTE ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>SupprimerMonCompte</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.SupprimerMonCompte</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SupprimerMonCompte</servlet-name>
+		<url-pattern>/SupprimerMonCompte</url-pattern>
+	</servlet-mapping>
+
 	<!-- /////////////////////////// SERVLET - SERVLET MODIFIERMONPROFIL ////////////////////////// -->
 
 	<servlet>

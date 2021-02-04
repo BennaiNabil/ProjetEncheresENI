@@ -49,7 +49,7 @@
 						<%}
 				%>
                <div class="modal-body">
-                  	<form method="POST" action="<%= request.getContextPath() %>/Connexion">
+                  	<form method="POST" action="<%= request.getContextPath() %>Connexion">
 					<!--  Champs de saisie de l'identifiant utilisateur -->
 					<div class="row">
 						<label class="col-4" for="identifiant">Identifiant :</label>

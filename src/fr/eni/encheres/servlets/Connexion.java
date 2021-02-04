@@ -42,8 +42,7 @@ public class Connexion extends HttpServlet {
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
 			request.setAttribute("erreur", null); // passage du message "pas d'erreur" � la JSP
-			session.setAttribute("pseudo", identifiant);
-			session.setAttribute("credits", utilisateurManager.recupererUtilisateurParPseudo(identifiant).getCredit());
+			session.setAttribute("utilisateur", utilisateurManager.recupererUtilisateurParPseudo(identifiant));
 			session.setAttribute("connected", "oui");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
@@ -51,7 +50,7 @@ public class Connexion extends HttpServlet {
 			request.setAttribute("erreurConnexion", "true");
 			request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR); // passage du message "erreur
 																			// d'identifiants" � la JSP
-			session.setAttribute("connected", "oui");
+			session.setAttribute("connected", "non");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		}

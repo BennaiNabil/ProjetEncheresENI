@@ -2,8 +2,8 @@
 	language="java"
 	contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@page import="fr.eni.encheres.bo.Enchere"%>
-	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
+<%@page import="fr.eni.encheres.bo.Enchere"%>
+<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,9 +33,9 @@
 						class="col-2"
 						style="color: white;">
 						<p class="mt-2">
-							<i>${pseudo}</i>
+							<i>${utilisateur.getPseudo()}</i>
 						</p>
-						<p class="mt-n2">${credits}pts</p>
+						<p class="mt-n2">${utilisateur.getCredit()}pts</p>
 					</div>
 				</div>
 			</div>
@@ -66,9 +66,12 @@
 					type="submit">Déconnexion</button>
 			</div>
 		</div>
-		<%@include file="/WEB-INF/BandeauErreurs.html" %> <!-- Inclusion du bandeau d'erreurs éventuelles -->
+		<%@include file="/WEB-INF/BandeauErreurs.html"%>
+		<!-- Inclusion du bandeau d'erreurs éventuelles -->
 	</header>
 
+
+	<p>${utilisateur.toString() }</p>
 
 
 

@@ -4,46 +4,45 @@ import java.util.ResourceBundle;
 
 /**
  * Cette classe permet de lire le contenu du fichier messages_erreur.properties
+ * 
  * @author Administrator
  *
  */
 public abstract class LecteurMessage {
-	private static ResourceBundle rb; // déclaration statique du ResourceBundle pour lire le fichier messages_erreur.properties
-	
-	static
-	{
-		try
-		{
-			rb = ResourceBundle.getBundle("fr.eni.encheres.messages.messages_erreur"); // chemin vers le fichier et lecture
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace(); // capture d'une erreur liée à la l'inexistance du fichier messages_erreur.properties
+	private static ResourceBundle rb; // dï¿½claration statique du ResourceBundle pour lire le fichier
+										// messages_erreur.properties
+
+	static {
+		try {
+			rb = ResourceBundle.getBundle("fr.eni.encheres.messages.messages_erreur"); // chemin vers le fichier et
+																						// lecture
+		} catch (Exception e) {
+			e.printStackTrace(); // capture d'une erreur liï¿½e ï¿½ la l'inexistance du fichier
+									// messages_erreur.properties
 		}
 	}
-	
+
 	/**
-	 * Méthode statique servant à retourner le message correspondant à l'erreur
+	 * Mï¿½thode statique servant ï¿½ retourner le message correspondant ï¿½ l'erreur
+	 * 
 	 * @param code d'erreur au format int
 	 * @return le message d'erreur au format String
 	 */
-	public static  String getMessageErreur(int code)
-	{
-		String message="";
-		try
-		{
-			if(rb!=null) // Recherche d'une erreur de lecture du fichier messages_erreur.properties
+	public static String getMessageErreur(int code) {
+		String message = "";
+		try {
+			if (rb != null) // Recherche d'une erreur de lecture du fichier messages_erreur.properties
 			{
-				message = rb.getString(String.valueOf(code)); // lecture du message correspondant au code d'erreur remonté
+				message = rb.getString(String.valueOf(code)); // lecture du message correspondant au code d'erreur
+																// remontï¿½
+			} else {
+				message = "Problï¿½me ï¿½ la lecture du fichier contenant les messages"; // envoi d'un message gï¿½nï¿½rique si
+																						// soucis de lecture de
+																						// messages_erreur.properties
 			}
-			else
-			{
-				message="Problème à la lecture du fichier contenant les messages"; // envoi d'un message générique si soucis de lecture de messages_erreur.properties 
-			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			message="Une erreur inconnue est survenue"; // interception d'une erreur inconnue à dertination de l'admin
+			message = "Une erreur inconnue est survenue"; // interception d'une erreur inconnue ï¿½ dertination de l'admin
 		}
 		return message;
 	}

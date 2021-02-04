@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.CodesResultat;
@@ -28,6 +29,10 @@ public class Connexion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// CrÃ©ation d'une session
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(800);
+
 		String identifiant;
 		String mdp;
 
@@ -36,14 +41,17 @@ public class Connexion extends HttpServlet {
 
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
-			request.setAttribute("erreur", null); // passage du message "pas d'erreur" à la JSP
-			request.setAttribute("pseudo", identifiant);
-			request.setAttribute("credits", utilisateurManager.recupererUtilisateurParPseudo(identifiant).getCredit());
+			request.setAttribute("erreur", null); // passage du message "pas d'erreur" ï¿½ la JSP
+			session.setAttribute("pseudo", identifiant);
+			session.setAttribute("credits", utilisateurManager.recupererUtilisateurParPseudo(identifiant).getCredit());
+			session.setAttribute("connected", "oui");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("erreurConnexion", "true");
-			request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR); // passage du message "erreur d'identifiants" à la JSP
+			request.setAttribute("erreur", CodesResultat.CONNEXION_ERREUR); // passage du message "erreur
+																			// d'identifiants" ï¿½ la JSP
+			session.setAttribute("connected", "oui");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		}

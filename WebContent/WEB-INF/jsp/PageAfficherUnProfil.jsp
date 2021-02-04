@@ -23,6 +23,7 @@
 	<%@include file="FragmentHeader.jspf"%>
 
 	<div class="container mt-5">
+		<h2>Profil de : ${utilisateur.getPseudo() }</h2>
 		<ul>
 			<li>Pseudo: ${utilisateur.getPseudo() }</li>
 			<li>Nom: ${utilisateur.getNom() }</li>
@@ -33,6 +34,11 @@
 			<li>Code Postal ${utilisateur.getCodePostal() }</li>
 			<li>Ville: ${utilisateur.getVille() }</li>
 		</ul>
+
+		<div class="row">
+			<button class="btn btn-secondary">Modifier</button>
+			<button class="btn btn-secondary">Retour</button>
+		</div>
 	</div>
 </body>
 </html>

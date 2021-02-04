@@ -64,7 +64,7 @@
 		<url-pattern>/ServletTestsUtilisateur</url-pattern>
 	</servlet-mapping>
 
-	<!-- /////////////////////////// SERVLET - SERVLET MODIFIERMONPROFIL ////////////////////////// -->
+	<!-- /////////////////////////// SERVLET - SERVLET MISE EN VENTE ////////////////////////// -->
 
 	<servlet>
 		<servlet-name>MiseEnVente</servlet-name>
@@ -100,9 +100,6 @@
 		<jsp-file>/WEB-INF/jsp/PageAccueilConnecte.jsp</jsp-file>
 	</servlet>
 
-
-
-
 	<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
 
 	<servlet>
@@ -118,14 +115,14 @@
 		<jsp-file>/WEB-INF/jsp/PageErreurConnexion.jsp</jsp-file>
 	</servlet>
 
-	<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
+	<!-- /////////////////////////// JSP - PAGE INSCRIPTION ////////////////////////// -->
 
 	<servlet>
 		<servlet-name>PageInscription</servlet-name>
 		<jsp-file>/WEB-INF/jsp/PageInscription.jsp</jsp-file>
 	</servlet>
 
-	<!-- /////////////////////////// JSP - PAGE CONNEXION ////////////////////////// -->
+	<!-- /////////////////////////// JSP - PAGE ERREUR INSCRIPTION ////////////////////////// -->
 
 	<servlet>
 		<servlet-name>PageErreurInscription</servlet-name>
@@ -139,5 +136,11 @@
 		<jsp-file>/WEB-INF/jsp/PageModificationProfil.jsp</jsp-file>
 	</servlet>
 
+	<!-- /////////////////////////// JSP - PAGE FORMULAIRE VENTE ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageFormulaireVente</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageFormulaireVente.jsp</jsp-file>
+	</servlet>
 
 </web-app>

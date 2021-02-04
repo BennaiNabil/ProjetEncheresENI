@@ -68,7 +68,7 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="identifiant">Article :</label> <input
+					<label for="nomArticle">Article :</label> <input
 						class="form-control"
 						type="text"
 						name="nomArticle"
@@ -114,7 +114,7 @@
 					</select>
 				</div>
 				<div class="form-group col-md-2">
-					<label for="identifiant">Prix de départ :</label> <input
+					<label for="prix">Prix de départ :</label> <input
 						class="form-control"
 						type="text"
 						name="prix"
@@ -131,11 +131,11 @@
 
 			<div class="form-row">
 				<div class="form-group col">
-					<label for="identifiant">Description :</label> <input
+					<label for="description">Description :</label> <input
 						class="form-control"
 						type="text"
-						name="Description"
-						id="Description"
+						name="description"
+						id="description"
 						required="required" />
 				</div>
 			</div>

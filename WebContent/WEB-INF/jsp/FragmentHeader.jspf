@@ -55,11 +55,12 @@
 				<%
 				if (isPageAnonyme) {
 				%>
-				<!-- method="GET"
-					action="">
+				<form
+					method="GET"
+					action="<%=request.getContextPath()%>/Inscription">
 					<button
 						class="btn btn-primary mt-5 mr-2"
-						type="submit">Mon profil</button> -->
+						type="submit">S'inscrire</button>
 				<%
 				} else {
 				%>

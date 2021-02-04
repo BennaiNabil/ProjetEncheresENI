@@ -24,8 +24,8 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			preparedStatement = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, articleVendu.getNomArticle());
 			preparedStatement.setString(2, articleVendu.getDescription());
-			preparedStatement.setObject(3, articleVendu.getDateDebutEncheres());
-			preparedStatement.setObject(4, articleVendu.getDateFinEncheres());
+			preparedStatement.setDate(3, java.sql.Date.valueOf(articleVendu.getDateDebutEncheres()));
+			preparedStatement.setDate(4, java.sql.Date.valueOf(articleVendu.getDateFinEncheres()));
 			preparedStatement.setInt(5, articleVendu.getMiseAPrix());
 			Categorie categorie = articleVendu.getCategorie();
 			int idCategorie = categorie.getNoCategorie();
@@ -38,7 +38,6 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			if (resultSet.next()) {
 				articleVendu.setNoArticle(resultSet.getInt(1));
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

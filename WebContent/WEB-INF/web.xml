@@ -42,6 +42,17 @@
 		<url-pattern>/Inscription</url-pattern>
 	</servlet-mapping>
 	
+		<!-- /////////////////////////// SERVLET - DECONNEXION ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>Deconnexion</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.Deconnexion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Deconnexion</servlet-name>
+		<url-pattern>/Deconnexion</url-pattern>
+	</servlet-mapping>
+	
 	<!-- /////////////////////////// SERVLET - SERVLET TEST ////////////////////////// -->
 
 	<servlet>

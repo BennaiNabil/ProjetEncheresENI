@@ -20,6 +20,9 @@
 	rel="stylesheet"> -->
 </head>
 <body>
+
+
+
 	<%
 		boolean isPageAnonyme = true;
 	%>

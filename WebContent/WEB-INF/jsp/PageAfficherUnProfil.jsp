@@ -44,5 +44,6 @@
 			<button class="btn btn-secondary">Retour</button>
 		</div>
 	</div>
+	<%@include file="FragmentFooter.jspf" %>
 </body>
 </html>

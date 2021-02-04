@@ -30,6 +30,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	 * @param email
 	 * @return
 	 */
+	@Override
 	public boolean checkUnicity(String pseudo, String email) {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -183,6 +184,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		try (Connection connection = ConnectionProvider.getConnection()) {
 			preparedStatement = connection.prepareStatement(UPDATE);
 			remplirPreparedStatement(utilisateur, preparedStatement);
+			preparedStatement.setInt(12, utilisateur.getNoUtilisateur());
+
 			preparedStatement.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();

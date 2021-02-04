@@ -35,19 +35,22 @@ public class ModifierMonProfil extends HttpServlet {
 		nom = request.getParameter("nom");
 		prenom = request.getParameter("prenom");
 		email = request.getParameter("email");
-		tel = request.getParameter("tel");
+		tel = request.getParameter("telephone");
 		rue = request.getParameter("rue");
-		codePostal = request.getParameter("codePostal");
+		codePostal = request.getParameter("codepostal");
 		ville = request.getParameter("ville");
-		mdp = request.getParameter("mdp");
 
 		Utilisateur utilisateurModifie = new Utilisateur(utilisateurAModifier.getNoUtilisateur(), pseudo, nom, prenom,
-				email, tel, rue, codePostal, ville, mdp, utilisateurAModifier.getCredit(),
-				utilisateurAModifier.isEstAdministrateur());
+				email, tel, rue, codePostal, ville, utilisateurAModifier.getMotDePasse(),
+				utilisateurAModifier.getCredit(), utilisateurAModifier.isEstAdministrateur());
+		System.out.println(utilisateurModifie);
 
 		if (manager.validerUtilisateur(utilisateurModifie)) {
 			manager.modifierUtilisateur(utilisateurModifie);
 		}
+		session.setAttribute("utilisateur", utilisateurModifie);
+
+		request.getRequestDispatcher("/WEB-INF/jsp/PageAfficherUnProfil.jsp").forward(request, response);
 
 	}
 

@@ -68,6 +68,29 @@ public class ArticleVendu implements Serializable {
 		this.acheteur = acheteur;
 		this.retrait = retrait;
 	}
+	
+	/**
+	 * Constructeur de la classe ArticleVendu avec les paramètres suivants:
+	 *
+	 * @param nomArticle        le nom de l'article
+	 * @param description       la description de l'article
+	 * @param dateDebutEncheres la date du début des enchères de l'article
+	 * @param dateFinEncheres   la date de fin des enchères de l'article
+	 * @param miseAPrix         la mise à prix de l'article
+	 * @param categorie         la catégorie de l'article
+	 * @param vendeur           le vendeur de l'article
+	 */
+	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, Categorie categorie,
+			Utilisateur vendeur) {
+		this.setNomArticle(nomArticle);
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.categorie = categorie;
+		this.vendeur = vendeur;
+	}
 
 	// Getters (Accesseurs) & Setters (Mutateurs)
 

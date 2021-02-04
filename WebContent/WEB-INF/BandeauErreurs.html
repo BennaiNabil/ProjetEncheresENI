@@ -1,0 +1,16 @@
+			<%
+				String erreur = "";
+				if (request.getAttribute("erreur")!= null)
+					erreur = request.getAttribute("erreur").toString();
+			%>
+			<%
+				if (erreur != "")
+				{
+			%>
+				<div class="alert alert-danger" role="alert">
+				<%=
+				LecteurMessage.getMessageErreur(Integer.parseInt(erreur))
+				%>
+				</div>
+				<%}%>
+			

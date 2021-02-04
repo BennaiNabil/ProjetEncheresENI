@@ -8,7 +8,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AccueilStyle.css"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Erreur de connexion</title>
 </head>
 <body>
 

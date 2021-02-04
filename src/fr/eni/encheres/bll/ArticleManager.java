@@ -12,6 +12,7 @@ public class ArticleManager {
 	}
 
 	public void insertArticle(ArticleVendu article) {
+		articleDAO.insert(article);
 	}
 
 }

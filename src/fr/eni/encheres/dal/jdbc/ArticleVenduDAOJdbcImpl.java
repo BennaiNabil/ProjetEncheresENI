@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	
-	private static final String INSERT = "INSERT INTO ARTICLES_VENDUS VALUES(?,?,?,?,?,?,?)";
+	private static final String INSERT = "INSERT INTO ARTICLES_VENDUS VALUES(?,?,?,?,?,?,?,?)";
 	
     @Override
     public void insert(ArticleVendu articleVendu) {
@@ -27,12 +27,16 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			preparedStatement.setDate(3, java.sql.Date.valueOf(articleVendu.getDateDebutEncheres()));
 			preparedStatement.setDate(4, java.sql.Date.valueOf(articleVendu.getDateFinEncheres()));
 			preparedStatement.setInt(5, articleVendu.getMiseAPrix());
+			preparedStatement.setInt(6, articleVendu.getPrixVente());
+			
 			Utilisateur vendeur = articleVendu.getVendeur();
 			int idVendeur = vendeur.getNoUtilisateur();
-			preparedStatement.setInt(6, idVendeur);
+			preparedStatement.setInt(7, idVendeur);
+			
 			Categorie categorie = articleVendu.getCategorie();
 			int idCategorie = categorie.getNoCategorie();
-			preparedStatement.setInt(7, idCategorie);
+			preparedStatement.setInt(8, idCategorie);
+			
 			preparedStatement.executeUpdate();
 			resultSet = preparedStatement.getGeneratedKeys();
 			if (resultSet.next()) {

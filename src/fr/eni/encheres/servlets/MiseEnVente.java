@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.CategorieManager;
 import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.ArticleVendu;
@@ -39,7 +40,7 @@ public class MiseEnVente extends HttpServlet {
 		Utilisateur vendeur;
 
 		// Récupération "simple"
-		nomArticle = request.getParameter("repas");
+		nomArticle = request.getParameter("nomArticle");
 		description = request.getParameter("description");
 		prixDepart = Integer.parseInt(request.getParameter("prix"));
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -49,23 +50,27 @@ public class MiseEnVente extends HttpServlet {
 		// Récupération "complexe"
 			// Id Categorie
 			libelle = request.getParameter("categorie");
+//			System.out.println(libelle);
 			CategorieManager categorieManager = new CategorieManager();
 			categorie = categorieManager.selectCategorieByNom(libelle);
 			
 	
 			// Id Utilisateur
 			HttpSession session = request.getSession();
-			pseudo = (String)session.getAttribute("pseudo");
-			UtilisateurManager utilisateurManager = new UtilisateurManager();
-			vendeur = utilisateurManager.recupererUtilisateurParPseudo(pseudo);
+			vendeur = (Utilisateur)session.getAttribute("utilisateur");
 			
 			// Retrait
 			rue = request.getParameter("rue");
 			codePostal = request.getParameter("codePostal");
 			ville = request.getParameter("ville");
 
-		// Ajout de l'Article à la base de données.
+		// Création de l'article.
 			ArticleVendu article = new ArticleVendu(nomArticle, description, debut, fin, prixDepart, categorie, vendeur);
+			System.out.println(article);
+			
+		// Ajout à la base de données.	
+			ArticleManager articleManager = new ArticleManager();
+			articleManager.insertArticle(article);
 
 		/*
 		 * 

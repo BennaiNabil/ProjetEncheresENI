@@ -45,7 +45,7 @@
 						if (erreurConnexion == "true")
 						{%>
 							<div class="alert alert-danger" role="alert">
-							  Les données saisies sont incorrectes
+							  Les données saisies sont incorrectes</div>
 						<%}
 				%>
                <div class="modal-body">
@@ -68,7 +68,7 @@
                	  <!-- Bouton de fermeture de la modale sans prise en compte des saisies -->
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
                   <!-- Bouton de vaidation des infos saisie dans la modale -->
-                  <button type="submit" class="btn btn-primary" value="Connexion">Connexion</button>
+                  <button type="submit" class="btn btn-primary" value="Connexion">/Connexion</button>
                   </form>
                </div>
             </div>

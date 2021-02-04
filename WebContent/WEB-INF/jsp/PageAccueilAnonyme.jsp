@@ -26,6 +26,7 @@
 		boolean isPageAnonyme = true;
 		%>
 		<%@include file="FragmentHeader.jspf" %>
+		<%@include file="../BandeauErreurs.html" %>
 	
 			
 

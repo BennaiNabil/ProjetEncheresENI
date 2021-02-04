@@ -12,10 +12,15 @@
 					<div
 						class="col-2"
 						style="color: white;">
-						<p class="mt-2">
-							<i>${pseudo}</i>
-						</p>
-						<p class="mt-n2">${credits}pts</p>
+						<% 
+						if (!isPageAnonyme)
+						{
+						%>
+						<p class="mt-2"><i>${utilisateur.getPseudo()}</i></p>
+						<p class="mt-n2">${utilisateur.getCredit()} pts</p>
+						<%
+						}
+						%>
 					</div>
 				</div>
 			</div>

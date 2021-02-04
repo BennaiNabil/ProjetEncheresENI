@@ -27,6 +27,6 @@
 	<p>${utilisateur.toString() }</p>
 
 
-
+<%@include file="FragmentFooter.jspf" %>
 </body>
 </html>

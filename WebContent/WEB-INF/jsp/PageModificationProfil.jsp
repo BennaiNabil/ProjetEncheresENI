@@ -181,5 +181,6 @@
 
 		</fieldset>
 	</form>
+	<%@include file="FragmentFooter.jspf" %>
 </body>
 </html>

@@ -1,0 +1,98 @@
+<header>
+	<div class="container-flex">
+		<div class="row">
+			<div class="col-6">
+				<div class="row">
+					<div class="col-8">
+						<a href="${pageContext.request.contextPath}"> <img
+							alt="LOGO"
+							src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
+						</a>
+					</div>
+					<div
+						class="col-2"
+						style="color: white;">
+						<p class="mt-2">
+							<i>${pseudo}</i>
+						</p>
+						<p class="mt-n2">${credits}pts</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-1,5">
+				<button
+					class="btn btn-primary mt-5 mr-2"
+					type="submit">Accueil</button>
+			</div>
+			<div class="col-1,5">
+
+				<form
+					<% 
+					if (isPageAnonyme)
+					{
+					%>
+					method="GET"
+					action="<%=request.getContextPath()%>/Connexion">
+					<button
+							class="btn btn-primary mt-5 mr-2"
+							type="submit">Connexion</button>
+					<%
+					}
+					else
+					{
+					%>
+					method="GET"
+					action="">										<!-- Mettre ici la servlet profil connecté -->
+					<button
+							class="btn btn-primary mt-5 mr-2"
+							type="submit">Vendre</button>
+					<%
+					}
+					%>
+				</form>
+			</div>
+			<div class="col-1,5">
+					<% 
+					if (isPageAnonyme)
+					{
+					%>
+					<!-- method="GET"
+					action="">
+					<button
+						class="btn btn-primary mt-5 mr-2"
+						type="submit">Mon profil</button> -->
+					<%
+					}
+					else
+					{
+					%>
+					<form
+					method="GET"
+					action="">                                     <!-- Mettre ici la servlet profil connecté -->
+					<button
+						class="btn btn-primary mt-5 mr-2"
+						type="submit">Mon profil</button>
+					<%
+					}
+					%>
+					</form>
+			</div>
+			<div class="col-1,5">
+				<form
+					<% 
+					if (!isPageAnonyme)
+					{
+					%>
+					method="GET"
+					action="<%=request.getContextPath()%>/Deconnexion">										<!-- Mettre ici la servlet profil connecté -->
+					<button
+							class="btn btn-primary mt-5 mr-2"
+							type="submit">Deconnexion</button>
+					<%
+					}
+					%>
+				</form>
+			</div>
+		</div>
+	</div>
+	</header>

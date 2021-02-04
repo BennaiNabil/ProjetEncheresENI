@@ -41,7 +41,7 @@
 					<%
 					} else {
 					%>
-					method="GET" action="">
+					method="GET" action="<%=request.getContextPath()%>/MiseEnVente">
 					<!-- Mettre ici la servlet profil connecté -->
 					<button
 						class="btn btn-primary mt-5 mr-2"

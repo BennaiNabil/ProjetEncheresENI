@@ -57,9 +57,7 @@ public class MiseEnVente extends HttpServlet {
 	
 			// Id Utilisateur
 			HttpSession session = request.getSession();
-			pseudo = (String)session.getAttribute("pseudo");
-			UtilisateurManager utilisateurManager = new UtilisateurManager();
-			vendeur = utilisateurManager.recupererUtilisateurParPseudo(pseudo);
+			vendeur = (Utilisateur)session.getAttribute("utilisateur");
 			
 			// Retrait
 			rue = request.getParameter("rue");

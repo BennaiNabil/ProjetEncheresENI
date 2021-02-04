@@ -171,7 +171,17 @@
 						id="retrait"
 						required="required" />
 				</div>
+			</div>	
+
+		<div class="form-row">
+			<div class="form-group col-1">
+			<input type="submit" value="Valider" class="btn btn-secondary"></input>
+			</div>	
+			<div class="form-group col-1">
+			<a href="<%=request.getContextPath()%>"><input type="button" class="btn btn-secondary" value="Annuler"/></a>
 			</div>
+		</div>
+		
 
 		</form>
 	</div>

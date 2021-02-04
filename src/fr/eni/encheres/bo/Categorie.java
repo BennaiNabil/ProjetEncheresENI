@@ -35,6 +35,17 @@ public class Categorie implements Serializable {
 		this.libelle = libelle;
 		this.articlesVendus = articlesVendus;
 	}
+	
+	/**
+	 * Constructeur complet de la classe Catagorie avec les paramètres suivants:
+	 *
+	 * @param noCategorie    le numéro de la catégorie
+	 * @param libelle        le libellé de la catégorie
+	 */
+	public Categorie(int noCategorie, String libelle) {
+		this.noCategorie = noCategorie;
+		this.libelle = libelle;
+	}
 
 	// Getters (Accesseurs) & Setters (Mutateurs)
 

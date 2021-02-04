@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="fr.eni.encheres.bo.Enchere"%>
+	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +28,8 @@
 
 </head>
 <body>
+		
+		<%@include file="../BandeauErreurs.html" %>
 	  <!-- ************** -->
       <!-- Fenetre modale -->
       <!-- ************** -->
@@ -60,16 +64,18 @@
 						<label class="col-4" for="mdp">Mot de passe :</label>
 						<input class="col-6" type="password" name="mdp" id="mdp" required="required"/>
 					</div>
+					<div class="row-3 col-12 text-center">Vous ne disposez pas d'un compte ? <a href="<%=request.getContextPath() %>/Inscription">Inscrivez-vous</a></div>
                </div>
                <!-- ****** -->
                <!-- footer -->
                <!-- ****** -->
                <div class="modal-footer">
                	  <!-- Bouton de fermeture de la modale sans prise en compte des saisies -->
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
-                  <!-- Bouton de vaidation des infos saisie dans la modale -->
+                  <button type="button" onclick="window.location.href = 'http://localhost:8080/ProjetEncheresENI/';" class="btn btn-primary" data-dismiss="modal">Retour</button>
+                  <!-- Bouton de validation des infos saisie dans la modale -->
                   <button type="submit" class="btn btn-primary" value="Connexion">Connexion</button>
                   </form>
+                  
                </div>
             </div>
          </div>

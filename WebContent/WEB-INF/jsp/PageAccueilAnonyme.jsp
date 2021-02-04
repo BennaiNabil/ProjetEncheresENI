@@ -23,6 +23,7 @@
 <body>
 	
 		<%
+		boolean isSubscribing = false;
 		boolean isPageAnonyme = true;
 		%>
 		<%@include file="FragmentHeader.jspf" %>

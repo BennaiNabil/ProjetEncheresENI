@@ -53,15 +53,31 @@
 			</div>
 			<div class="col-1,5">
 				<%
-				if (isPageAnonyme) {
+				if (isPageAnonyme)
+				{
 				%>
-				<form
-					method="GET"
-					action="<%=request.getContextPath()%>/Inscription">
-					<button
-						class="btn btn-primary mt-5 mr-2"
-						type="submit">S'inscrire</button>
-				<%
+					<%
+					if (isSubscribing)
+					{
+						%>
+						<form
+						method="GET"
+						action="<%=request.getContextPath()%>/Inscription">
+						<button
+							class="btn btn-primary mt-5 mr-2"
+							disabled
+							type="submit">S'inscrire</button>
+						<%
+					} else {
+						%>
+						<form
+						method="GET"
+						action="<%=request.getContextPath()%>/Inscription">
+						<button
+							class="btn btn-primary mt-5 mr-2"
+							type="submit">S'inscrire</button>
+						<%
+					}
 				} else {
 				%>
 				<form

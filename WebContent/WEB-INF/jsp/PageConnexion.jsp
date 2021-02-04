@@ -49,7 +49,7 @@
 						<%}
 				%>
                <div class="modal-body">
-                  	<form method="POST" action="<%= request.getContextPath() %>Connexion">
+                  	<form method="POST" action="<%= request.getContextPath() %>/Connexion">
 					<!--  Champs de saisie de l'identifiant utilisateur -->
 					<div class="row">
 						<label class="col-4" for="identifiant">Identifiant :</label>
@@ -68,7 +68,7 @@
                	  <!-- Bouton de fermeture de la modale sans prise en compte des saisies -->
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
                   <!-- Bouton de vaidation des infos saisie dans la modale -->
-                  <button type="submit" class="btn btn-primary" value="Connexion">/Connexion</button>
+                  <button type="submit" class="btn btn-primary" value="Connexion">Connexion</button>
                   </form>
                </div>
             </div>

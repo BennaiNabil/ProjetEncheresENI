@@ -27,12 +27,12 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			preparedStatement.setDate(3, java.sql.Date.valueOf(articleVendu.getDateDebutEncheres()));
 			preparedStatement.setDate(4, java.sql.Date.valueOf(articleVendu.getDateFinEncheres()));
 			preparedStatement.setInt(5, articleVendu.getMiseAPrix());
-			Categorie categorie = articleVendu.getCategorie();
-			int idCategorie = categorie.getNoCategorie();
-			preparedStatement.setInt(6, idCategorie);
 			Utilisateur vendeur = articleVendu.getVendeur();
 			int idVendeur = vendeur.getNoUtilisateur();
-			preparedStatement.setInt(7, idVendeur);
+			preparedStatement.setInt(6, idVendeur);
+			Categorie categorie = articleVendu.getCategorie();
+			int idCategorie = categorie.getNoCategorie();
+			preparedStatement.setInt(7, idCategorie);
 			preparedStatement.executeUpdate();
 			resultSet = preparedStatement.getGeneratedKeys();
 			if (resultSet.next()) {

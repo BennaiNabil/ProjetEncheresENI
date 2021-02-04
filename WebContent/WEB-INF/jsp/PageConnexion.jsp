@@ -26,11 +26,6 @@
 
 </head>
 <body>
-		<%
-		boolean isPageAnonyme = true;
-		%>
-		<%@include file="FragmentHeader.jspf" %>
-
 	  <!-- ************** -->
       <!-- Fenetre modale -->
       <!-- ************** -->

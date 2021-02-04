@@ -21,7 +21,7 @@
 </head>
 <body>
 	<%
-		boolean isPageAnonyme = false;
+		boolean isPageAnonyme = true;
 	%>
 	<%@include file="FragmentHeader.jspf"%>
 	

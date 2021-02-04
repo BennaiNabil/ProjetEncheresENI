@@ -182,6 +182,7 @@
 
 		</fieldset>
 	</form>
+<<<<<<< HEAD
 	
 	<form method="GET" action="<%=request.getContextPath()%>/SupprimerMonCompte">
 	<div class="col-md-4">
@@ -191,5 +192,8 @@
 						class="btn btn-danger">Supprimer votre profil</button>
 				</div>
 	</form>
+=======
+	<%@include file="FragmentFooter.jspf" %>
+>>>>>>> branch 'master' of https://github.com/BennaiNabil/ProjetEncheresENI.git
 </body>
 </html>

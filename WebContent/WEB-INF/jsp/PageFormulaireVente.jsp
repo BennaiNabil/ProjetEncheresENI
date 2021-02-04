@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +10,8 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
-<link rel="stylesheet"
+<link
+	rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/AccueilStyle.css" />
 
 <title>Nouvelle vente</title>
@@ -18,49 +21,66 @@
 		<div class="row align-items-center">
 			<div class="col-4">
 				<div class="col-6">
-					<a href="${pageContext.request.contextPath}"> <img alt="LOGO"
+					<a href="${pageContext.request.contextPath}"> <img
+						alt="LOGO"
 						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
 					</a>
 				</div>
 			</div>
 			<div class="col-1,5 ml-auto">
-				<button class="btn btn-primary mr-3" type="submit">Enchères</button>
+				<button
+					class="btn btn-primary mr-3"
+					type="submit">Enchères</button>
 			</div>
 			<div class="col-1,5">
-				<form method="GET"
+				<form
+					method="GET"
 					action="<%=request.getContextPath()%>/MiseEnVente">
-					<button class="btn btn-primary mr-3" type="submit">Vendre</button>
+					<button
+						class="btn btn-primary mr-3"
+						type="submit">Vendre</button>
 				</form>
 			</div>
 			<div class="col-1,5">
 
-				<button class="btn btn-primary mr-3" type="submit">Mon
-					profil</button>
+				<button
+					class="btn btn-primary mr-3"
+					type="submit">Mon profil</button>
 			</div>
 			<div class="col-1,5">
 
-				<button class="btn btn-primary mr-3" type="submit">Déconnexion</button>
+				<button
+					class="btn btn-primary mr-3"
+					type="submit">Déconnexion</button>
 			</div>
-			
+
 		</div>
 	</header>
 
 	<h1>Formulaire de vente des articles</h1>
 
 	<div class="container">
-		<form method="POST" action="<%=request.getContextPath()%>/MiseEnVente">
+		<form
+			method="POST"
+			action="<%=request.getContextPath()%>/MiseEnVente">
 
 			<!-- Première ligne du formulaire : Article, catégorie et Prix de départ -->
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="identifiant">Article :</label> <input
-						class="form-control" type="text" name="nomArticle" id="nomArticle"
-						autofocus="autofocus" required="required" />
+						class="form-control"
+						type="text"
+						name="nomArticle"
+						id="nomArticle"
+						autofocus="autofocus"
+						required="required" />
 				</div>
 				<div class="form-group col-md-4">
 					<label for="categorie">Catégorie:</label> <select
-						class="form-control" name="categorie" id="categorie">
+						class="form-control"
+						name="categorie"
+						id="categorie">
 						<option value="">-- Sélectionnez une catégorie --</option>
 						<option value="informatique">Informatique</option>
 						<option value="ameublement">Ameublement</option>
@@ -95,7 +115,10 @@
 				</div>
 				<div class="form-group col-md-2">
 					<label for="identifiant">Prix de départ :</label> <input
-						class="form-control" type="text" name="prix" id="prix"
+						class="form-control"
+						type="text"
+						name="prix"
+						id="prix"
 						required="required" />
 				</div>
 
@@ -109,8 +132,11 @@
 			<div class="form-row">
 				<div class="form-group col">
 					<label for="identifiant">Description :</label> <input
-						class="form-control" type="text" name="Description"
-						id="Description" required="required" />
+						class="form-control"
+						type="text"
+						name="Description"
+						id="Description"
+						required="required" />
 				</div>
 			</div>
 
@@ -119,12 +145,18 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="debut">Début de l'enchère :</label> <input
-						class="form-control" type="date" id=debut name="debut">
+						class="form-control"
+						type="date"
+						id=debut
+						name="debut">
 				</div>
 
 				<div class="form-group col-md-6">
 					<label for="fin">Fin de l'enchère :</label> <input
-						class="form-control" type="date" id=fin name="fin">
+						class="form-control"
+						type="date"
+						id=fin
+						name="fin">
 				</div>
 			</div>
 
@@ -133,7 +165,10 @@
 			<div class="form-row">
 				<div class="form-group col">
 					<label for="retrait">Lieu du retrait :</label> <input
-						class="form-control" type="text" name="retrait" id="retrait"
+						class="form-control"
+						type="text"
+						name="retrait"
+						id="retrait"
 						required="required" />
 				</div>
 			</div>

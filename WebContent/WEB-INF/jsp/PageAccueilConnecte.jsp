@@ -22,7 +22,7 @@
 	<%
 		boolean isPageAnonyme = false;
 	%>
-	<%@include file="FragmentHeader.jspf" %>
+	<%@include file="FragmentHeader.jspf"%>
 
 	<p>${utilisateur.toString() }</p>
 

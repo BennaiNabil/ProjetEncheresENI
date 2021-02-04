@@ -27,67 +27,58 @@
 			<div class="col-1,5">
 
 				<form
-					<% 
-					if (isPageAnonyme)
-					{
-					%>
+					<%if (isPageAnonyme) {%>
 					method="GET"
 					action="<%=request.getContextPath()%>/Connexion">
 					<button
-							class="btn btn-primary mt-5 mr-2"
-							type="submit">Connexion</button>
+						class="btn btn-primary mt-5 mr-2"
+						type="submit">Connexion</button>
 					<%
-					}
-					else
-					{
+					} else {
 					%>
-					method="GET"
-					action="">										<!-- Mettre ici la servlet profil connecté -->
+					method="GET" action="">
+					<!-- Mettre ici la servlet profil connecté -->
 					<button
-							class="btn btn-primary mt-5 mr-2"
-							type="submit">Vendre</button>
+						class="btn btn-primary mt-5 mr-2"
+						type="submit">Vendre</button>
 					<%
 					}
 					%>
 				</form>
 			</div>
 			<div class="col-1,5">
-					<% 
-					if (isPageAnonyme)
-					{
-					%>
-					<!-- method="GET"
+				<%
+				if (isPageAnonyme) {
+				%>
+				<!-- method="GET"
 					action="">
 					<button
 						class="btn btn-primary mt-5 mr-2"
 						type="submit">Mon profil</button> -->
-					<%
-					}
-					else
-					{
-					%>
-					<form
+				<%
+				} else {
+				%>
+				<form
 					method="GET"
-					action="">                                     <!-- Mettre ici la servlet profil connecté -->
+					action="AfficherUnProfil">
+					<!-- Mettre ici la servlet profil connecté -->
 					<button
 						class="btn btn-primary mt-5 mr-2"
 						type="submit">Mon profil</button>
 					<%
 					}
 					%>
-					</form>
+				</form>
 			</div>
 			<div class="col-1,5">
 				<form
-					<% 
-					if (!isPageAnonyme)
-					{
-					%>
+					<%if (!isPageAnonyme) {%>
 					method="GET"
-					action="<%=request.getContextPath()%>/Deconnexion">										<!-- Mettre ici la servlet profil connecté -->
+					action="<%=request.getContextPath()%>/Deconnexion">
+					<!-- Mettre ici la servlet profil connecté -->
 					<button
-							class="btn btn-primary mt-5 mr-2"
-							type="submit">Deconnexion</button>
+						class="btn btn-primary mt-5 mr-2"
+						type="submit">Deconnexion</button>
 					<%
 					}
 					%>
@@ -95,4 +86,4 @@
 			</div>
 		</div>
 	</div>
-	</header>
+</header>

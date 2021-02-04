@@ -108,5 +108,12 @@
 		<jsp-file>/WEB-INF/jsp/PageErreurInscription.jsp</jsp-file>
 	</servlet>
 	
+	<!-- /////////////////////////// JSP - PAGE AFFICHERUNPROFIL ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageAfficherUnProfil</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageAfficherUnProfil.jsp</jsp-file>
+	</servlet>
+	
 
 </web-app>

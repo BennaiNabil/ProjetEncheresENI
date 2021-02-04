@@ -67,6 +67,17 @@
 	<!-- /////////////////////////// SERVLET - SERVLET MODIFIERMONPROFIL ////////////////////////// -->
 
 	<servlet>
+		<servlet-name>MiseEnVente</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.MiseEnVente</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MiseEnVente</servlet-name>
+		<url-pattern>/MiseEnVente</url-pattern>
+	</servlet-mapping>
+
+	<!-- /////////////////////////// SERVLET - SERVLET MODIFIERMONPROFIL ////////////////////////// -->
+
+	<servlet>
 		<servlet-name>ModifierMonProfil</servlet-name>
 		<servlet-class>fr.eni.encheres.servlets.ModifierMonProfil</servlet-class>
 	</servlet>
@@ -74,7 +85,6 @@
 		<servlet-name>ModifierMonProfil</servlet-name>
 		<url-pattern>/ModifierMonProfil</url-pattern>
 	</servlet-mapping>
-
 
 	<!-- /////////////////////////// JSP - PAGE ACCUEIL CONNECTE ////////////////////////// -->
 

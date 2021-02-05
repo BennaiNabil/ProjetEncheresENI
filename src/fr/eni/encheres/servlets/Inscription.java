@@ -38,7 +38,6 @@ public class Inscription extends HttpServlet {
 		ville = request.getParameter("ville");
 		mdp = request.getParameter("mdp");
 		conf = request.getParameter("conf");
-
 		// Si les mots de passe correspondent et que le pseudo est unique, on ajoute
 		// l'utilisateur
 		if (mdp.equals(conf)) {

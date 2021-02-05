@@ -57,8 +57,6 @@
 		</div>
 	</header>
 
-	<h1>Formulaire de vente des articles</h1>
-
 	<div class="container">
 		<form
 			method="POST"
@@ -66,7 +64,7 @@
 
 			<!-- Première ligne du formulaire : Article, catégorie et Prix de départ -->
 
-			<div class="form-row">
+			<div class="form-row pt-5">
 				<div class="form-group col-md-6">
 					<label for="nomArticle">Article :</label> <input
 						class="form-control"
@@ -164,26 +162,47 @@
 
 			<div class="form-row">
 				<div class="form-group col">
-					<label for="retrait">Lieu du retrait :</label> <input
-						class="form-control"
+					<label for="retrait">Lieu du retrait :</label>
+						 <input
+						class="form-control col"
 						type="text"
-						name="retrait"
-						id="retrait"
-						required="required" />
+						name="rue"
+						id="rue"
+						required="required"
+						placeholder="Rue" />
+						 <input
+						class="form-control col"
+						type="text"
+						name="codePostal"
+						id="codePostal"
+						required="required"
+						placeholder="Code Postal" />
+						 <input
+						class="form-control col"
+						type="text"
+						name="ville"
+						id="ville"
+						required="required"
+						placeholder="Ville" />
+					</div>
 				</div>
-			</div>	
+				
 
 		<div class="form-row">
-			<div class="form-group col-1">
+			<div class="form-group col-1,5">
 			<input type="submit" value="Valider" class="btn btn-secondary"></input>
 			</div>	
-			<div class="form-group col-1">
+			<div class="form-group col-1,5">
+			<input type="reset" value="Réinitialiser" class="btn btn-secondary"></input>
+			</div>	
+			<div class="form-group col-1,5">
 			<a href="<%=request.getContextPath()%>"><input type="button" class="btn btn-secondary" value="Annuler"/></a>
 			</div>
 		</div>
 		
 
 		</form>
+	</div>
 	</div>
 
 

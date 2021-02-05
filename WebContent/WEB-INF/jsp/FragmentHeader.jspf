@@ -25,13 +25,13 @@
 						<button class="btn btn-primary mt-5 mr-2" type="submit">Accueil</button>
 					</li>
 					<li class="nav-item">
-						<form <%if (isPageAnonyme) {%> method="GET"
+						<form <%if (isPageAnonyme) {%> 
 							action="<%=request.getContextPath()%>/Connexion">
 							<button class="btn btn-primary mt-5 mr-2" type="submit">Connexion</button>
 							<%
 								} else {
 							%>
-							method="GET" action="<%=request.getContextPath()%>/MiseEnVente">
+							action="<%=request.getContextPath()%>/MiseEnVente">
 							<!-- Mettre ici la servlet profil connecté -->
 							<button class="btn btn-primary mt-5 mr-2" type="submit">Vendre</button>
 							<%
@@ -42,24 +42,28 @@
 					<li class="nav-item">
 						<%
 							if (isPageAnonyme) {
-						%>
-						<form method="GET"
+								if (!isSubscribing) {
+							%>
+							<form 
 							action="<%=request.getContextPath()%>/Inscription">
 							<button class="btn btn-primary mt-5 mr-2" type="submit">S'inscrire</button>
-							<%
-								} else {
+							<% } else { %>
+							<form 
+							action="<%=request.getContextPath()%>/Inscription">
+							<button class="btn btn-primary mt-5 mr-2" type="submit" disabled>S'inscrire</button>
+							<%}	} else {
 							%>
-							<form method="GET" action="AfficherUnProfil">
+							<form action="AfficherUnProfil">
 								<!-- Mettre ici la servlet profil connecté -->
 								<button class="btn btn-primary mt-5 mr-2" type="submit">Mon
 									profil</button>
 								<%
 									}
 								%>
-							</form>
+						</form>
 					</li>
 					<li class="nav-item">
-						<form <%if (!isPageAnonyme) {%> method="GET"
+						<form <%if (!isPageAnonyme) {%> 
 							action="<%=request.getContextPath()%>/Deconnexion">
 							<!-- Mettre ici la servlet profil connecté -->
 							<button class="btn btn-primary mt-5 mr-2" type="submit">Deconnexion</button>

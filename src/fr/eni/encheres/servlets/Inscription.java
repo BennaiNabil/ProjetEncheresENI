@@ -18,8 +18,12 @@ public class Inscription extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
-		rd.forward(request, response);
+		if (request.getParameter("pseudo") != null) {
+			doPost(request, response);
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	@Override
@@ -48,7 +52,8 @@ public class Inscription extends HttpServlet {
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
+			request.setAttribute("utilisateur", utilisateur);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageErreurInscription.jsp");

@@ -57,12 +57,18 @@
 					<!--  Champs de saisie de l'identifiant utilisateur -->
 					<div class="row">
 						<label class="col-4" for="identifiant">Identifiant :</label>
-						<input class="col-6" type="text" name="identifiant" id="identifiant" autofocus="autofocus" required="required"/>
+						<input class="col-6" type="text" name="identifiant" id="identifiant" autofocus="autofocus" required="required" value="${cookie["MemoId"].value }"/>
 					</div>
 					<div class="row">
 						<!--  Champs de saisie du mdp utilisateur -->	
 						<label class="col-4" for="mdp">Mot de passe :</label>
 						<input class="col-6" type="password" name="mdp" id="mdp" required="required"/>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" value="" id="memo" name="memo">
+					  <label class="form-check-label" for="flexCheckDefault">
+					    Se souvenir de moi
+					  </label>
 					</div>
 					<div class="row-3 col-12 text-center">Vous ne disposez pas d'un compte ? <a href="<%=request.getContextPath() %>/Inscription">Inscrivez-vous</a></div>
                </div>

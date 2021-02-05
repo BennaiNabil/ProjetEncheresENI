@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.dal.EnchereDAO;
 
@@ -15,6 +16,16 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			+ " INNER JOIN ARTICLES_VENDUS on ENCHERES.no_article = ARTICLES_VENDUS.no_article;";
 	private static final String DELETE = "DELETE FROM ENCHERES WHERE no_utilisateur=?";
 	private static final String INSERT = "INSERT INTO ENCHERES VALUES (?,?,?,?)";
+	private static final String SELECT_BY_LIBELLE = "select CATEGORIES.libelle, table_Articles.no_article "
+			+ "from ARTICLES_VENDUS as table_Articles " + "inner join CATEGORIES on "
+			+ "CATEGORIES.no_categorie = table_Articles.no_categorie "
+			+ "where CATEGORIES.libelle = 'Bricolage' and table_Articles.date_debut_encheres < getdate() and table_Articles.date_fin_encheres > getdate()";
+
+	public List<ArticleVendu> selectArticleByLibCategorie(String libelle) {
+
+		return null;
+
+	}
 
 	@Override
 	public void insert(Enchere enchere) {

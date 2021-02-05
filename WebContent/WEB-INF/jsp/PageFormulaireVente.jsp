@@ -2,6 +2,9 @@
 	language="java"
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core"
+	prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,35 +83,14 @@
 						name="categorie"
 						id="categorie">
 						<option value="">-- Sélectionnez une catégorie --</option>
-						<option value="informatique">Informatique</option>
-						<option value="ameublement">Ameublement</option>
-						<option value="vêtement">Vêtement</option>
-						<option value="sport">Sport & Loisir</option>
-						<option value="animalerie">Animalerie</option>
-						<option value="art">Art, Antiquités</option>
-						<option value="auto">Auto, Moto</option>
-						<option value="nautisme">Bateau, Voile, Nautisme</option>
-						<option value="beaute">Beauté, Bien-être, Parfum</option>
-						<option value="puericulture">Bébé, Puériculture</option>
-						<option value="bijoux">Bijoux, Montres</option>
-						<option value="bricolage">Bricolage</option>
-						<option value="ceramique">Céramiques, Verres</option>
-						<option value="collections">Collections</option>
-						<option value="dvd">DVD, Cinéma</option>
-						<option value="electromenager">Electroménager</option>
-						<option value="image">Image, Son</option>
-						<option value="instruments">Instruments de musique</option>
-						<option value="jardin">Jardin, Terrasse</option>
-						<option value="jeux">Jeux et Jouets</option>
-						<option value="jeuxVideo">Jeux vidéo, Consoles</option>
-						<option value="livres">Livres, BD, Revues</option>
-						<option value="creatif">Loisirs créatifs</option>
-						<option value="monnaies">Monnaies</option>
-						<option value="musique">Musique, CD, Vinyls</option>
-						<option value="photo">Photo, Caméscopes</option>
-						<option value="telephonie">Téléphonie</option>
-						<option value="timbres">Timbres</option>
-						<option value="gastronomie">Vins et gastronomie</option>
+						<c:forEach
+							items="${listeCategories}"
+							var="categorie">
+							<option
+								selected
+								value="${categorie.getLibelle()}">${categorie.getLibelle()}</option>
+
+						</c:forEach>
 					</select>
 				</div>
 				<div class="form-group col-md-2">
@@ -119,13 +101,9 @@
 						id="prix"
 						required="required" />
 				</div>
-
-
 			</div>
 
-
 			<!-- Deuxième ligne du formulaire : Description de l'article -->
-
 
 			<div class="form-row">
 				<div class="form-group col">
@@ -162,44 +140,50 @@
 
 			<div class="form-row">
 				<div class="form-group col">
-					<label for="retrait">Lieu du retrait :</label>
-						 <input
+					<label for="retrait">Lieu du retrait :</label> <input
 						class="form-control col"
 						type="text"
 						name="rue"
 						id="rue"
 						required="required"
-						placeholder="Rue" />
-						 <input
+						placeholder="Rue" /> <input
 						class="form-control col"
 						type="text"
 						name="codePostal"
 						id="codePostal"
 						required="required"
-						placeholder="Code Postal" />
-						 <input
+						placeholder="Code Postal" /> <input
 						class="form-control col"
 						type="text"
 						name="ville"
 						id="ville"
 						required="required"
 						placeholder="Ville" />
-					</div>
 				</div>
-				
-
-		<div class="form-row">
-			<div class="form-group col-1,5">
-			<input type="submit" value="Valider" class="btn btn-secondary"></input>
-			</div>	
-			<div class="form-group col-1,5">
-			<input type="reset" value="Réinitialiser" class="btn btn-secondary"></input>
-			</div>	
-			<div class="form-group col-1,5">
-			<a href="<%=request.getContextPath()%>"><input type="button" class="btn btn-secondary" value="Annuler"/></a>
 			</div>
-		</div>
-		
+
+
+			<div class="form-row">
+				<div class="form-group col-1,5">
+					<input
+						type="submit"
+						value="Valider"
+						class="btn btn-secondary"></input>
+				</div>
+				<div class="form-group col-1,5">
+					<input
+						type="reset"
+						value="Réinitialiser"
+						class="btn btn-secondary"></input>
+				</div>
+				<div class="form-group col-1,5">
+					<a href="<%=request.getContextPath()%>"><input
+						type="button"
+						class="btn btn-secondary"
+						value="Annuler" /></a>
+				</div>
+			</div>
+
 
 		</form>
 	</div>

@@ -14,24 +14,26 @@ import javax.servlet.http.HttpSession;
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.CategorieManager;
 import fr.eni.encheres.bll.RetraitManager;
-import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.dal.jdbc.CategorieDAOJdbcImpl;
-
 
 public class MiseEnVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Envoi de la liste des catégories
+		CategorieManager manager = new CategorieManager();
+		request.setAttribute("listeCategories", manager.selectionnerToutesLesCategories());
 		// Forward vers le formulaire de vente
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
 		rd.forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Déclaration des paramètres
@@ -49,41 +51,37 @@ public class MiseEnVente extends HttpServlet {
 		debut = LocalDate.parse(request.getParameter("debut"), dtf);
 		fin = LocalDate.parse(request.getParameter("fin"), dtf);
 		rue = request.getParameter("rue");
-		codePostal = request.getParameter("codePostal");		
+		codePostal = request.getParameter("codePostal");
 		ville = request.getParameter("ville");
-		
+
 		// Récupération "complexe"
-			// Id Categorie
-			libelle = request.getParameter("categorie");
-			CategorieManager categorieManager = new CategorieManager();
-			categorie = categorieManager.selectCategorieByNom(libelle);
-			
-	
-			// Id Utilisateur
-			HttpSession session = request.getSession();
-			vendeur = (Utilisateur)session.getAttribute("utilisateur");
-			
-			// Retrait
-			rue = request.getParameter("rue");
-			codePostal = request.getParameter("codePostal");
-			ville = request.getParameter("ville");
+		// Id Categorie
+		libelle = request.getParameter("categorie");
+		CategorieManager categorieManager = new CategorieManager();
+		categorie = categorieManager.selectCategorieByNom(libelle);
+
+		// Id Utilisateur
+		HttpSession session = request.getSession();
+		vendeur = (Utilisateur) session.getAttribute("utilisateur");
+
+		// Retrait
+		rue = request.getParameter("rue");
+		codePostal = request.getParameter("codePostal");
+		ville = request.getParameter("ville");
 
 		// Création de l'article
-			ArticleVendu article = new ArticleVendu(nomArticle, description, debut, fin, prixDepart, categorie, vendeur);
-			
-		// Ajout à la base de données de l'article	
+		ArticleVendu article = new ArticleVendu(nomArticle, description, debut, fin, prixDepart, categorie, vendeur);
+
+		// Ajout à la base de données de l'article
 		ArticleManager articleManager = new ArticleManager();
 		articleManager.insertArticle(article);
-			
-		//Création du retrait
-			Retrait retrait = new Retrait (rue, codePostal, ville, article);
-			
-		// Ajout du retrait à la base de données.
-			RetraitManager retraitManager = new RetraitManager();
-			retraitManager.insertRetrait(retrait);
 
-			
-			
+		// Création du retrait
+		Retrait retrait = new Retrait(rue, codePostal, ville, article);
+
+		// Ajout du retrait à la base de données.
+		RetraitManager retraitManager = new RetraitManager();
+		retraitManager.insertRetrait(retrait);
 
 	}
 }

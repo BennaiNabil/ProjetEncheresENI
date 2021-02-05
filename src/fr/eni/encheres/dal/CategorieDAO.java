@@ -6,5 +6,5 @@ public interface CategorieDAO extends DAO<Categorie> {
 
 	public Categorie selectCategorieByNom(String libelle);
 
-//	public Categorie selectCategorieById(int idCategorie);
+	public Categorie selectCategorieById(int idCategorie);
 }

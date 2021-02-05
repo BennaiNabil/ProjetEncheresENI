@@ -53,12 +53,11 @@ public class MiseEnVente extends HttpServlet {
 		rue = request.getParameter("rue");
 		codePostal = request.getParameter("codePostal");
 		ville = request.getParameter("ville");
-
 		// Récupération "complexe"
 		// Id Categorie
-		libelle = request.getParameter("categorie");
+		idCategorie = Integer.parseInt(request.getParameter("categorie"));
 		CategorieManager categorieManager = new CategorieManager();
-		categorie = categorieManager.selectCategorieByNom(libelle);
+		categorie = categorieManager.selectCategorieById(idCategorie);
 
 		// Id Utilisateur
 		HttpSession session = request.getSession();

@@ -21,8 +21,8 @@ public class CategorieManager {
 		return categorieDAO.selectAll();
 	}
 
-//	public Categorie selectCategorieById(int idCategorie) {
-//		return categorieDAO.selectCategorieById(idCategorie);
-//	}
+	public Categorie selectCategorieById(int idCategorie) {
+		return categorieDAO.selectCategorieById(idCategorie);
+	}
 
 }

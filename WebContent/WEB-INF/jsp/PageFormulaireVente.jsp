@@ -89,6 +89,10 @@
 							<option
 								selected
 								value="${categorie.getNoCategorie()}">${categorie.getLibelle()}</option>
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 						</c:forEach>
 					</select>
 				</div>

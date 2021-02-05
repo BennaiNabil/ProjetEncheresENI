@@ -15,6 +15,8 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 
 	private static final String SELECT_BY_NOM_CATE = "SELECT * FROM CATEGORIES WHERE libelle = ?";
 	private static final String SELECT_ALL = "SELECT * FROM CATEGORIES";
+	private static final String SELECT_BY_ID = "SELECT * FROM CATEGORIES WHERE no_categorie = ?";
+
 
 	@Override
 	public void insert(Categorie object) {
@@ -77,27 +79,27 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 		return categorie;
 	}
 
-//	
-//	@Override
-//	public Categorie selectCategorieById(int idCategorie) {
-//		PreparedStatement preparedStatement = null;
-//		ResultSet resultSet = null;
-//		Categorie categorie = null;
-//		try (Connection connection = ConnectionProvider.getConnection()) {
-//			preparedStatement = connection.prepareStatement(SELECT_BY_NOM_CATE);
-//			preparedStatement.setInt(1, idCategorie);
-//			resultSet = preparedStatement.executeQuery();
-//
-//			if (resultSet.next()) {
-//				categorie = new Categorie(resultSet.getInt("no_categorie"), resultSet.getString("libelle"));
-//			}
-//		} catch (SQLException throwables) {
-//			throwables.printStackTrace();
-//		} finally {
-//			closeResources(preparedStatement, resultSet);
-//		}
-//		return categorie;
-//	}
+	
+	@Override
+	public Categorie selectCategorieById(int idCategorie) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		Categorie categorie = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(SELECT_BY_ID);
+			preparedStatement.setInt(1, idCategorie);
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				categorie = new Categorie(resultSet.getInt("no_categorie"), resultSet.getString("libelle"));
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
+		}
+		return categorie;
+	}
 
 	private void closeResources(Statement preparedStatement, ResultSet resultSet) {
 		if (resultSet != null) {

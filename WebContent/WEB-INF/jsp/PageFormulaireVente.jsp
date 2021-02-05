@@ -88,8 +88,7 @@
 							var="categorie">
 							<option
 								selected
-								value="${categorie.getLibelle()}">${categorie.getLibelle()}</option>
-
+								value="${categorie.getNoCategorie()}">${categorie.getLibelle()}</option>
 						</c:forEach>
 					</select>
 				</div>

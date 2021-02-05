@@ -25,9 +25,6 @@
 	%>
 	<%@include file="FragmentHeader.jspf"%>
 
-	<p>${utilisateur.toString() }</p>
-
-
-<%@include file="FragmentFooter.jspf" %>
+	<%@include file="FragmentFooter.jspf"%>
 </body>
 </html>

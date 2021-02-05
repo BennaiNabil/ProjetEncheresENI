@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.UtilisateurManager;
@@ -42,6 +43,9 @@ public class Inscription extends HttpServlet {
 		ville = request.getParameter("ville");
 		mdp = request.getParameter("mdp");
 		conf = request.getParameter("conf");
+
+		HttpSession session = request.getSession();
+
 		// Si les mots de passe correspondent et que le pseudo est unique, on ajoute
 		// l'utilisateur
 		if (mdp.equals(conf)) {
@@ -52,7 +56,11 @@ public class Inscription extends HttpServlet {
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 			request.setAttribute("utilisateur", utilisateur);
+=======
+			session.setAttribute("utilisateur", utilisateur);
+>>>>>>> refs/remotes/origin/master
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
 			rd.forward(request, response);
 		} else {

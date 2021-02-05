@@ -1,95 +1,74 @@
 <header>
-	<div class="container-flex">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-6">
-				<div class="row">
-					<div class="col-8">
-						<a href="${pageContext.request.contextPath}"> <img
-							alt="LOGO"
-							src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
-						</a>
-					</div>
-					<div
-						class="col-2"
-						style="color: white;">
-						<% 
-						if (!isPageAnonyme)
-						{
-						%>
-						<p class="mt-2"><i>${utilisateur.getPseudo()}</i></p>
-						<p class="mt-n2">${utilisateur.getCredit()} pts</p>
-						<%
-						}
-						%>
-					</div>
-				</div>
+			<div class="col-md-4">
+				<img alt="Logo"
+					src="<%=request.getContextPath()%>/resources/logoLOSNA.png" />
 			</div>
-			<div class="col-1,5">
-				<button
-					class="btn btn-primary mt-5 mr-2"
-					type="submit">Accueil</button>
-			</div>
-			<div class="col-1,5">
-
-				<form
-					<%if (isPageAnonyme) {%>
-					method="GET"
-					action="<%=request.getContextPath()%>/Connexion">
-					<button
-						class="btn btn-primary mt-5 mr-2"
-						type="submit">Connexion</button>
-					<%
-					} else {
-					%>
-					method="GET" action="<%=request.getContextPath()%>/MiseEnVente">
-					<!-- Mettre ici la servlet profil connecté -->
-					<button
-						class="btn btn-primary mt-5 mr-2"
-						type="submit">Vendre</button>
-					<%
-					}
-					%>
-				</form>
-			</div>
-			<div class="col-1,5">
+			<div class="col-md-4">
 				<%
-				if (isPageAnonyme)
-				{
+					if (!isPageAnonyme) {
 				%>
-						<form
-						method="GET"
-						action="<%=request.getContextPath()%>/Inscription">
-						<button
-							class="btn btn-primary mt-5 mr-2"
-							type="submit">S'inscrire</button>
-						<%
-				} else {
-				%>
-				<form
-					method="GET"
-					action="AfficherUnProfil">
-					<!-- Mettre ici la servlet profil connecté -->
-					<button
-						class="btn btn-primary mt-5 mr-2"
-						type="submit">Mon profil</button>
-					<%
+				<h5 class="text-left fst-italic text-warning">
+					<i>${utilisateur.getPseudo()}</i>
+				</h5>
+				<h6 class="text-left text-light">votre crédit :</h6>
+				<h5 class="text-left  text-warning">${utilisateur.getCredit()}
+					pts</h5>
+				<%
 					}
-					%>
-				</form>
+				%>
 			</div>
-			<div class="col-1,5">
-				<form
-					<%if (!isPageAnonyme) {%>
-					method="GET"
-					action="<%=request.getContextPath()%>/Deconnexion">
-					<!-- Mettre ici la servlet profil connecté -->
-					<button
-						class="btn btn-primary mt-5 mr-2"
-						type="submit">Deconnexion</button>
-					<%
-					}
-					%>
-				</form>
+			<div class="col-md-4">
+				<ul class="nav nav-pills">
+					<li class="nav-item">
+						<button class="btn btn-primary mt-5 mr-2" type="submit">Accueil</button>
+					</li>
+					<li class="nav-item">
+						<form <%if (isPageAnonyme) {%> method="GET"
+							action="<%=request.getContextPath()%>/Connexion">
+							<button class="btn btn-primary mt-5 mr-2" type="submit">Connexion</button>
+							<%
+								} else {
+							%>
+							method="GET" action="<%=request.getContextPath()%>/MiseEnVente">
+							<!-- Mettre ici la servlet profil connecté -->
+							<button class="btn btn-primary mt-5 mr-2" type="submit">Vendre</button>
+							<%
+								}
+							%>
+						</form>
+					</li>
+					<li class="nav-item">
+						<%
+							if (isPageAnonyme) {
+						%>
+						<form method="GET"
+							action="<%=request.getContextPath()%>/Inscription">
+							<button class="btn btn-primary mt-5 mr-2" type="submit">S'inscrire</button>
+							<%
+								} else {
+							%>
+							<form method="GET" action="AfficherUnProfil">
+								<!-- Mettre ici la servlet profil connecté -->
+								<button class="btn btn-primary mt-5 mr-2" type="submit">Mon
+									profil</button>
+								<%
+									}
+								%>
+							</form>
+					</li>
+					<li class="nav-item">
+						<form <%if (!isPageAnonyme) {%> method="GET"
+							action="<%=request.getContextPath()%>/Deconnexion">
+							<!-- Mettre ici la servlet profil connecté -->
+							<button class="btn btn-primary mt-5 mr-2" type="submit">Deconnexion</button>
+							<%
+								}
+							%>
+						</form>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

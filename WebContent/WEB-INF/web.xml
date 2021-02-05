@@ -53,7 +53,7 @@
 		<url-pattern>/Deconnexion</url-pattern>
 	</servlet-mapping>
 
-	<!-- /////////////////////////// SERVLET - SERVLET TEST ////////////////////////// -->
+	<!-- /////////////////////////// SERVLET - SERVLET TEST UTILISATEUR ////////////////////////// -->
 
 	<servlet>
 		<servlet-name>ServletTestsUtilisateur</servlet-name>
@@ -62,6 +62,17 @@
 	<servlet-mapping>
 		<servlet-name>ServletTestsUtilisateur</servlet-name>
 		<url-pattern>/ServletTestsUtilisateur</url-pattern>
+	</servlet-mapping>
+
+	<!-- /////////////////////////// SERVLET - SERVLET TEST ENCHERES ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>ServletTestEnchere</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.tests.ServletTestEnchere</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletTestEnchere</servlet-name>
+		<url-pattern>/ServletTestEnchere</url-pattern>
 	</servlet-mapping>
 
 	<!-- /////////////////////////// SERVLET - SERVLET MISE EN VENTE ////////////////////////// -->

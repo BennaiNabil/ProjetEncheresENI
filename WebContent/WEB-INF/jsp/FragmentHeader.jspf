@@ -5,7 +5,18 @@
 				<img alt="Logo"
 					src="<%=request.getContextPath()%>/resources/logoLOSNA.png" />
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-2"></div>
+			<div class="col-md-1 float-end">
+				<%
+					if (!isPageAnonyme) {
+				%>
+				<img alt="Avatar"
+					src="<%=request.getContextPath()%>/resources/avatar.png" />
+				<%
+					}
+				%>
+			</div>
+			<div class="col-md-1">
 				<%
 					if (!isPageAnonyme) {
 				%>
@@ -19,6 +30,7 @@
 					}
 				%>
 			</div>
+			
 			<div class="col-md-4">
 				<ul class="nav nav-pills">
 					<li class="nav-item">

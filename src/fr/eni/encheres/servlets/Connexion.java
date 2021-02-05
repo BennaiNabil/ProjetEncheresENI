@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,9 +41,14 @@ public class Connexion extends HttpServlet {
 		identifiant = request.getParameter("identifiant");
 		mdp = request.getParameter("mdp");
 		inscription = request.getParameter("Inscription");
-		
-		if (inscription=="Inscription")
-		{
+
+		if (request.getParameter("memo") != null) {
+			Cookie cookie = new Cookie("MemoId", identifiant);
+			cookie.setMaxAge(120);
+			response.addCookie(cookie);
+		}
+
+		if (inscription == "Inscription") {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
 			rd.forward(request, response);
 		}

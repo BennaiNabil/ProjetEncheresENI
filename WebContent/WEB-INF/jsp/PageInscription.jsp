@@ -19,14 +19,8 @@
 	rel="stylesheet"> -->
 </head>
 <body>
-
-
-
-	<%
-		boolean isSubscribing = true;
-		boolean isPageAnonyme = true;
-	%>
 	<%@include file="FragmentHeader.jspf"%>
+	<%@include file="../BandeauErreurs.html"%>
 
 	<h4 class="text-center">Formulaire d'inscription</h4>
 	<div class="container-fluid">

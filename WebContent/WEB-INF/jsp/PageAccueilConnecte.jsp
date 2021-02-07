@@ -18,13 +18,11 @@
 <title>Accueil</title>
 </head>
 <body>
-
-	<%
-		boolean isSubscribing = true;
-		boolean isPageAnonyme = false;
-	%>
-	<%@include file="FragmentHeader.jspf"%>
-
-	<%@include file="FragmentFooter.jspf"%>
+	<!-- 
+	
+		CETTE PAGE N'EST PLUS ACTIVE
+	
+	 -->
+	
 </body>
 </html>

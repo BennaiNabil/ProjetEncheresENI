@@ -1,25 +1,42 @@
 <header>
+	<%
+	String connecte;            // variable destinée à receuillir l'état de la connection 
+	%>
 	<div class="container-fluid">
+	<!--
+		 L'entête est une grille boostrap décomposée en colonnes mappées 4-2-1-1-4
+		 la première est le logo
+		 la seconde est laissée vide
+		 la troisième est l'avatar
+		 la quatrieme est les informations résumées du compte connecté (pseudo/credit)
+		 la cinquième contient les boutons de navigation
+	 -->
 		<div class="row">
 			<div class="col-md-4">
 				<img alt="Logo"
-					src="<%=request.getContextPath()%>/resources/logoLOSNA.png" />
+					src="<%=request.getContextPath()%>/resources/logoLOSNA.png" /> 
 			</div>
 			<div class="col-md-2"></div>
-			<div class="col-md-1 float-end">
-				<%
-					if (!isPageAnonyme) {
-				%>
-				<img alt="Avatar"
-					src="<%=request.getContextPath()%>/resources/avatar.png" />
-				<%
-					}
-				%>
+			<div class="col-md-1">
+			 <%
+			 // Initialisation de connecte avec l'attribut de session "connected"
+			 // connected = "oui" si la session est ouverte
+			 connecte = (String)session.getAttribute("connected");
+			 // test de la valeur de connecte
+			 if (connecte == "oui")
+			 {
+				 // affichage de l'avatar si la session est ouverte
+			 %>
+			 	<img style="float:right" alt="Avatar" src="<%=request.getContextPath()%>/resources/avatar.png" />
+			 <%}%> 
 			</div>
 			<div class="col-md-1">
-				<%
-					if (!isPageAnonyme) {
-				%>
+			<%
+			 connecte = (String)session.getAttribute("connected");
+			 // si la session est ouverte, affichage du pseudo et du crédit de l'utilisateur connecté
+			 if (connecte == "oui")
+			 {
+			 %>
 				<h5 class="text-left fst-italic text-warning">
 					<i>${utilisateur.getPseudo()}</i>
 				</h5>
@@ -34,14 +51,24 @@
 			<div class="col-md-4">
 				<ul class="nav nav-pills">
 					<li class="nav-item">
-						<button class="btn btn-primary mt-5 mr-2" type="submit">Accueil</button>
+						<form action="<%=request.getContextPath()%>/">
+						<!-- Affichage dans tous les cas du bouton qui ramène à la page d'acceuil -->
+						<button class="btn btn-primary mt-5 mr-2" type="submit">Acceuil Enchères</button>
+						</form>
 					</li>
 					<li class="nav-item">
-						<form <%if (isPageAnonyme) {%> 
+							<form 
+							<%
+			 				connecte = (String)session.getAttribute("connected");
+							 if (connecte != "oui")
+			 					{
+							// affichage du bouton de connexion si la session n'existe pas
+			 				%> 
 							action="<%=request.getContextPath()%>/Connexion">
 							<button class="btn btn-primary mt-5 mr-2" type="submit">Connexion</button>
 							<%
 								} else {
+							// affichage du bouton de mise en vente si l'utilisateur est connecté
 							%>
 							action="<%=request.getContextPath()%>/MiseEnVente">
 							<!-- Mettre ici la servlet profil connecté -->
@@ -52,18 +79,17 @@
 						</form>
 					</li>
 					<li class="nav-item">
-						<%
-							if (isPageAnonyme) {
-								if (!isSubscribing) {
+							<%
+							 connecte = (String)session.getAttribute("connected");
+							 if (connecte != "oui")
+							 {
+							// affichage du bouton d'inscription si l'utilisateur n'existe pas
 							%>
 							<form 
 							action="<%=request.getContextPath()%>/Inscription">
 							<button class="btn btn-primary mt-5 mr-2" type="submit">S'inscrire</button>
-							<% } else { %>
-							<form 
-							action="<%=request.getContextPath()%>/Inscription">
-							<button class="btn btn-primary mt-5 mr-2" type="submit" disabled>S'inscrire</button>
-							<%}	} else {
+							<%} else {
+							// affichage du bouton d'affichage du profil de l'utilisateur si il est connecté
 							%>
 							<form action="AfficherUnProfil">
 								<!-- Mettre ici la servlet profil connecté -->
@@ -75,7 +101,13 @@
 						</form>
 					</li>
 					<li class="nav-item">
-						<form <%if (!isPageAnonyme) {%> 
+						<form 
+						<%
+						 connecte = (String)session.getAttribute("connected");
+						 if (connecte == "oui")
+						 {
+						 // affichage du bouton de déconnexion si l'utilisateur est connecté
+						 %> 
 							action="<%=request.getContextPath()%>/Deconnexion">
 							<!-- Mettre ici la servlet profil connecté -->
 							<button class="btn btn-primary mt-5 mr-2" type="submit">Deconnexion</button>

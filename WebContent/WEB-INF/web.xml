@@ -165,4 +165,10 @@
 		<jsp-file>/WEB-INF/jsp/PageFormulaireVente.jsp</jsp-file>
 	</servlet>
 
+<!-- /////////////////////////// PARAMETRES DE SESSION ////////////////////////// -->
+
+	<session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
 </web-app>

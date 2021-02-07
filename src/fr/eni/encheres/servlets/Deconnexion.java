@@ -14,14 +14,24 @@ public class Deconnexion extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
+		session.removeAttribute("connected");
+		session.removeAttribute("utilisateur");
 		session.invalidate();
+
 		request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp").forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		session.removeAttribute("connected");
+		session.removeAttribute("utilisateur");
+		session.invalidate();
+
+		request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp").forward(request, response);
+
 	}
 
 }

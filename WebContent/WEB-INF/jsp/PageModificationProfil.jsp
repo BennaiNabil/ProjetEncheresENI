@@ -2,6 +2,8 @@
 	language="java"
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="fr.eni.encheres.bo.Enchere"%>
+	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +21,9 @@
 </head>
 <body>
 
-	<%
-		boolean isPageAnonyme = false;
-	%>
 	<%@include file="FragmentHeader.jspf"%>
+	<%@include file="../BandeauErreurs.html"%>
+	
 	<form
 		method="POST"
 		action="<%=request.getContextPath()%>/ModifierMonProfil">

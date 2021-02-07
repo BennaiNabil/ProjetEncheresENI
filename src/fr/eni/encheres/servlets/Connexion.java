@@ -57,7 +57,7 @@ public class Connexion extends HttpServlet {
 			request.setAttribute("erreur", null); // passage du message "pas d'erreur" � la JSP
 			session.setAttribute("utilisateur", utilisateurManager.recupererUtilisateurParPseudo(identifiant));
 			session.setAttribute("connected", "oui");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("erreurConnexion", "true");

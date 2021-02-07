@@ -66,16 +66,15 @@
 
 						<label for="textinput">Mot de passe</label>
 						<div class="input-group md-4 form-inline">
-							<input id="mdp" name="mdp" type="password"
+							<input id="mdp" name="mdp" type="text"
 								class="form-control md-3" placeholder="Mot de passe"> <input
-								id="conf" name="conf" type="password" class="form-control md-3"
+								id="conf" name="conf" type="text" class="form-control md-3"
 								placeholder="Confirmation mot de passe">
 						</div>
 						<label for="textinput fst-italic">Tous les champs sont
 							obligatoires</label>
 						<div class="form-group md-4 form-inline">
-							<button id="singlebutton" name="singlebutton"
-								class="btn btn-secondary">Valider</button>
+							<button type="submit" class="btn btn-secondary">Valider</button>
 						</div>
 						</row>
 					</div>

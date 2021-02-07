@@ -43,8 +43,8 @@ public class UtilisateurManager {
 	}
 
 	/**
-	 * Méthode pour récupérer les informations d'un utilisateur lors de sa connexion
-	 * avec son pseudo
+	 * Méthode pour récupérer les informations d'un utilisateur lors de sa
+	 * connexion avec son pseudo
 	 *
 	 * @param pseudo
 	 * @return

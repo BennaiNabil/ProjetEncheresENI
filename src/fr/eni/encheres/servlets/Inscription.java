@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.UtilisateurManager;
+import fr.eni.encheres.bo.CodesResultat;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class Inscription extends HttpServlet {
@@ -53,17 +54,22 @@ public class Inscription extends HttpServlet {
 					0, false);
 			try {
 				utilisateurManager.nouvelUtilisateur(utilisateur);
+				request.setAttribute("utilisateur", utilisateur);
+				session.setAttribute("utilisateur", utilisateur);
+				session.setAttribute("connected", "oui");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
+				rd.forward(request, response);
 			} catch (BLLException e) {
 				e.printStackTrace();
+				request.setAttribute("utilisateur", null);
+				session.setAttribute("utilisateur", null);
+				session.setAttribute("connected", null);
+				request.setAttribute("erreur", CodesResultat.CREATION_USER_ERREUR);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
+				rd.forward(request, response);
 			}
-<<<<<<< HEAD
-			request.setAttribute("utilisateur", utilisateur);
-=======
-			session.setAttribute("utilisateur", utilisateur);
->>>>>>> refs/remotes/origin/master
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilConnecte.jsp");
-			rd.forward(request, response);
 		} else {
+
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageErreurInscription.jsp");
 			rd.forward(request, response);
 		}

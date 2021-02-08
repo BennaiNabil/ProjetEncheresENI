@@ -51,7 +51,7 @@
 	<%@include file="../BandeauValidation.html"%>
 
 	<div class="container">
-		<form method="POST" action="<%=request.getContextPath()%>/MiseEnVente">
+		<form method="POST" enctype="multipart/form-data" action="<%=request.getContextPath()%>/MiseEnVente">
 
 			<!-- Première ligne du formulaire : Article, catégorie et Prix de départ -->
 
@@ -131,7 +131,7 @@
 						class="btn btn-secondary" value="Annuler" /></a>
 				</div>
 			</div>
-
+			
 			<label for="photo">Photo de l'article:</label> <input
 				type="file" id="photo" name="photo" accept="image/png, image/jpeg">
 

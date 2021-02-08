@@ -10,6 +10,7 @@ public class DAOFactory {
     private static EnchereDAO instanceEnchereDAO = null;
     private static RetraitDAO instanceRetraitDAO = null;
     private static UtilisateurDAO instanceUtilisateurDAO = null;
+    private static ImageDAO instanceImageDAO = null;
 
     /**
      * Méthode statique qui renvoie une instance unique de ArticleVenduDAO
@@ -69,5 +70,17 @@ public class DAOFactory {
             instanceUtilisateurDAO = new UtilisateurDAOJdbcImpl();
         }
         return instanceUtilisateurDAO;
+    }
+    
+    /**
+     * Méthode statique qui renvoie une instance unique de ImageDAO
+     *
+     * @return instanceCategorieDAO une une instance de ImageDAO
+     */
+    public static ImageDAO getImageDAO() {
+        if (instanceImageDAO == null) {
+            instanceImageDAO = new ImageDAOJdbcImpl();
+        }
+        return instanceImageDAO;
     }
 }

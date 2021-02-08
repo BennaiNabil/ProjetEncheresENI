@@ -2,6 +2,7 @@ package fr.eni.encheres.bll;
 
 import java.util.List;
 
+import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.EnchereDAO;
@@ -15,6 +16,10 @@ public class EncheresManager {
 
 	public List<Enchere> selectAll() {
 		return this.enchereDAO.selectAll();
+	}
+
+	public List<ArticleVendu> recueprerEncheresEnCoursParCategorie(String cate) {
+		return this.enchereDAO.selectArticleByLibCategorie(cate);
 	}
 
 }

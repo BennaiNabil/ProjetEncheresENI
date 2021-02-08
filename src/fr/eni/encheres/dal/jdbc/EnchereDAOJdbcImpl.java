@@ -47,7 +47,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			closeResources(preparedStatement, resultSet);
 		}
 		return listeArticles;
-
 	}
 
 	@Override

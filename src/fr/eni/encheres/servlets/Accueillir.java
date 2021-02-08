@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.encheres.bll.CategorieManager;
 import fr.eni.encheres.bll.EncheresManager;
+import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
 
 public class Accueillir extends HttpServlet {
@@ -20,11 +22,19 @@ public class Accueillir extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		System.out.println("doget de accueillir");
+
 		HttpSession session2 = request.getSession();
 		if (session2 != null) {
 			System.out.println("session recuperee sans fermeture navigateur: " + session2.getId());
 			session2.setMaxInactiveInterval(3600);
 		}
+
+		// Récupération de la liste des catégories
+		CategorieManager categorieManager = new CategorieManager();
+		List<Categorie> listeCategories = categorieManager.selectionnerToutesLesCategories();
+
+		request.setAttribute("listeCategories", listeCategories);
 
 		// Affichage des Enchères
 		// 1. Recherche des enchères

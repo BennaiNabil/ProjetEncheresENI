@@ -80,7 +80,8 @@
 						required="required" />
 				</div>
 				<div class="form-group col-md-4">
-					<label for="categorie">Catégorie:</label> <select
+					<label for="categorie">Catégorie:</label> 
+					<select
 						class="form-control"
 						name="categorie"
 						id="categorie">

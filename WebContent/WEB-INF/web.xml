@@ -96,6 +96,18 @@
 		<servlet-name>SupprimerMonCompte</servlet-name>
 		<url-pattern>/SupprimerMonCompte</url-pattern>
 	</servlet-mapping>
+	
+	
+	<!-- /////////////////////////// SERVLET - SERVLET AfficherEncheresCourantes ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>AfficherEncheresCourantes</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.AfficherEncheresCourantes</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AfficherEncheresCourantes</servlet-name>
+		<url-pattern>/AfficherEncheresCourantes</url-pattern>
+	</servlet-mapping>
 
 	<!-- /////////////////////////// SERVLET - SERVLET MODIFIERMONPROFIL ////////////////////////// -->
 

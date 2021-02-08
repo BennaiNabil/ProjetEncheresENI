@@ -78,7 +78,6 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 		}
 		return categorie;
 	}
-
 	
 	@Override
 	public Categorie selectCategorieById(int idCategorie) {

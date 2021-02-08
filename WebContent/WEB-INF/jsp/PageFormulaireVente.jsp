@@ -61,6 +61,7 @@
 
 		</div>
 	</header>
+		<%@include file="../BandeauErreurs.html"%>
 
 	<div class="container">
 		<form
@@ -77,7 +78,9 @@
 						name="nomArticle"
 						id="nomArticle"
 						autofocus="autofocus"
-						required="required" />
+						required="required"
+						maxlength="30"
+						placeholder="30 caractères maximum" />
 				</div>
 				<div class="form-group col-md-4">
 					<label for="categorie">Catégorie:</label> 
@@ -114,7 +117,9 @@
 						type="text"
 						name="description"
 						id="description"
-						required="required" />
+						required="required"
+						maxlength="300"
+						placeholder="300 caractères maximum" />
 				</div>
 			</div>
 
@@ -148,19 +153,22 @@
 						name="rue"
 						id="rue"
 						required="required"
-						placeholder="Rue" /> <input
+						placeholder="Rue"
+						maxlength="30" /> <input
 						class="form-control col"
 						type="text"
 						name="codePostal"
 						id="codePostal"
 						required="required"
-						placeholder="Code Postal" /> <input
+						placeholder="Code Postal"
+						maxlength="5" /> <input
 						class="form-control col"
 						type="text"
 						name="ville"
 						id="ville"
 						required="required"
-						placeholder="Ville" />
+						placeholder="Ville"
+						maxlength="30" />
 				</div>
 			</div>
 

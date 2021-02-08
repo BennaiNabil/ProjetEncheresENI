@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.ArticleManager;
+import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategorieManager;
 import fr.eni.encheres.bll.RetraitManager;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
+import fr.eni.encheres.bo.CodesResultat;
 import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 
@@ -73,7 +75,15 @@ public class MiseEnVente extends HttpServlet {
 
 		// Ajout à la base de données de l'article
 		ArticleManager articleManager = new ArticleManager();
-		articleManager.insertArticle(article);
+		try {
+			articleManager.insertArticle(article);
+		} catch (BLLException e) {
+			request.setAttribute("erreur", CodesResultat.CREATION_ARTICLE_ERREUR);
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
+			rd.forward(request, response);
+			
+		}
 
 		// Création du retrait
 		Retrait retrait = new Retrait(rue, codePostal, ville, article);

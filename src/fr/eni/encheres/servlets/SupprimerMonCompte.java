@@ -2,6 +2,7 @@ package fr.eni.encheres.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,13 +21,17 @@ public class SupprimerMonCompte extends HttpServlet {
 		UtilisateurManager manager = new UtilisateurManager();
 		HttpSession session = request.getSession();
 		manager.supprimerUtilisateur((Utilisateur) session.getAttribute("utilisateur"));
+		session.removeAttribute("utilisateur");
+		session.removeAttribute("connected");
 		session.invalidate();
-		request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp").forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
+		rd.forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

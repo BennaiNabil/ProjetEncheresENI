@@ -1,9 +1,7 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@page import="fr.eni.encheres.bo.Enchere"%>
-	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
+<%@page import="fr.eni.encheres.bo.Enchere"%>
+<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,185 +12,77 @@
 	rel="stylesheet">
 
 <meta charset="UTF-8">
-<link
-	rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/AccueilStyle.css" />
-<title>Accueil</title>
+<title>Modification de profil</title>
 </head>
 <body>
 
 	<%@include file="FragmentHeader.jspf"%>
 	<%@include file="../BandeauErreurs.html"%>
-	
-	<form
-		method="POST"
-		action="<%=request.getContextPath()%>/ModifierMonProfil">
-		<fieldset>
 
-			<!-- Form Name -->
-			<legend>Formulaire de modification de profil</legend>
+	<h4 class="text-center">Modification du profil</h4>
+	<div class="container-fluid">
+		<form method="POST"
+			action="<%=request.getContextPath()%>/ModifierMonProfil">
+			<fieldset>
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<label for="textinput">Identité</label>
+						<div class="input-group md-4 form-inline">
+							<input value="${utilisateur.getNom() }" id="nom" name="nom"
+								type="text" class="form-control"> <input
+								value="${utilisateur.getPrenom() }" id="prenom" name="prenom"
+								type="text" class="form-control">
+						</div>
+						<label class="input-group md-1 form-inline" for="textinput">Pseudo</label>
+						<div class="form-group md-4 form-inline">
+							<input value="${utilisateur.getPseudo() }" id="pseudo"
+								name="pseudo" type="text" class="form-control">
+						</div>
 
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="pseudo">Pseudo: </label>
-				<div class="col-md-4">
-					<input
-						value="${utilisateur.getPseudo() }"
-						id="pseudo"
-						name="pseudo"
-						type="text"
-						placeholder=""
-						class="form-control input-md">
-				</div>
-			</div>
+						<label class="input-group md-1 form-inline" for="textinput">E-Mail</label>
+						<div class="form-group md-4 form-inline">
+							<input value="${utilisateur.getEmail() }" id="email" name="email"
+								type="email" class="form-control">
+						</div>
 
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="nom">Nom</label>
-				<div class="col-md-4">
-					<input
-						id="nom"
-						name="nom"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getNom() }"
-						class="form-control input-md">
+						<label for="textinput">Téléphone</label>
+						<div class="form-group md-4 form-inline">
+							<input value="${utilisateur.getTelephone() }" id="telephone"
+								name="telephone" type="text" class="form-control">
+						</div>
 
-				</div>
-			</div>
+						<label for="textinput">Adresse</label>
+						<div class="input-group md-4 form-inline">
+							<input value="${utilisateur.getRue() }" class="form-control"
+								id="rue" name="rue" type="text">
+						</div>
+						<div class="input-group md-4 form-inline">
+							<input value="${utilisateur.getCodePostal() }"
+								class="form-control" id="codepostal" name="codepostal"
+								type="text"> <input value="${utilisateur.getVille() }"
+								class="form-control" id="ville" name="ville" type="text">
+						</div>
 
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="prenom">Prenom</label>
-				<div class="col-md-4">
-					<input
-						id="prenom"
-						name="prenom"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getPrenom() }"
-						class="form-control input-md">
-
-				</div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="email">Email</label>
-				<div class="col-md-4">
-					<input
-						id="email"
-						name="email"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getEmail() }"
-						class="form-control input-md">
-
-				</div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="rue">Rue</label>
-				<div class="col-md-4">
-					<input
-						id="rue"
-						name="rue"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getRue() }"
-						class="form-control input-md">
-
-				</div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="codepostal">Code postal</label>
-				<div class="col-md-4">
-					<input
-						id="codepostal"
-						name="codepostal"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getCodePostal() }"
-						class="form-control input-md">
-
-				</div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="telephone">Téléphone</label>
-				<div class="col-md-4">
-					<input
-						id="telephone"
-						name="telephone"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getTelephone() }"
-						class="form-control input-md">
-
-				</div>
-			</div>
-
-			<!-- Text input-->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="ville">Ville</label>
-				<div class="col-md-4">
-					<input
-						id="ville"
-						name="ville"
-						type="text"
-						placeholder=""
-						value="${utilisateur.getVille() }"
-						class="form-control input-md">
-
-				</div>
-			</div>
-
-			<!-- Button -->
-			<div class="form-group">
-				<label
-					class="col-md-4 control-label"
-					for="btnValider"></label>
-				<div class="col-md-4">
-					<button
-						id="btnValider"
-						name="btnValider"
-						class="btn btn-primary">Valider</button>
-				</div>
-
-			</div>
-
-		</fieldset>
-	</form>
-
-	<form
-		method="GET"
-		action="<%=request.getContextPath()%>/SupprimerMonCompte">
-		<div class="col-md-4">
-			<button
-				id="btnSupprimer"
-				name="btnSupprimer"
-				class="btn btn-danger">Supprimer votre profil</button>
-		</div>
+						<label for="textinput fst-italic">Modifiez les valeurs
+							correspondantes puis validez</label> <label
+							class="col-md-4 form-inline control-label" for="btnValider"></label>
+						<div class="col-md-4 form-inline">
+							<button type="submit" id="btnValider" name="btnValider"
+								class="btn btn-secondary">Valider</button>
+						</div>
+						</form>
+						<form method="GET"
+							action="<%=request.getContextPath()%>/SupprimerMonCompte">
+							<button id="btnSupprimer" name="btnSupprimer"
+								class="btn btn-danger">Supprimer votre profil</button>
+					</div>
+	</div>
+	<div class="col-md-4"></div>
+	</div>
+	</fieldset>
 	</form>
 	<%@include file="FragmentFooter.jspf"%>
 </body>

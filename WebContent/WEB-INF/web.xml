@@ -168,7 +168,7 @@
 <!-- /////////////////////////// PARAMETRES DE SESSION ////////////////////////// -->
 
 	<session-config>
-    <session-timeout>30</session-timeout>
+    <session-timeout>3600</session-timeout>
   </session-config>
 
 </web-app>

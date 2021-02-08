@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.w3c.dom.html.HTMLInputElement;
+
 import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.CategorieManager;
@@ -89,9 +91,17 @@ public class MiseEnVente extends HttpServlet {
 		RetraitManager retraitManager = new RetraitManager();
 		retraitManager.insertRetrait(retrait);
 		
-		request.setAttribute("success", CodesResultat.CREATION_ARTICLE_SUCCESS);
+		//récupération de l'image
+				String photo = request.getParameter("photo");
+				System.out.println(photo);
+		
+		if((request.getAttribute("erreur") == null)) {
+			request.setAttribute("success", CodesResultat.CREATION_ARTICLE_SUCCESS);
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
 		rd.forward(request, response);
+		
+
 
 	}
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -223,10 +224,15 @@ public class ArticleVendu implements Serializable {
 	public List<String> getAffichageArticle() {
 		List<String> infosArticle = new ArrayList<>();
 		infosArticle.add(this.nomArticle);
-		infosArticle.add(this.prixVente + "");
+		infosArticle.add(this.description);
+		infosArticle.add(this.prixVente + " crédits");
 		infosArticle.add(this.dateFinEncheres.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 		infosArticle.add(this.vendeur.getPseudo());
 		return infosArticle;
+	}
+
+	public static List<String> entetesInfos() {
+		return Arrays.asList("Nom : ", "Description : ", "Prix : ", "Fin de l'enchère : ", "Vendeur : ");
 	}
 
 	/**

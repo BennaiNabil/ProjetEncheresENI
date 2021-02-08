@@ -68,7 +68,7 @@ public class ArticleVendu implements Serializable {
 		this.acheteur = acheteur;
 		this.retrait = retrait;
 	}
-	
+
 	/**
 	 * Constructeur de la classe ArticleVendu avec les paramètres suivants:
 	 *
@@ -80,9 +80,8 @@ public class ArticleVendu implements Serializable {
 	 * @param categorie         la catégorie de l'article
 	 * @param vendeur           le vendeur de l'article
 	 */
-	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int miseAPrix, Categorie categorie,
-			Utilisateur vendeur) {
+	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
+			int miseAPrix, Categorie categorie, Utilisateur vendeur) {
 		this.setNomArticle(nomArticle);
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
@@ -92,7 +91,28 @@ public class ArticleVendu implements Serializable {
 		this.vendeur = vendeur;
 	}
 
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, Utilisateur vendeur, Categorie categorie) {
+		this.setNoArticle(noArticle);
+		this.setNomArticle(nomArticle);
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.categorie = categorie;
+		this.vendeur = vendeur;
+	}
+
 	// Getters (Accesseurs) & Setters (Mutateurs)
+
+	public ArticleVendu(String nomArticle, LocalDate dateFinEncheres, int prixVente, Utilisateur vendeur) {
+		super();
+		this.nomArticle = nomArticle;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixVente = prixVente;
+		this.vendeur = vendeur;
+	}
 
 	public int getNoArticle() {
 		return noArticle;

@@ -1,10 +1,5 @@
 package fr.eni.encheres.dal.jdbc;
 
-import fr.eni.encheres.bo.ArticleVendu;
-import fr.eni.encheres.bo.Categorie;
-import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.dal.ArticleVenduDAO;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +7,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Categorie;
+import fr.eni.encheres.bo.Utilisateur;
+import fr.eni.encheres.dal.ArticleVenduDAO;
+import fr.eni.encheres.dal.DAOFactory;
+
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
-	
+
 	private static final String INSERT = "INSERT INTO ARTICLES_VENDUS VALUES(?,?,?,?,?,?,?,?)";
-	
-    @Override
-    public void insert(ArticleVendu articleVendu) {
-    	PreparedStatement preparedStatement = null;
+	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=?";
+
+	@Override
+	public void insert(ArticleVendu articleVendu) {
+		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try (Connection connection = ConnectionProvider.getConnection()) {
 			preparedStatement = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -46,28 +48,46 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		}
 	}
 
+	@Override
+	public ArticleVendu selectById(int id) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		ArticleVendu articleVendu = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(SELECT_BY_ID);
+			preparedStatement.setInt(1, id);
+			resultSet = preparedStatement.executeQuery();
 
-    @Override
-    public ArticleVendu selectById(int id) {
-        return null;
-    }
+			if (resultSet.next()) {
+				articleVendu = new ArticleVendu(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+						resultSet.getDate(4).toLocalDate(), resultSet.getDate(5).toLocalDate(), resultSet.getInt(6),
+						resultSet.getInt(7), DAOFactory.getUtilisateurDAO().selectById(resultSet.getInt(8)),
+						DAOFactory.getCategorieDAO().selectById(resultSet.getInt(9)));
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
+		}
+		return articleVendu;
+	}
 
-    @Override
-    public List<ArticleVendu> selectAll() {
-        return null;
-    }
+	@Override
+	public List<ArticleVendu> selectAll() {
+		return null;
+	}
 
-    @Override
-    public void update(ArticleVendu object) {
+	@Override
+	public void update(ArticleVendu object) {
 
-    }
+	}
 
-    @Override
-    public void delete(ArticleVendu object) {
+	@Override
+	public void delete(ArticleVendu object) {
 
-    }
-    
-    private void closeResources(Statement preparedStatement, ResultSet resultSet) {
+	}
+
+	private void closeResources(Statement preparedStatement, ResultSet resultSet) {
 		if (resultSet != null) {
 			try {
 				resultSet.close();

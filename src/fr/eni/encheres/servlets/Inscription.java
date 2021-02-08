@@ -20,7 +20,7 @@ public class Inscription extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (request.getParameter("pseudo") != null) {
+		if (request.getParameter("nom") != null) {
 			doPost(request, response);
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");

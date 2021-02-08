@@ -36,11 +36,9 @@ public class Connexion extends HttpServlet {
 
 		String identifiant;
 		String mdp;
-		String inscription;
 
 		identifiant = request.getParameter("identifiant");
 		mdp = request.getParameter("mdp");
-		inscription = request.getParameter("Inscription");
 
 		if (request.getParameter("memo") != null) {
 			Cookie cookie = new Cookie("MemoId", identifiant);
@@ -48,10 +46,6 @@ public class Connexion extends HttpServlet {
 			response.addCookie(cookie);
 		}
 
-		if (inscription.equals("Inscription")) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
-			rd.forward(request, response);
-		}
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		if (utilisateurManager.validerConnexion(identifiant, mdp)) {
 			request.setAttribute("erreur", null); // passage du message "pas d'erreur" � la JSP

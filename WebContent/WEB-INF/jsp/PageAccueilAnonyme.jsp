@@ -47,13 +47,21 @@
 			type="submit">Rechercher</button>
 	</form>
 
-	<ul>
+	<div
+		class="card"
+		style="width: 18rem;">
+		<ul class="list-group list-group-flush">
+			
+		</ul>
+	</div>
+
 		<c:forEach
-			items="${listeEncheresEnCours}"
-			var="enchere">
-			<li>${enchere.toString() }</li>
+			items="${listeInfosEncheres}"
+			var="infos">
+			<li class="list-group-item">Cras justo odio</li>
+			<li class="list-group-item">Dapibus ac facilisis in</li>
+			<li class="list-group-item">Vestibulum at eros</li>
 		</c:forEach>
-	</ul>
 	<%@include file="FragmentFooter.jspf"%>
 
 

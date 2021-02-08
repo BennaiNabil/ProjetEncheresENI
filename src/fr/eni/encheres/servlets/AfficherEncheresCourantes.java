@@ -1,7 +1,9 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +39,20 @@ public class AfficherEncheresCourantes extends HttpServlet {
 		List<ArticleVendu> listeEncheresEnCours = encheresManager
 				.recueprerEncheresEnCoursParCategorie(categorieChoisie.getLibelle());
 
-		request.setAttribute("listeEncheresEnCours", listeEncheresEnCours);
+		List<List<String>> listeInfosEncheres = new ArrayList<>();
+
+		// On transforme la liste d'articles en un Stream
+		// On applique la fonction getAffichageArticle dans le scope
+		// ArticleVendu à chaque élément du Stream
+
+		listeInfosEncheres = listeEncheresEnCours.stream().map(ArticleVendu::getAffichageArticle)
+				.collect(Collectors.toList());
+
+//		for (ArticleVendu articleVendu : listeEncheresEnCours) {
+//			listeInfosEncheres.add(articleVendu.getAffichageArticle());
+//		}
+
+		request.setAttribute("listeInfosEncheres", listeInfosEncheres);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 		rd.forward(request, response);

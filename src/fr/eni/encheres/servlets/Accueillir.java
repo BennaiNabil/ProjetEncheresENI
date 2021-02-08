@@ -24,17 +24,17 @@ public class Accueillir extends HttpServlet {
 
 		System.out.println("doget de accueillir");
 
-		HttpSession session2 = request.getSession();
-		if (session2 != null) {
-			System.out.println("session recuperee sans fermeture navigateur: " + session2.getId());
-			session2.setMaxInactiveInterval(3600);
+		HttpSession session = request.getSession();
+		if (session != null) {
+			System.out.println("session recuperee sans fermeture navigateur: " + session.getId());
+			session.setMaxInactiveInterval(3600);
 		}
 
 		// Récupération de la liste des catégories
 		CategorieManager categorieManager = new CategorieManager();
 		List<Categorie> listeCategories = categorieManager.selectionnerToutesLesCategories();
 
-		request.setAttribute("listeCategories", listeCategories);
+		session.setAttribute("listeCategories", listeCategories);
 
 		// Affichage des Enchères
 		// 1. Recherche des enchères

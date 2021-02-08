@@ -2,6 +2,8 @@ package fr.eni.encheres.bo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -216,6 +218,15 @@ public class ArticleVendu implements Serializable {
 
 	public void setRetrait(Retrait retrait) {
 		this.retrait = retrait;
+	}
+
+	public List<String> getAffichageArticle() {
+		List<String> infosArticle = new ArrayList<>();
+		infosArticle.add(this.nomArticle);
+		infosArticle.add(this.prixVente + "");
+		infosArticle.add(this.dateFinEncheres.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		infosArticle.add(this.vendeur.getPseudo());
+		return infosArticle;
 	}
 
 	/**

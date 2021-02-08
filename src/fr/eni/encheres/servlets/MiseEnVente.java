@@ -89,6 +89,7 @@ public class MiseEnVente extends HttpServlet {
 		RetraitManager retraitManager = new RetraitManager();
 		retraitManager.insertRetrait(retrait);
 		
+		request.setAttribute("success", CodesResultat.CREATION_ARTICLE_SUCCESS);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
 		rd.forward(request, response);
 

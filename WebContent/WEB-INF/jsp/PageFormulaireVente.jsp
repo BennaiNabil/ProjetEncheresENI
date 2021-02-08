@@ -62,6 +62,7 @@
 		</div>
 	</header>
 		<%@include file="../BandeauErreurs.html"%>
+		<%@include file="../BandeauValidation.html"%>
 
 	<div class="container">
 		<form

@@ -1,0 +1,6 @@
+ <% String success = ""; if (request.getAttribute("success")!= null) success =
+request.getAttribute("success").toString(); %> <% if (success != "") { %>
+<div
+	class="alert alert-success"
+	role="alert"><%= LecteurMessage.getMessageErreur(Integer.parseInt(success)) %></div>
+<%}%>

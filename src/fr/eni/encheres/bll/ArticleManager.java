@@ -14,23 +14,19 @@ public class ArticleManager {
 	}
 
 	public void insertArticle(ArticleVendu article) throws BLLException {
-		if (validerArticleDate(article) && validerArticlePrix(article)) {
+		if (dateArticleEstValide(article) && prixArticleEstValide(article)) {
 			articleDAO.insert(article);
 		} else {
 			throw new BLLException();
 		}
 	}
 
-	public boolean validerArticleDate(ArticleVendu article) {
-		if (article.getDateDebutEncheres().isBefore(LocalDate.now())
-				|| article.getDateFinEncheres().isBefore(article.getDateDebutEncheres()))
-			;
-		return false;
+	public boolean dateArticleEstValide(ArticleVendu article) {
+		 return (!(article.getDateDebutEncheres().isBefore(LocalDate.now()) ||
+				    article.getDateFinEncheres().isBefore(article.getDateDebutEncheres())));
 	}
 
-	public boolean validerArticlePrix(ArticleVendu article) {
-		if (article.getMiseAPrix() <= 0)
-			;
-		return false;
+	public boolean prixArticleEstValide(ArticleVendu article) {
+		return (!(article.getMiseAPrix() <= 0));
 	}
 }

@@ -63,7 +63,7 @@ public class MiseEnVente extends HttpServlet {
 
 		// Id Utilisateur
 		HttpSession session = request.getSession();
-		vendeur = (Utilisateur) session.getAttribute("utilisateur");
+		vendeur = (Utilisateur)session.getAttribute("utilisateur");
 
 		// Retrait
 		rue = request.getParameter("rue");
@@ -80,9 +80,6 @@ public class MiseEnVente extends HttpServlet {
 		} catch (BLLException e) {
 			request.setAttribute("erreur", CodesResultat.CREATION_ARTICLE_ERREUR);
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
-			rd.forward(request, response);
-			
 		}
 
 		// Création du retrait
@@ -91,6 +88,9 @@ public class MiseEnVente extends HttpServlet {
 		// Ajout du retrait à la base de données.
 		RetraitManager retraitManager = new RetraitManager();
 		retraitManager.insertRetrait(retrait);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
+		rd.forward(request, response);
 
 	}
 }

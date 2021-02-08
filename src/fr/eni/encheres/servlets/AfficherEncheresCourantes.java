@@ -41,10 +41,6 @@ public class AfficherEncheresCourantes extends HttpServlet {
 
 		List<List<String>> listeInfosEncheres = new ArrayList<>();
 
-		// On transforme la liste d'articles en un Stream
-		// On applique la fonction getAffichageArticle dans le scope
-		// ArticleVendu à chaque élément du Stream
-
 		listeInfosEncheres = listeEncheresEnCours.stream().map(ArticleVendu::getAffichageArticle)
 				.collect(Collectors.toList());
 
@@ -53,6 +49,7 @@ public class AfficherEncheresCourantes extends HttpServlet {
 //		}
 
 		request.setAttribute("listeInfosEncheres", listeInfosEncheres);
+		request.setAttribute("entetes", ArticleVendu.entetesInfos());
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 		rd.forward(request, response);

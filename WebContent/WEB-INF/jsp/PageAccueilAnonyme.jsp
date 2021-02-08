@@ -47,29 +47,47 @@
 			type="submit">Rechercher</button>
 	</form>
 
-	<div
-		class="card"
-		style="width: 18rem;">
-		<ul class="list-group list-group-flush">
-			
-		</ul>
-	</div>
+	<%
+	boolean estPremiereRecherche = true;
+	%>
 
-		<c:forEach
-			items="${listeInfosEncheres}"
-			var="infos">
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Dapibus ac facilisis in</li>
-			<li class="list-group-item">Vestibulum at eros</li>
-		</c:forEach>
+	<c:choose>
+		<c:when test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
+			<div class="row">
+				<c:forEach
+					items="${listeInfosEncheres}"
+					var="infos">
+					<div class="col-3">
+						<div
+							class="card m-5"
+							style="width: 18rem; border: 2px solid black;">
+							<div class="card-body">
+								<c:forEach
+									var="i"
+									begin="0"
+									end="${infos.size()-1 }">
+									<p>${entetes.get(i) }${infos.get(i) }</p>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<%
+			estPremiereRecherche = false;
+			%>
+		</c:when>
+		<c:otherwise>
+			<h1>Pas de résultat</h1>
+		</c:otherwise>
+	</c:choose>
+
+
+
 	<%@include file="FragmentFooter.jspf"%>
-
-
-	
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
 </body>
 </html>

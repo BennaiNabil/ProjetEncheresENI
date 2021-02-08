@@ -48,7 +48,7 @@ public class Connexion extends HttpServlet {
 			response.addCookie(cookie);
 		}
 
-		if (inscription == "Inscription") {
+		if (inscription.equals("Inscription")) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
 			rd.forward(request, response);
 		}
@@ -68,5 +68,4 @@ public class Connexion extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-
 }

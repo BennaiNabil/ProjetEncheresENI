@@ -96,10 +96,9 @@
 		<servlet-name>SupprimerMonCompte</servlet-name>
 		<url-pattern>/SupprimerMonCompte</url-pattern>
 	</servlet-mapping>
-	
-	
-	<!-- /////////////////////////// SERVLET - SERVLET AfficherEncheresCourantes ////////////////////////// -->
 
+
+	<!-- /////////////////////////// SERVLET - SERVLET AfficherEncheresCourantes ////////////////////////// -->
 	<servlet>
 		<servlet-name>AfficherEncheresCourantes</servlet-name>
 		<servlet-class>fr.eni.encheres.servlets.AfficherEncheresCourantes</servlet-class>
@@ -162,7 +161,7 @@
 		<servlet-name>PageErreurInscription</servlet-name>
 		<jsp-file>/WEB-INF/jsp/PageErreurInscription.jsp</jsp-file>
 	</servlet>
-	
+
 	<!-- /////////////////////////// JSP - PAGE PAGEMODIFICATIONPROFIL ////////////////////////// -->
 
 	<servlet>
@@ -177,10 +176,10 @@
 		<jsp-file>/WEB-INF/jsp/PageFormulaireVente.jsp</jsp-file>
 	</servlet>
 
-<!-- /////////////////////////// PARAMETRES DE SESSION ////////////////////////// -->
+	<!-- /////////////////////////// PARAMETRES DE SESSION ////////////////////////// -->
 
 	<session-config>
-    <session-timeout>3600</session-timeout>
-  </session-config>
+		<session-timeout>3600</session-timeout>
+	</session-config>
 
 </web-app>

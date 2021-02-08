@@ -51,7 +51,7 @@ public class Inscription extends HttpServlet {
 		// l'utilisateur
 		if (mdp.equals(conf)) {
 			Utilisateur utilisateur = new Utilisateur(-1, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp,
-					0, false);
+					100, false);
 			try {
 				utilisateurManager.nouvelUtilisateur(utilisateur);
 				request.setAttribute("utilisateur", utilisateur);

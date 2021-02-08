@@ -44,7 +44,7 @@ public class Connexion extends HttpServlet {
 
 		if (request.getParameter("memo") != null) {
 			Cookie cookie = new Cookie("MemoId", identifiant);
-			cookie.setMaxAge(120);
+			cookie.setMaxAge(3600);
 			response.addCookie(cookie);
 		}
 

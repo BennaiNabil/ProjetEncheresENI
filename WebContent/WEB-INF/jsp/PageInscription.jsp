@@ -49,7 +49,7 @@
 
 						<label for="textinput">Téléphone</label>
 						<div class="form-group md-4 form-inline">
-							<input id="tel" name="tel" type="text" class="form-control">
+							<input id="tel" name="tel" type="text" class="form-control" placeholder="N° de téléphone">
 						</div>
 
 						<label for="textinput">Adresse</label>
@@ -71,8 +71,12 @@
 								id="conf" name="conf" type="text" class="form-control md-3"
 								placeholder="Confirmation mot de passe">
 						</div>
-						<label for="textinput fst-italic">Tous les champs sont
-							obligatoires</label>
+						<div class="fst-italic text-danger">Tous les champs sont
+							obligatoires</br></div>
+						<div class="fst-italic text-light bg-dark">Un crédit de 100 points vous est offert</div>
+						</row>
+						&nbsp;
+						<row>
 						<div class="form-group md-4 form-inline">
 							<button type="submit" class="btn btn-secondary">Valider</button>
 						</div>

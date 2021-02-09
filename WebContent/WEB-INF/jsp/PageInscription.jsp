@@ -20,11 +20,13 @@
 </head>
 <body>
 	<%@include file="FragmentHeader.jspf"%>
-	</form>
 	<%@include file="../BandeauErreurs.html"%>
+
+
 	<h4 class="text-center">Formulaire d'inscription</h4>
 	<div class="container-fluid">
-		<form method="POST" action="<%= request.getContextPath() %>/Inscription">
+		<form method="POST"
+			action="<%= request.getContextPath() %>/Inscription">
 			<fieldset>
 				<div class="row">
 					<div class="col-md-4"></div>
@@ -32,48 +34,64 @@
 						<label for="textinput">Identité</label>
 						<div class="input-group md-4 form-inline">
 							<input id="nom" name="nom" type="text" class="form-control"
-								placeholder="Nom"> <input id="prenom" name="prenom"
-								type="text" class="form-control" placeholder="Prénom">
+								placeholder="Nom" maxlength="30"> <input id="prenom"
+								name="prenom" type="text" class="form-control"
+								placeholder="Prénom" maxlength="30" required>
 						</div>
 						<label class="input-group md-1 form-inline" for="textinput">Pseudo</label>
 						<div class="form-group md-4 form-inline">
 							<input id="pseudo" name="pseudo" type="text" class="form-control"
-								placeholder="Pseudo">
+								placeholder="Pseudo" maxlength="30" pattern="[a-z]|[A-Z]|[0-9]"
+								oninvalid="this.setCustomValidity('Le pseudo ne peux contenir que des lettres et des chiffres')"
+								oninput="this.setCustomValidity('')" required>
 						</div>
 
 						<label class="input-group md-1 form-inline" for="textinput">E-Mail</label>
 						<div class="form-group md-4 form-inline">
 							<input id="email" name="email" type="email" class="form-control"
-								placeholder="E-mail">
+								placeholder="E-mail" maxlength="20"
+								pattern="/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i"
+								oninvalid="this.setCustomValidity('Ce n'est pas un format de courriel correct')"
+								oninput="this.setCustomValidity('')" required>
 						</div>
 
 						<label for="textinput">Téléphone</label>
 						<div class="form-group md-4 form-inline">
-							<input id="tel" name="tel" type="text" class="form-control" placeholder="N° de téléphone">
+							<input id="tel" name="tel" type="text" class="form-control"
+								placeholder="N° de téléphone" maxlength="15"
+								pattern="(0|\+33)[1-9]( *[0-9]{2}){4}"
+								oninvalid="this.setCustomValidity('Le téléphone doit faire 10 chiffres éventuellement précédé de +33 (sans le 0 dans ce cas)')"
+								oninput="this.setCustomValidity('')">
 						</div>
 
 						<label for="textinput">Adresse</label>
 						<div class="input-group md-4 form-inline">
 							<input class="form-control" id="rue" name="rue" type="text"
-								placeholder="N° et rue">
+								placeholder="N° et rue" maxlength="30" required>
 						</div>
 						<div class="input-group md-4 form-inline">
 							<input class="form-control" id="codePostal" name="codePostal"
-								type="text" placeholder="Code Postal"> <input
+								type="text" placeholder="Code Postal" maxlength="10"
+								pattern="^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$"
+								oninvalid="this.setCustomValidity('Le format du code postal n'est pas correct (5 chiffres)')"
+								oninput="this.setCustomValidity('')" required> <input
 								class="form-control" id="ville" name="ville" type="text"
-								placeholder="Ville">
+								placeholder="Ville" maxlength="30" required>
 						</div>
 
 						<label for="textinput">Mot de passe</label>
 						<div class="input-group md-4 form-inline">
-							<input id="mdp" name="mdp" type="text"
-								class="form-control md-3" placeholder="Mot de passe"> <input
+							<input id="mdp" name="mdp" type="text" class="form-control md-3"
+								placeholder="Mot de passe" maxlength="30" required> <input
 								id="conf" name="conf" type="text" class="form-control md-3"
-								placeholder="Confirmation mot de passe">
+								placeholder="Confirmation mot de passe" maxlength="30" required>
 						</div>
-						<div class="fst-italic text-danger">Tous les champs sont
-							obligatoires</br></div>
-						<div class="fst-italic text-light bg-dark">Un crédit de 100 points vous est offert</div>
+
+						<div class="fst-italic text-danger">
+							Tous les champs sont obligatoires</br>
+						</div>
+						<div class="fst-italic text-light bg-dark">Un crédit de 100
+							points vous est offert</div>
 						</row>
 						&nbsp;
 						<row>
@@ -186,6 +204,6 @@
 		</fieldset>
 	</form>
 -->
-<%@include file="FragmentFooter.jspf"%>
+		<%@include file="FragmentFooter.jspf"%>
 </body>
 </html>

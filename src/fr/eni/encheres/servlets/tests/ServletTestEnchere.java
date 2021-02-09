@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -43,21 +46,46 @@ public class ServletTestEnchere extends HttpServlet {
 			EnchereDAO enchereDAO = DAOFactory.getEnchereDAO();
 			ArticleVenduDAO articleVenduDAO = DAOFactory.getArticleVenduDAO();
 
-			// selectArticleByLibCategorie
-			outPrintWriter.println("Test de la méthode selectArticleByLibCategorie()");
+//			// selectArticleByLibCategorie
+//			outPrintWriter.println("Test de la méthode selectArticleByLibCategorie()");
+//			outPrintWriter.println("-------------------------------" + "\n");
+//			outPrintWriter
+//					.println("Nombre d'éléments: " + enchereDAO.selectArticleByLibCategorie("Informatique").size());
+//			for (ArticleVendu articleVendu : enchereDAO.selectArticleByLibCategorie("Informatique")) {
+//				outPrintWriter.println(articleVendu + "\n");
+//			}
+
+//			// selectAllCurrent
+//			outPrintWriter.println("Test de la méthode selectAllCurrent()");
+//			outPrintWriter.println("-------------------------------" + "\n");
+//			outPrintWriter.println("Nombre d'éléments: " + enchereDAO.selectAllCurrent().size() + "\n");
+//			for (ArticleVendu articleVendu : enchereDAO.selectAllCurrent()) {
+//				outPrintWriter.println(articleVendu + "\n");
+//			}
+
+			List<ArticleVendu> tousArticlesInformatique = enchereDAO.selectArticleByLibCategorie("Informatique");
+
+			outPrintWriter.println("\n\nListe non triée");
 			outPrintWriter.println("-------------------------------" + "\n");
-			outPrintWriter
-					.println("Nombre d'éléments: " + enchereDAO.selectArticleByLibCategorie("Informatique").size());
-			for (ArticleVendu articleVendu : enchereDAO.selectArticleByLibCategorie("Informatique")) {
-				outPrintWriter.println(articleVendu + "\n");
+
+			for (ArticleVendu articleVendu : tousArticlesInformatique) {
+				outPrintWriter.println(articleVendu.getAffichageArticle() + "\n");
 			}
 
-			// selectAllCurrent
-			outPrintWriter.println("Test de la méthode selectAllCurrent()");
+			outPrintWriter.println("\n\nListe triée par nom d'articles");
 			outPrintWriter.println("-------------------------------" + "\n");
-			outPrintWriter.println("Nombre d'éléments: " + enchereDAO.selectAllCurrent().size() + "\n");
-			for (ArticleVendu articleVendu : enchereDAO.selectAllCurrent()) {
-				outPrintWriter.println(articleVendu + "\n");
+
+			for (ArticleVendu articleVendu : tousArticlesInformatique.stream()
+					.sorted(Comparator.comparing(ArticleVendu::getNomArticle)).collect(Collectors.toList())) {
+				outPrintWriter.println(articleVendu.getAffichageArticle() + "\n");
+			}
+
+			outPrintWriter.println("\n\nListe triée par date");
+			outPrintWriter.println("-------------------------------" + "\n");
+
+			for (ArticleVendu articleVendu : tousArticlesInformatique.stream()
+					.sorted(Comparator.comparing(ArticleVendu::getDateFinEncheres)).collect(Collectors.toList())) {
+				outPrintWriter.println(articleVendu.getAffichageArticle() + "\n");
 			}
 
 			// Libère une connexion

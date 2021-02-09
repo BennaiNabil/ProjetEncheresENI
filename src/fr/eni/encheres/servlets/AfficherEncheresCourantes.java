@@ -2,6 +2,7 @@ package fr.eni.encheres.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,10 +51,13 @@ public class AfficherEncheresCourantes extends HttpServlet {
 
 		Categorie categorieChoisie;
 
+		String choixTri = request.getParameter("tri");
+
 		aUnArticle = veutFiltrerParNomDArticle(request);
 		aUneCategorie = veutFiltrerParCategorie(request);
 
 		List<ArticleVendu> listeEncheresBrute = encheresManager.recupererEncheresCourantes();
+		List<ArticleVendu> listeEncheresEnCours;
 
 		if (aUneCategorie) {
 			noCategorieFiltre = Integer.parseInt(request.getParameter("categorie"));
@@ -66,7 +70,13 @@ public class AfficherEncheresCourantes extends HttpServlet {
 			listeEncheresBrute = filtrerParNomArticle(listeEncheresBrute, nomArticleFiltre);
 		}
 
-		List<ArticleVendu> listeEncheresEnCours = listeEncheresBrute;
+		if (choixTri.equals("triDate")) {
+			listeEncheresEnCours = trierParDateFinEnchere(listeEncheresBrute);
+		} else if (choixTri.equals("triNom")) {
+			listeEncheresEnCours = trierParNomArticle(listeEncheresBrute);
+		} else {
+			listeEncheresEnCours = listeEncheresBrute;
+		}
 
 		listeInfosEncheres = listeEncheresEnCours.stream().map(ArticleVendu::getAffichageArticle)
 				.collect(Collectors.toList());
@@ -96,6 +106,14 @@ public class AfficherEncheresCourantes extends HttpServlet {
 			}
 		}
 		return listeFiltree;
+	}
+
+	private List<ArticleVendu> trierParNomArticle(List<ArticleVendu> l) {
+		return l.stream().sorted(Comparator.comparing(ArticleVendu::getNomArticle)).collect(Collectors.toList());
+	}
+
+	private List<ArticleVendu> trierParDateFinEnchere(List<ArticleVendu> l) {
+		return l.stream().sorted(Comparator.comparing(ArticleVendu::getDateFinEncheres)).collect(Collectors.toList());
 	}
 
 }

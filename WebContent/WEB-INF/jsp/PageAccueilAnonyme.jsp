@@ -59,6 +59,17 @@
 					placeholder="Entrez des mots clés pour les enchères">
 			</div>
 		</div>
+		
+		<div class="m-5">
+			<select
+				name="tri"
+				id="tri">
+				<option value="triNone">-- Trier par --</option>
+				<option value="triDate">Tri par date</option>
+				<option value="triNom">Tri par nom</option>
+			</select>
+		</div>
+
 		<button
 			class="btn btn-primary m-5"
 			type="submit">Rechercher</button>
@@ -79,30 +90,37 @@
 								class="card md-5 form-inline"
 								style="width: 18rem; border: 2px solid black; border-radius: 10px">
 								<div class="card-body">
-								<form method="GET"
-									action="<%=request.getContextPath()%>/Encherir">
-									<c:forEach
-										var="i"
-										begin="0"
-										end="${infos.size()-1 }">
-										<c:set
-											var="string"
-											value="${fn:substring(infos.get(i), 0, 30)}" />
-										<c:if test="${i == 1}">
-											<c:set
-												var="string2"
-												value="${string} ..." />
+									<form
+										method="GET"
+										action="<%=request.getContextPath()%>/Encherir">
+										<c:forEach
+											var="i"
+											begin="0"
+											end="${infos.size()-1 }">
 											<c:set
 												var="string"
-												value="${string2}" />
-										</c:if>
-										<p>${string}</p>
-									</c:forEach>
-									<input id="idArticle" name="idArticle" type="hidden" value="${infos.get(infos.size()-1)}">
-									<!-- Bouton menant à Encherir -->
-									<button type="submit" class="btn btn-primary"
-										value="encherir">Enchérir</button>
-									</form>	
+												value="${fn:substring(infos.get(i), 0, 30)}" />
+											<c:if test="${i == 1}">
+												<c:set
+													var="string2"
+													value="${string} ..." />
+												<c:set
+													var="string"
+													value="${string2}" />
+											</c:if>
+											<p>${string}</p>
+										</c:forEach>
+										<input
+											id="idArticle"
+											name="idArticle"
+											type="hidden"
+											value="${infos.get(infos.size()-1)}">
+										<!-- Bouton menant à Encherir -->
+										<button
+											type="submit"
+											class="btn btn-primary"
+											value="encherir">Enchérir</button>
+									</form>
 								</div>
 							</div>
 						</div>

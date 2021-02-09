@@ -1,6 +1,7 @@
 package fr.eni.encheres.bll;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.dal.ArticleVenduDAO;
@@ -19,6 +20,10 @@ public class ArticleManager {
 		} else {
 			throw new BLLException();
 		}
+	}
+	
+	public ArticleVendu selectArticlebyId(int idArticle) {
+		return this.articleDAO.selectById(idArticle);
 	}
 
 	public boolean dateArticleEstValide(ArticleVendu article) {

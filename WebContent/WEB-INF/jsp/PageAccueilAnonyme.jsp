@@ -95,6 +95,10 @@
 												value="${string2}" />
 										</c:if>
 										<p>${string}</p>
+										<input id="idArticle" name="idArticle" type="hidden" value="${infos.get(infos.size()-1)}">
+									<!-- Bouton menant à Encherir -->
+									<button type="submit" class="btn btn-primary"
+										value="encherir">Enchérir</button>
 									</c:forEach>
 								</div>
 							</div>

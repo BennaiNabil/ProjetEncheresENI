@@ -26,9 +26,9 @@
 </head>
 <body>
 
-	<%-- <%@include file="FragmentHeader.jspf"%>
+	<%@include file="FragmentHeader.jspf"%>
+	</form>
 	<%@include file="../BandeauErreurs.html"%>
- --%>
 	<form
 		method="POST"
 		action="<%=request.getContextPath()%>/AfficherEncheresCourantes">

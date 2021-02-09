@@ -20,8 +20,8 @@
 </head>
 <body>
 	<%@include file="FragmentHeader.jspf"%>
+	</form>
 	<%@include file="../BandeauErreurs.html"%>
-
 	<h4 class="text-center">Formulaire d'inscription</h4>
 	<div class="container-fluid">
 		<form method="POST" action="<%= request.getContextPath() %>/Inscription">

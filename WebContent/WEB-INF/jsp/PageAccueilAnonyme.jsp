@@ -8,7 +8,9 @@
 <%@ taglib
 	uri="http://java.sun.com/jsp/jstl/core"
 	prefix="c"%>
-	 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib
+	prefix="fn"
+	uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <!DOCTYPE html>
@@ -31,63 +33,72 @@
 	</form>
 	<%@include file="../BandeauErreurs.html"%>
 	<div class="container-fluid">
-	<form
-		method="POST"
-		action="<%=request.getContextPath()%>/AfficherEncheresCourantes">
-		<select
-			name="categorie"
-			id="categorie">
-			<option value="">-- Sélectionnez une catégorie --</option>
-			<c:forEach
-				items="${listeCategories}"
-				var="cate">
-				<option value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
-			</c:forEach>
-		</select>
-		<button
-			class="btn btn-primary"
-			type="submit">Rechercher</button>
-	</form>
-
-	<%
-	boolean estPremiereRecherche = true;
-	%>
-
-	<c:choose>
-		<c:when test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
-			<div class="row form-inline">
+		<form
+			method="POST"
+			action="<%=request.getContextPath()%>/AfficherEncheresCourantes">
+			<select
+				name="categorie"
+				id="categorie">
+				<option value="">-- Sélectionnez une catégorie --</option>
 				<c:forEach
-					items="${listeInfosEncheres}"
-					var="infos">
-					<div class="md-3">
-						<div
-							class="card md-5 form-inline"
-							style="width: 18rem; border: 2px solid black; border-radius: 10px" >
-							<div class="card-body">
-								<c:forEach
-									var="i"
-									begin="0"
-									end="${infos.size()-1 }">
-									<c:set var="string" value="${fn:substring(infos.get(i), 0, 30)}" />
-									<c:if test="${i == 1}">
-										<c:set var="string2" value="${string} ..." />
-										<c:set var="string" value="${string2}" />
-									</c:if>
-									<p>${string}</p>
-								</c:forEach>
+					items="${listeCategories}"
+					var="cate">
+					<option value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
+				</c:forEach>
+			</select> <label>Nom article : </label> <input
+				type="text"
+				class="form-control"
+				id="nomArticle"
+				name="nomArticle">
+
+			<button
+				class="btn btn-primary"
+				type="submit">Rechercher</button>
+		</form>
+
+		<%
+		boolean estPremiereRecherche = true;
+		%>
+
+		<c:choose>
+			<c:when test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
+				<div class="row form-inline">
+					<c:forEach
+						items="${listeInfosEncheres}"
+						var="infos">
+						<div class="md-3">
+							<div
+								class="card md-5 form-inline"
+								style="width: 18rem; border: 2px solid black; border-radius: 10px">
+								<div class="card-body">
+									<c:forEach
+										var="i"
+										begin="0"
+										end="${infos.size()-1 }">
+										<c:set
+											var="string"
+											value="${fn:substring(infos.get(i), 0, 30)}" />
+										<c:if test="${i == 1}">
+											<c:set
+												var="string2"
+												value="${string} ..." />
+											<c:set
+												var="string"
+												value="${string2}" />
+										</c:if>
+										<p>${string}</p>
+									</c:forEach>
+								</div>
 							</div>
 						</div>
-					</div>
-				</c:forEach>
-			</div>
-			<%
-			estPremiereRecherche = false;
-			%>
-		</c:when>
-		<c:otherwise>
-			<h1>Pas de résultat</h1>
-		</c:otherwise>
-	</c:choose>
+					</c:forEach>
+				</div>
+
+			</c:when>
+			<c:otherwise>
+				<h1>Pas de résultat</h1>
+			</c:otherwise>
+		</c:choose>
 
 	</div>
 

@@ -228,11 +228,12 @@ public class ArticleVendu implements Serializable {
 		infosArticle.add(this.prixVente + " crédits");
 		infosArticle.add(this.dateFinEncheres.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 		infosArticle.add(this.vendeur.getPseudo());
+		infosArticle.add(this.noArticle + "");
 		return infosArticle;
 	}
 
 	public static List<String> entetesInfos() {
-		return Arrays.asList("Nom : ", "Description : ", "Prix : ", "Fin de l'enchère : ", "Vendeur : ");
+		return Arrays.asList("Nom : ", "Description : ", "Prix : ", "Fin de l'enchère : ", "Vendeur : ", null);
 	}
 
 	/**

@@ -18,8 +18,12 @@ public class EncheresManager {
 		return this.enchereDAO.selectAll();
 	}
 
-	public List<ArticleVendu> recueprerEncheresEnCoursParCategorie(String cate) {
+	public List<ArticleVendu> recupererEncheresEnCoursParCategorie(String cate) {
 		return this.enchereDAO.selectArticleByLibCategorie(cate);
+	}
+
+	public List<ArticleVendu> recupererEncheresCourantes() {
+		return this.enchereDAO.selectAllCurrent();
 	}
 
 }

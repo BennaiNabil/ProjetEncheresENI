@@ -9,4 +9,8 @@ public interface EnchereDAO extends DAO<Enchere> {
 
 	public List<ArticleVendu> selectArticleByLibCategorie(String libelle);
 
+	List<ArticleVendu> selectArticleByLibCategorieEtNomArticle(String libelle, String nomArticle);
+
+	List<ArticleVendu> selectAllCurrent();
+
 }

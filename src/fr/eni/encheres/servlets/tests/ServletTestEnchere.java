@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.dal.ArticleVenduDAO;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.EnchereDAO;
 
@@ -40,11 +41,22 @@ public class ServletTestEnchere extends HttpServlet {
 
 			// TESTS
 			EnchereDAO enchereDAO = DAOFactory.getEnchereDAO();
+			ArticleVenduDAO articleVenduDAO = DAOFactory.getArticleVenduDAO();
 
-			// selectAll
+			// selectArticleByLibCategorie
 			outPrintWriter.println("Test de la méthode selectArticleByLibCategorie()");
 			outPrintWriter.println("-------------------------------" + "\n");
+			outPrintWriter
+					.println("Nombre d'éléments: " + enchereDAO.selectArticleByLibCategorie("Informatique").size());
 			for (ArticleVendu articleVendu : enchereDAO.selectArticleByLibCategorie("Informatique")) {
+				outPrintWriter.println(articleVendu + "\n");
+			}
+
+			// selectAllCurrent
+			outPrintWriter.println("Test de la méthode selectAllCurrent()");
+			outPrintWriter.println("-------------------------------" + "\n");
+			outPrintWriter.println("Nombre d'éléments: " + enchereDAO.selectAllCurrent().size() + "\n");
+			for (ArticleVendu articleVendu : enchereDAO.selectAllCurrent()) {
 				outPrintWriter.println(articleVendu + "\n");
 			}
 

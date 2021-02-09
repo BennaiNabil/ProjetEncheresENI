@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.EnchereDAO;
@@ -25,6 +26,11 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			+ "from ARTICLES_VENDUS as table_Articles " + "inner join CATEGORIES on "
 			+ "CATEGORIES.no_categorie = table_Articles.no_categorie "
 			+ "where CATEGORIES.libelle = ? and table_Articles.date_debut_encheres < getdate() and table_Articles.date_fin_encheres > getdate()";
+
+	private static final String SELECT_CURRENT = "select CATEGORIES.libelle, table_Articles.no_article "
+			+ "from ARTICLES_VENDUS as table_Articles " + "inner join CATEGORIES on "
+			+ "CATEGORIES.no_categorie = table_Articles.no_categorie "
+			+ "where table_Articles.date_debut_encheres < getdate() and table_Articles.date_fin_encheres > getdate()";
 
 	@Override
 	public List<ArticleVendu> selectArticleByLibCategorie(String libelle) {
@@ -47,6 +53,35 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			closeResources(preparedStatement, resultSet);
 		}
 		return listeArticles;
+	}
+
+	@Override
+	public List<ArticleVendu> selectAllCurrent() {
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<ArticleVendu> listeEncheresCourantes = new ArrayList<>();
+		ArticleVendu tmp = new ArticleVendu();
+		int noArticle;
+		String libCate;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(SELECT_CURRENT);
+
+			while (resultSet.next()) {
+				libCate = resultSet.getString(1);
+				noArticle = resultSet.getInt(2);
+				tmp = DAOFactory.getArticleVenduDAO().selectById(noArticle);
+				tmp.setCategorie(new Categorie());
+				tmp.getCategorie().setLibelle(libCate);
+				listeEncheresCourantes.add(tmp);
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(statement, resultSet);
+		}
+		return listeEncheresCourantes;
+
 	}
 
 	@Override

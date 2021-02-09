@@ -128,6 +128,17 @@
 		<servlet-name>ModifierMonProfil</servlet-name>
 		<url-pattern>/ModifierMonProfil</url-pattern>
 	</servlet-mapping>
+	
+		<!-- /////////////////////////// SERVLET - SERVLET ENCHERIR ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>Encherir</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.Encherir</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Encherir</servlet-name>
+		<url-pattern>/Encherir</url-pattern>
+	</servlet-mapping>
 
 	<!-- /////////////////////////// JSP - PAGE ACCUEIL CONNECTE ////////////////////////// -->
 
@@ -184,6 +195,13 @@
 	<servlet>
 		<servlet-name>PageFormulaireVente</servlet-name>
 		<jsp-file>/WEB-INF/jsp/PageFormulaireVente.jsp</jsp-file>
+	</servlet>
+	
+		<!-- /////////////////////////// JSP - PAGE ENCHERIR ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageEncherir</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageEncherir.jsp</jsp-file>
 	</servlet>
 
 	<!-- /////////////////////////// PARAMETRES DE SESSION ////////////////////////// -->

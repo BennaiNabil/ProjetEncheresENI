@@ -8,6 +8,7 @@
 <%@ taglib
 	uri="http://java.sun.com/jsp/jstl/core"
 	prefix="c"%>
+	 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -29,6 +30,7 @@
 	<%@include file="FragmentHeader.jspf"%>
 	</form>
 	<%@include file="../BandeauErreurs.html"%>
+	<div class="container-fluid">
 	<form
 		method="POST"
 		action="<%=request.getContextPath()%>/AfficherEncheresCourantes">
@@ -53,20 +55,26 @@
 
 	<c:choose>
 		<c:when test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
-			<div class="row">
+			<div class="row form-inline">
 				<c:forEach
 					items="${listeInfosEncheres}"
 					var="infos">
-					<div class="col-3">
+					<div class="md-3">
 						<div
-							class="card m-5"
+							class="card md-5 form-inline"
 							style="width: 18rem; border: 2px solid black;">
 							<div class="card-body">
 								<c:forEach
 									var="i"
 									begin="0"
 									end="${infos.size()-1 }">
-									<p>${entetes.get(i) }${infos.get(i) }</p>
+									<c:set var="string" value="${fn:substring(infos.get(i), 0, 50)}" />
+									<c:if test="${i == 1}">
+										<c:set var="string2" value="${string} ..." />
+										<c:set var="string" value="${string2}" />
+									</c:if>
+									<p>${string}</p>
+								<!-- <p>${entetes.get(i) }${infos.get(i) }</p> -->
 								</c:forEach>
 							</div>
 						</div>
@@ -82,7 +90,7 @@
 		</c:otherwise>
 	</c:choose>
 
-
+	</div>
 
 	<%@include file="FragmentFooter.jspf"%>
 

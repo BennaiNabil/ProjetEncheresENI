@@ -17,36 +17,8 @@
 <title>Nouvelle vente</title>
 </head>
 <body>
-	<header>
-		<div class="row align-items-center">
-			<div class="col-4">
-				<div class="col-6">
-					<a href="${pageContext.request.contextPath}"> <img alt="LOGO"
-						src="<%=request.getContextPath()%>/resources/logoLOSNA.png">
-					</a>
-				</div>
-			</div>
-			<div class="col-1,5 ml-auto">
-				<button class="btn btn-primary mr-3" type="submit">Enchères</button>
-			</div>
-			<div class="col-1,5">
-				<form method="GET"
-					action="<%=request.getContextPath()%>/MiseEnVente">
-					<button class="btn btn-primary mr-3" type="submit">Vendre</button>
-				</form>
-			</div>
-			<div class="col-1,5">
-
-				<button class="btn btn-primary mr-3" type="submit">Mon
-					profil</button>
-			</div>
-			<div class="col-1,5">
-
-				<button class="btn btn-primary mr-3" type="submit">Déconnexion</button>
-			</div>
-
-		</div>
-	</header>
+	<%@include file="FragmentHeader.jspf"%>
+	</form>
 	<%@include file="../BandeauErreurs.html"%>
 	<%@include file="../BandeauValidation.html"%>
 

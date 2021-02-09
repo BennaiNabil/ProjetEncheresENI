@@ -5,12 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.EnchereDAO;
 
@@ -31,6 +33,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			+ "from ARTICLES_VENDUS as table_Articles " + "inner join CATEGORIES on "
 			+ "CATEGORIES.no_categorie = table_Articles.no_categorie "
 			+ "where table_Articles.date_debut_encheres < getdate() and table_Articles.date_fin_encheres > getdate()";
+
+	private static final String SELECT_BY_ID_ARTICLE = "SELECT * FROM ENCHERES WHERE no_article=?";
 
 	@Override
 	public List<ArticleVendu> selectArticleByLibCategorie(String libelle) {
@@ -66,7 +70,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 		try (Connection connection = ConnectionProvider.getConnection()) {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(SELECT_CURRENT);
-
 			while (resultSet.next()) {
 				libCate = resultSet.getString(1);
 				noArticle = resultSet.getInt(2);
@@ -81,7 +84,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			closeResources(statement, resultSet);
 		}
 		return listeEncheresCourantes;
-
 	}
 
 	@Override
@@ -91,7 +93,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			preparedStatement = connection.prepareStatement(INSERT);
 			preparedStatement.setInt(1, enchere.getEncherisseur().getNoUtilisateur());
 			preparedStatement.setInt(2, enchere.getArticleVendu().getNoArticle());
-			preparedStatement.setObject(3, enchere.getDateEnchere());
+			preparedStatement.setDate(3, java.sql.Date.valueOf(enchere.getDateEnchere()));
 			preparedStatement.setInt(4, enchere.getMontantEnchere());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -109,6 +111,32 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	@Override
 	public List<Enchere> selectAll() {
 		return null;
+	}
+
+	public List<Enchere> selectByIdArticle(int id) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Enchere> enchere = new ArrayList<>();
+		Enchere enchereTmp = new Enchere();
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(SELECT_BY_ID_ARTICLE);
+			preparedStatement.setInt(1, id);
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				Utilisateur idEncherisseur = DAOFactory.getUtilisateurDAO().selectById(resultSet.getInt(1)) ;
+				ArticleVendu noArticle = DAOFactory.getArticleVenduDAO().selectById(resultSet.getInt(2));
+				LocalDate dateEnchere = resultSet.getDate(3).toLocalDate();
+				int montantEnchere = resultSet.getInt(4);
+				enchereTmp = new Enchere(dateEnchere, montantEnchere, idEncherisseur, noArticle);
+				enchere.add(enchereTmp);
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
+		}
+		return enchere;
 	}
 
 	@Override
@@ -146,5 +174,11 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 				throwables.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public List<ArticleVendu> selectArticleByLibCategorieEtNomArticle(String libelle, String nomArticle) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -25,5 +25,13 @@ public class EncheresManager {
 	public List<ArticleVendu> recupererEncheresCourantes() {
 		return this.enchereDAO.selectAllCurrent();
 	}
+	
+	public List<Enchere> selectByIdArticle(int id) {
+		return this.enchereDAO.selectByIdArticle(id);
+	}
+	
+	public void insert(Enchere enchere) {
+		enchereDAO.insert(enchere);
+	}
 
 }

@@ -60,6 +60,14 @@
 							<p>Enchère actuelle : <%String montantActuel = String. valueOf(request.getAttribute("montantActuel"));
 							out.print(montantActuel);
 							%></p>
+							<%String idArticle = String.valueOf(request.getAttribute("idArticle"));
+							%>
+							<input
+											id="idArticle"
+											name="idArticle"
+											type="hidden"
+											value="${idArticle}">
+							
 							<!-- Value = enchère actuelle -->
 						</div>
 						<div class="row">
@@ -79,6 +87,7 @@
 						<button type="button"
 							onclick="window.location.href = 'http://localhost:8080/ProjetEncheresENI/';"
 							class="btn btn-primary" data-dismiss="modal">Retour</button>
+
 						<!-- Bouton de validation des infos saisie dans la modale -->
 						<button type="submit" class="btn btn-primary" value="Connexion">Enchérir</button>
 					</form>

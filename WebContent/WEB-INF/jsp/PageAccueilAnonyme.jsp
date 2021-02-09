@@ -33,27 +33,35 @@
 	</form>
 	<%@include file="../BandeauErreurs.html"%>
 	<div class="container-fluid">
-		<form
-			method="POST"
-			action="<%=request.getContextPath()%>/AfficherEncheresCourantes">
-			<select
-				name="categorie"
-				id="categorie">
-				<option value="">-- Sélectionnez une catégorie --</option>
-				<c:forEach
-					items="${listeCategories}"
-					var="cate">
-					<option value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
-				</c:forEach>
-			</select> <label>Nom article : </label> <input
-				type="text"
-				class="form-control"
-				id="nomArticle"
-				name="nomArticle">
+		<div class="mt-5">
+			<div class="col-2">
+				<form
+					method="POST"
+					action="<%=request.getContextPath()%>/AfficherEncheresCourantes">
+					<select
+						name="categorie"
+						id="categorie">
+						<option value="">-- Sélectionnez une catégorie --</option>
+						<c:forEach
+							items="${listeCategories}"
+							var="cate">
+							<option value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
+						</c:forEach>
+					</select>
+			</div>
 
-			<button
-				class="btn btn-primary"
-				type="submit">Rechercher</button>
+			<div class="col-3 mt-5">
+				<label>Nom article : </label> <input
+					type="text"
+					class="form-control"
+					id="nomArticle"
+					name="nomArticle"
+					placeholder="Entrez des mots clés pour les enchères">
+			</div>
+		</div>
+		<button
+			class="btn btn-primary m-5"
+			type="submit">Rechercher</button>
 		</form>
 
 		<%
@@ -66,7 +74,7 @@
 					<c:forEach
 						items="${listeInfosEncheres}"
 						var="infos">
-						<div class="md-3">
+						<div class="m-3">
 							<div
 								class="card md-5 form-inline"
 								style="width: 18rem; border: 2px solid black; border-radius: 10px">

@@ -79,6 +79,8 @@
 								class="card md-5 form-inline"
 								style="width: 18rem; border: 2px solid black; border-radius: 10px">
 								<div class="card-body">
+								<form method="GET"
+									action="<%=request.getContextPath()%>/Encherir">
 									<c:forEach
 										var="i"
 										begin="0"
@@ -96,10 +98,11 @@
 										</c:if>
 										<p>${string}</p>
 									</c:forEach>
-									<input id="idArticle" name="idArticle" type="hidden" value="${infos.get(infos.size()-2)}">
+									<input id="idArticle" name="idArticle" type="hidden" value="${infos.get(infos.size()-1)}">
 									<!-- Bouton menant à Encherir -->
 									<button type="submit" class="btn btn-primary"
 										value="encherir">Enchérir</button>
+									</form>	
 								</div>
 							</div>
 						</div>

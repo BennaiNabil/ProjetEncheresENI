@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.encheres.bll.CategorieManager;
+
 public class Deconnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -19,6 +21,10 @@ public class Deconnexion extends HttpServlet {
 		session.removeAttribute("utilisateur");
 		session.invalidate();
 
+		HttpSession session2 = request.getSession();
+
+		session2.setAttribute("listeCategories", new CategorieManager().selectionnerToutesLesCategories());
+
 		request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp").forward(request, response);
 	}
 
@@ -29,6 +35,9 @@ public class Deconnexion extends HttpServlet {
 		session.removeAttribute("connected");
 		session.removeAttribute("utilisateur");
 		session.invalidate();
+		HttpSession session2 = request.getSession();
+
+		session2.setAttribute("listeCategories", new CategorieManager().selectionnerToutesLesCategories());
 
 		request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp").forward(request, response);
 

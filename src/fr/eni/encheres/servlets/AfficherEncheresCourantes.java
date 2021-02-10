@@ -41,8 +41,8 @@ public class AfficherEncheresCourantes extends HttpServlet {
 
 		boolean aUnArticle, aUneCategorie;
 
-		int noCategorieFiltre;
-		String nomArticleFiltre;
+		int noCategorieFiltre = 0;
+		String nomArticleFiltre = null;
 
 		CategorieManager categorieManager = new CategorieManager();
 		EncheresManager encheresManager = new EncheresManager();
@@ -83,6 +83,8 @@ public class AfficherEncheresCourantes extends HttpServlet {
 
 		request.setAttribute("listeInfosEncheres", listeInfosEncheres);
 		request.setAttribute("entetes", ArticleVendu.entetesInfos());
+		request.setAttribute("nomArticleChoisi", aUnArticle ? nomArticleFiltre : null);
+		request.setAttribute("categorieChoisie", aUneCategorie ? noCategorieFiltre : null);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 		rd.forward(request, response);

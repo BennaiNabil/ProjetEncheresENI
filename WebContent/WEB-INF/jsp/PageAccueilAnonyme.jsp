@@ -33,7 +33,7 @@
 					<select name="categorie" id="categorie">
 						<option value="">-- Sélectionnez une catégorie --</option>
 						<c:forEach items="${listeCategories}" var="cate">
-							<option value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
+							<option ${ categorieChoisie == cate.getNoCategorie() ? "selected" : ""} value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
 						</c:forEach>
 					</select>
 			</div>
@@ -41,6 +41,7 @@
 			<div class="col-3 mt-5">
 				<label>Nom article : </label> <input type="text"
 					class="form-control" id="nomArticle" name="nomArticle"
+					value="${nomArticleChoisi !=null? nomArticleChoisi: null }"
 					placeholder="Entrez des mots clés pour les enchères">
 			</div>
 		</div>

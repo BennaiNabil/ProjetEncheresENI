@@ -23,7 +23,7 @@
 			 // connected = "oui" si la session est ouverte
 			 connecte = (String)session.getAttribute("connected");
 			 // test de la valeur de connecte
-			 if (connecte == "oui")
+			 if (connecte.equals("oui"))
 			 {
 				 // affichage de l'avatar si la session est ouverte
 			 %>
@@ -34,7 +34,7 @@
 			<%
 			 connecte = (String)session.getAttribute("connected");
 			 // si la session est ouverte, affichage du pseudo et du crédit de l'utilisateur connecté
-			 if (connecte == "oui")
+			 if (connecte.equals("oui"))
 			 {
 			 %>
 				<h5 class="text-left fst-italic text-warning">
@@ -60,7 +60,7 @@
 							<form 
 							<%
 			 				connecte = (String)session.getAttribute("connected");
-							 if (connecte != "oui")
+							 if (connecte.equals("oui"))
 			 					{
 							// affichage du bouton de connexion si la session n'existe pas
 			 				%> 
@@ -81,7 +81,7 @@
 					<li class="nav-item">
 							<%
 							 connecte = (String)session.getAttribute("connected");
-							 if (connecte != "oui")
+							 if (!connecte.equals("oui"))
 							 {
 							// affichage du bouton d'inscription si l'utilisateur n'existe pas
 							%>
@@ -103,7 +103,7 @@
 					<li class="nav-item">
 						<%
 						 connecte = (String)session.getAttribute("connected");
-						 if (connecte == "oui")
+						 if (connecte.equals("oui"))
 						 {
 						 // affichage du bouton de déconnexion si l'utilisateur est connecté
 						 %> 

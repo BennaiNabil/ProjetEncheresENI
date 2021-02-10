@@ -1,16 +1,14 @@
 package fr.eni.encheres.bo;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * L'objet métier Retrait permet de reproduire les données de la table Retrait,
- * et modélise le retrait d'un article
+ * L'objet métier Retrait permet de reproduire les données de la table
+ * Retrait, et modélise le retrait d'un article
  */
 
 public class Retrait implements Serializable {
 
-	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private String rue;

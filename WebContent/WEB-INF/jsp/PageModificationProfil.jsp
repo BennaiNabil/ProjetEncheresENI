@@ -19,7 +19,7 @@
 <body>
 
 	<%@include file="FragmentHeader.jspf"%>
-	<%@include file="../BandeauErreurs.html"%>
+	<%@include file="BandeauErreurs.jspf"%>
 
 	<h4 class="text-center">Modification du profil</h4>
 	<div class="container-fluid">

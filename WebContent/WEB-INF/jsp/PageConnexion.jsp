@@ -47,7 +47,7 @@
 				<!-- body -->
 				<!-- **** -->
 				<%
-					if (erreurConnexion.equals("true")) {
+					if (erreurConnexion == "true") {
 				%>
 				<div class="alert alert-danger" role="alert">Les données
 					saisies sont incorrectes</div>

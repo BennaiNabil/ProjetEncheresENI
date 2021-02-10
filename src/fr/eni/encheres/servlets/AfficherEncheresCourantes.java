@@ -89,23 +89,26 @@ public class AfficherEncheresCourantes extends HttpServlet {
 	}
 
 	private List<ArticleVendu> filtrerParCategorie(List<ArticleVendu> l, String lib) {
-		List<ArticleVendu> listeFiltree = new ArrayList<>();
-		for (ArticleVendu articleVendu : l) {
-			if (articleVendu.getCategorie().getLibelle().equals(lib)) {
-				listeFiltree.add(articleVendu);
-			}
-		}
-		return listeFiltree;
+//		List<ArticleVendu> listeFiltree = new ArrayList<>();
+//		for (ArticleVendu articleVendu : l) {
+//			if (articleVendu.getCategorie().getLibelle().equals(lib)) {
+//				listeFiltree.add(articleVendu);
+//			}
+//		}
+		return l.stream().filter(art -> art.getCategorie().getLibelle().equalsIgnoreCase(lib))
+				.collect(Collectors.toList());
 	}
 
 	private List<ArticleVendu> filtrerParNomArticle(List<ArticleVendu> l, String nom) {
-		List<ArticleVendu> listeFiltree = new ArrayList<>();
-		for (ArticleVendu articleVendu : l) {
-			if (articleVendu.getNomArticle().toLowerCase().indexOf(nom.toLowerCase()) != -1) {
-				listeFiltree.add(articleVendu);
-			}
-		}
-		return listeFiltree;
+//		List<ArticleVendu> listeFiltree = new ArrayList<>();
+//		for (ArticleVendu articleVendu : l) {
+//			if (articleVendu.getNomArticle().toLowerCase().indexOf(nom.toLowerCase()) != -1) {
+//				listeFiltree.add(articleVendu);
+//			}
+//		}
+
+		return l.stream().filter(art -> art.getNomArticle().toLowerCase().indexOf(nom.toLowerCase()) != -1)
+				.collect(Collectors.toList());
 	}
 
 	private List<ArticleVendu> trierParNomArticle(List<ArticleVendu> l) {

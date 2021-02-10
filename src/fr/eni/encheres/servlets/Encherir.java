@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.ArticleManager;
+import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.EncheresManager;
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.CodesResultat;
 import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
+import fr.eni.encheres.messages.LecteurMessage;
 
 public class Encherir extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -62,11 +65,11 @@ public class Encherir extends HttpServlet {
 		ArticleManager articleManager = new ArticleManager();
 		int idArticlePOST;
 		Utilisateur encherisseur = (Utilisateur)session.getAttribute("utilisateur");
-//		
-//		String idArticlestring = request.getParameter("idArticle");
-//		System.out.println("test id article 2 : " + idArticlestring);
 		
-		idArticlePOST = Integer.parseInt(request.getParameter("idArticle"));
+		String idArticlestring = request.getParameter("idArticle");
+		System.out.println("test id article 2 : " + idArticlestring);
+		
+		idArticlePOST = Integer.parseInt(idArticlestring);
 		System.out.println("int id Article 3 : "+ String.valueOf(idArticlePOST));
 		
 		ArticleVendu article = articleManager.selectArticlebyId(idArticlePOST);
@@ -78,7 +81,18 @@ public class Encherir extends HttpServlet {
 		
 		//Ajout à la base de données de l'enchere
 		EncheresManager enchereManager = new EncheresManager();
-		enchereManager.insert(enchere);
+		try {
+			enchereManager.insert(enchere);
+		} catch (BLLException e) {
+			List<String> erreurs = new ArrayList<String>();
+			erreurs.add(LecteurMessage.getMessageErreur(CodesResultat.CREATION_ENCHERE_ERREUR));
+			request.setAttribute("erreurs", erreurs);
+			e.printStackTrace();
+		}
+		
+		//renvoi vers la page d'accueil.
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
+		rd.forward(request, response);
 
 	}
 }

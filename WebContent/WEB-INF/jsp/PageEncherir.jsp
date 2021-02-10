@@ -1,9 +1,7 @@
 <%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +43,7 @@
 				<!-- **** -->
 				<!-- body -->
 				<!-- **** -->
-<%-- 				<%
+				<%-- 				<%
 				if (erreurEnchère == "true") {
 				%>
 				<div class="alert alert-danger" role="alert">Les données
@@ -53,36 +51,41 @@
 				<%
 				}
 				%> --%>
+				<form method="POST" action="<%=request.getContextPath()%>/Encherir">
 				<div class="modal-body">
-					<form method="POST" action="<%=request.getContextPath()%>/Encherir">
+					
 						<!--  Affichage de l'enchère actuelle -->
 						<div class="row">
-							<p>Enchère actuelle : <%String montantActuel = String. valueOf(request.getAttribute("montantActuel"));
+							<p>
+								Enchère actuelle :
+								<%
+							String montantActuel = String.valueOf(request.getAttribute("montantActuel"));
 							out.print(montantActuel);
-							%></p>
-							<%String idArticle = String.valueOf(request.getAttribute("idArticle"));
 							%>
-							<input
-											id="idArticle"
-											name="idArticle"
-											type="hidden"
-											value="${idArticle}">
-							
+							</p>
+							<%
+							String idArticle = String.valueOf(request.getAttribute("idArticle"));
+							%>
+							<p><%
+							out.print("id Article : " + idArticle);
+							%>
+							<input id="idArticle" name="idArticle" type="hidden"
+								value="${idArticle}">
+
 							<!-- Value = enchère actuelle -->
 						</div>
 						<div class="row">
 							<!--  Champs de saisie de l'enchère de l'utilisateur -->
 							<label class="col-4" for="enchereNew">Votre enchère :</label> <input
-								class="col-6" type="text" name="enchereNew" id="enchereNew" autofocus="autofocus"
-								required="required" />
+								class="col-6" type="text" name="enchereNew" id="enchereNew"
+								autofocus="autofocus" required="required" />
 						</div>
-					</form>
 				</div>
 				<!-- ****** -->
 				<!-- footer -->
 				<!-- ****** -->
 				<div class="modal-footer">
-					<form method="POST" action="<%=request.getContextPath()%>/Encherir">
+
 						<!-- Bouton de fermeture de la modale sans prise en compte des saisies -->
 						<button type="button"
 							onclick="window.location.href = 'http://localhost:8080/ProjetEncheresENI/';"
@@ -90,11 +93,12 @@
 
 						<!-- Bouton de validation des infos saisie dans la modale -->
 						<button type="submit" class="btn btn-primary" value="Connexion">Enchérir</button>
-					</form>
+					
 				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 
 	<script>
 		$(document).ready(function() {

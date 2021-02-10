@@ -41,7 +41,7 @@
 						<label class="input-group md-1 form-inline" for="textinput">Pseudo</label>
 						<div class="form-group md-4 form-inline">
 							<input id="pseudo" name="pseudo" type="text" class="form-control"
-								placeholder="Pseudo" maxlength="30" pattern="[a-z]|[A-Z]|[0-9]"
+								placeholder="Pseudo" maxlength="30" 
 								oninvalid="this.setCustomValidity('Le pseudo ne peux contenir que des lettres et des chiffres')"
 								oninput="this.setCustomValidity('')" required>
 						</div>

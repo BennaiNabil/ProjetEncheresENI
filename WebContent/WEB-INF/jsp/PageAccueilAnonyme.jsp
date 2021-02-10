@@ -85,7 +85,7 @@
 					<c:forEach
 						items="${listeInfosEncheres}"
 						var="infos">
-						<div class="m-3">
+						<div>
 							<div
 								class="card md-5 form-inline"
 								style="width: 18rem; border: 2px solid black; border-radius: 10px">
@@ -97,9 +97,21 @@
 											var="i"
 											begin="0"
 											end="${infos.size()-1 }">
+											<c:if test="${i == 4}">
+												
+												
+												
+												
+												
+												
+												
+												<a href="<%=request.getContextPath()%>/Profil?pseudo=${infos.get(i)}">${infos.get(i)}</a>
+											</c:if>
+											<c:if test="${i != 4}">
 											<c:set
 												var="string"
 												value="${fn:substring(infos.get(i), 0, 30)}" />
+											</c:if>
 											<c:if test="${i == 1}">
 												<c:set
 													var="string2"
@@ -116,10 +128,16 @@
 											type="hidden"
 											value="${infos.get(infos.size()-1)}">
 										<!-- Bouton menant à Encherir -->
+										<c:set
+											var="connect"
+											value="${sessionScope.connected}">
+										</c:set>
+										<c:if test="${connect != null}">
 										<button
 											type="submit"
 											class="btn btn-primary"
 											value="encherir">Enchérir</button>
+										</c:if>
 									</form>
 								</div>
 							</div>

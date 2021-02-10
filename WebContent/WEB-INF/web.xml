@@ -9,6 +9,19 @@
 		<welcome-file>accueil</welcome-file>
 	</welcome-file-list>
 
+AfficherUnAutreProfil
+
+	<!-- /////////////////////////// SERVLET - PROFIL ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>AfficherUnAutreProfil</servlet-name>
+		<servlet-class>fr.eni.encheres.servlets.AfficherUnAutreProfil</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AfficherUnAutreProfil</servlet-name>
+		<url-pattern>/Profil</url-pattern>
+	</servlet-mapping>
+	
 	<!-- /////////////////////////// SERVLET - ACCUEILLIR ////////////////////////// -->
 
 	<servlet>
@@ -80,23 +93,18 @@
 	<servlet>
 		<servlet-name>MiseEnVente</servlet-name>
 		<servlet-class>fr.eni.encheres.servlets.MiseEnVente</servlet-class>
-<!-- 		<init-param>
-		<param-name>chemin</param-name> 
-		<param-value>/fichiers/</param-value> 
-	</init-param>
-		<multipart-config>
-		<location>e:/ENI</location>
-		<max-file-size>10485760</max-file-size> 10 Mo
-		<max-request-size>52428800</max-request-size> 5 x 10 Mo
-		<file-size-threshold>1048576</file-size-threshold> 1 Mo
-	</multipart-config> -->
+		<!-- <init-param> <param-name>chemin</param-name> <param-value>/fichiers/</param-value> 
+			</init-param> <multipart-config> <location>e:/ENI</location> <max-file-size>10485760</max-file-size> 
+			10 Mo <max-request-size>52428800</max-request-size> 5 x 10 Mo <file-size-threshold>1048576</file-size-threshold> 
+			1 Mo </multipart-config> -->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MiseEnVente</servlet-name>
 		<url-pattern>/MiseEnVente</url-pattern>
 	</servlet-mapping>
 
-	<!-- /////////////////////////// SERVLET - SERVLET SUPPRIMER MON COMPTE ////////////////////////// -->
+	<!-- /////////////////////////// SERVLET - SERVLET SUPPRIMER MON COMPTE 
+		////////////////////////// -->
 
 	<servlet>
 		<servlet-name>SupprimerMonCompte</servlet-name>
@@ -108,7 +116,8 @@
 	</servlet-mapping>
 
 
-	<!-- /////////////////////////// SERVLET - SERVLET AfficherEncheresCourantes ////////////////////////// -->
+	<!-- /////////////////////////// SERVLET - SERVLET AfficherEncheresCourantes 
+		////////////////////////// -->
 	<servlet>
 		<servlet-name>AfficherEncheresCourantes</servlet-name>
 		<servlet-class>fr.eni.encheres.servlets.AfficherEncheresCourantes</servlet-class>
@@ -128,8 +137,8 @@
 		<servlet-name>ModifierMonProfil</servlet-name>
 		<url-pattern>/ModifierMonProfil</url-pattern>
 	</servlet-mapping>
-	
-		<!-- /////////////////////////// SERVLET - SERVLET ENCHERIR ////////////////////////// -->
+
+	<!-- /////////////////////////// SERVLET - SERVLET ENCHERIR ////////////////////////// -->
 
 	<servlet>
 		<servlet-name>Encherir</servlet-name>
@@ -196,13 +205,22 @@
 		<servlet-name>PageFormulaireVente</servlet-name>
 		<jsp-file>/WEB-INF/jsp/PageFormulaireVente.jsp</jsp-file>
 	</servlet>
-	
-		<!-- /////////////////////////// JSP - PAGE ENCHERIR ////////////////////////// -->
+
+	<!-- /////////////////////////// JSP - PAGE ENCHERIR ////////////////////////// -->
 
 	<servlet>
 		<servlet-name>PageEncherir</servlet-name>
 		<jsp-file>/WEB-INF/jsp/PageEncherir.jsp</jsp-file>
 	</servlet>
+
+	<!-- /////////////////////////// JSP - PAGE AFFICHER UN AUTRE PROFIL ////////////////////////// -->
+
+	<servlet>
+		<servlet-name>PageAfficherUnAutreProfil</servlet-name>
+		<jsp-file>/WEB-INF/jsp/PageAfficherUnAutreProfil.jsp</jsp-file>
+	</servlet>
+
+	
 
 	<!-- /////////////////////////// PARAMETRES DE SESSION ////////////////////////// -->
 

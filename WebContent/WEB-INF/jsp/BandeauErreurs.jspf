@@ -1,0 +1,14 @@
+		
+		<% if (request.getParameter("erreurs")!=null) {
+		%>
+			<div class="row">
+					<div class="col-md-1"></div>
+				<c:forEach
+					items="${erreurs}"
+					var="erreur">
+				   	<div class="form-inline md-4 alert alert-danger"
+						role="alert">${erreur}</div>
+				</c:forEach>
+					<div class="col-md-1"></div>
+			</div>
+		<% }%>

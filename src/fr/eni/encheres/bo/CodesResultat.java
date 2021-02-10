@@ -17,6 +17,8 @@ public abstract class CodesResultat {
 
 	public static final int CREATION_ENCHERE_ERREUR = 18004;
 
+	public static final int MOT_DE_PASSE_ERREUR = 18010;
+
 	public static final int CORE_ERREUR = 19999;
 
 }

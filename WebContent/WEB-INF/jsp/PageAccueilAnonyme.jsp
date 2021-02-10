@@ -23,8 +23,7 @@
 <body>
 
 	<%@include file="FragmentHeader.jspf"%>
-	</form>
-	<%@include file="../BandeauErreurs.html"%>
+	<%@include file="BandeauErreurs.jspf"%>
 	<div class="container-fluid">
 		<div class="mt-5">
 			<div class="col-2">

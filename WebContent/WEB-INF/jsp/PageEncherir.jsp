@@ -26,7 +26,7 @@
 	</script>
 </head>
 <body>
-	<%@include file="FragmentHeader.jspf"%>
+
 	<%@include file="BandeauErreurs.jspf"%>
 	<!-- ************** -->
 	<!-- Fenetre modale -->

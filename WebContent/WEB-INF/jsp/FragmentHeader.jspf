@@ -38,10 +38,10 @@
 			 {
 			 %>
 				<h5 class="text-left fst-italic text-warning">
-					<i>${utilisateur.getPseudo()}</i>
+					<i>${sessionScope.utilisateur.pseudo}</i>
 				</h5>
 				<h6 class="text-left text-light">votre crédit :</h6>
-				<h5 class="text-left  text-warning">${utilisateur.getCredit()}
+				<h5 class="text-left  text-warning">${sessionScope.utilisateur.credit}
 					pts</h5>
 				<%
 					}

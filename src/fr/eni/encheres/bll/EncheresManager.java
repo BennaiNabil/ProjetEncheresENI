@@ -69,7 +69,7 @@ public class EncheresManager {
 		 * Récupére le montant de l'enchere et le crédit de l'utilisateur et vérifie que
 		 * l'utilisateur a le crédit suffisant pour enchérir
 		 */
-		return (!(enchere.getMontantEnchere() <= (enchere.getEncherisseur().getCredit())));
+		return (!(enchere.getMontantEnchere() > (enchere.getEncherisseur().getCredit())));
 	}
 
 }

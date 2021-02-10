@@ -9,6 +9,7 @@ import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
+import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ArticleVenduDAO;
 import fr.eni.encheres.dal.DAOFactory;
@@ -17,7 +18,8 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 
 	private static final String INSERT = "INSERT INTO ARTICLES_VENDUS VALUES(?,?,?,?,?,?,?,?)";
 	private static final String SELECT_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=?";
-
+	private static final String UPDATE_PRIX_VENTE = "UPDATE ARTICLES_VENDUS SET prix_vente = ? WHERE no_article = ?";
+	
 	@Override
 	public void insert(ArticleVendu articleVendu) {
 		PreparedStatement preparedStatement = null;
@@ -101,6 +103,23 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			} catch (SQLException throwables) {
 				throwables.printStackTrace();
 			}
+		}
+	}
+
+	@Override
+//	Permet de mettre à jour le prix d'un article après une enchère.
+	public void updatePrixVente(ArticleVendu article, Enchere enchere) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(UPDATE_PRIX_VENTE);
+			preparedStatement.setInt(1, (enchere.getMontantEnchere()));
+			preparedStatement.setInt(2, article.getNoArticle());
+			preparedStatement.executeUpdate();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
 		}
 	}
 }

@@ -3,6 +3,7 @@ package fr.eni.encheres.bll;
 import java.time.LocalDate;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.dal.ArticleVenduDAO;
 import fr.eni.encheres.dal.DAOFactory;
 
@@ -32,5 +33,9 @@ public class ArticleManager {
 
 	public boolean prixArticleEstValide(ArticleVendu article) {
 		return (!(article.getMiseAPrix() <= 0));
+	}
+	
+	public void updatePrixVente (ArticleVendu article, Enchere enchere) {
+		articleDAO.updatePrixVente(article, enchere);
 	}
 }

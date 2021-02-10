@@ -23,7 +23,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=?";
 	private static final String UNIQUE_PSEUDO_EMAIL = "SELECT * FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
-	private static final String UPDATE_CREDIT = "UPDATE UTILISATEURS SET credit = ?";
+	private static final String UPDATE_CREDIT = "UPDATE UTILISATEURS SET credit = ? WHERE no_utilisateur=? ";
 
 	/**
 	 * Méthode qui vérifie l'unicité du pseudo et de l'email dans la base de donnée
@@ -295,8 +295,13 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		try (Connection connection = ConnectionProvider.getConnection()) {
 			preparedStatement = connection.prepareStatement(UPDATE_CREDIT);
 			int creditOld = encherisseurNew.getCredit();
+			System.out.println("Ancien crédit : " + creditOld);
 			int montantEnchere = enchere.getMontantEnchere();
-			preparedStatement.setInt(1, (creditOld-montantEnchere));
+			int nouveauCredit = creditOld - montantEnchere;
+			System.out.println("Nouveau crédit : " + nouveauCredit);
+			System.out.println("Enchérisseur : " + encherisseurNew.getNoUtilisateur());
+			preparedStatement.setInt(1, nouveauCredit);
+			preparedStatement.setInt(2, encherisseurNew.getNoUtilisateur());
 			preparedStatement.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
@@ -314,6 +319,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			int creditOld = encherisseurOld.getCredit();
 			int montantEnchere = enchere.getMontantEnchere();
 			preparedStatement.setInt(1, (creditOld+montantEnchere));
+			preparedStatement.setInt(2, encherisseurOld.getNoUtilisateur());
 			preparedStatement.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();

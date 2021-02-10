@@ -1,7 +1,6 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
-import java.io.Serial;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +18,6 @@ import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 
 public class AfficherEncheresCourantes extends HttpServlet {
-	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private boolean veutFiltrerParCategorie(HttpServletRequest req) {

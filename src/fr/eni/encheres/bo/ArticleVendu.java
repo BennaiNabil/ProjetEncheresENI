@@ -1,6 +1,5 @@
 package fr.eni.encheres.bo;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +13,6 @@ import java.util.List;
  */
 public class ArticleVendu implements Serializable {
 
-	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private int noArticle;

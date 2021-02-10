@@ -19,7 +19,7 @@
 <body>
 	<%@include file="FragmentHeader.jspf"%>
 	</form>
-	<%@include file="../BandeauErreurs.html"%>
+	<%@include file="BandeauErreurs.jspf"%>
 	<%@include file="../BandeauValidation.html"%>
 
 	<div class="container">

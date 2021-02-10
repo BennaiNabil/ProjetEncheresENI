@@ -1,16 +1,14 @@
 package fr.eni.encheres.bo;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * L'objet métier Enchere permet de reproduire les données de la table Enchere,
- * et modélise un enchère
+ * L'objet métier Enchere permet de reproduire les données de la table
+ * Enchere, et modélise un enchère
  */
 public class Enchere implements Serializable {
 
-	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private LocalDate dateEnchere;

@@ -1,7 +1,6 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
-import java.io.Serial;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,6 @@ import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.messages.LecteurMessage;
 
 public class Encherir extends HttpServlet {
-	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -64,7 +62,8 @@ public class Encherir extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Récupérer les données à intégrer [idUtilisateur, noarticle, date d'enchère,
+		// Récupérer les données à intégrer [idUtilisateur, noarticle, date
+		// d'enchère,
 		// montant enchenre].
 		HttpSession session = request.getSession();
 		ArticleManager articleManager = new ArticleManager();

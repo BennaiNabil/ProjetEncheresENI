@@ -20,7 +20,7 @@
 </head>
 <body>
 	<%@include file="FragmentHeader.jspf"%>
-	<%@include file="../BandeauErreurs.html"%>
+	<%@include file="BandeauErreurs.jspf"%>
 
 
 	<h4 class="text-center">Formulaire d'inscription</h4>
@@ -41,9 +41,7 @@
 						<label class="input-group md-1 form-inline" for="textinput">Pseudo</label>
 						<div class="form-group md-4 form-inline">
 							<input id="pseudo" name="pseudo" type="text" class="form-control"
-								placeholder="Pseudo" maxlength="30" 
-								oninvalid="this.setCustomValidity('Le pseudo ne peux contenir que des lettres et des chiffres')"
-								oninput="this.setCustomValidity('')" required>
+								placeholder="Pseudo" maxlength="30" required>
 						</div>
 
 						<label class="input-group md-1 form-inline" for="textinput">E-Mail</label>
@@ -71,19 +69,16 @@
 						</div>
 						<div class="input-group md-4 form-inline">
 							<input class="form-control" id="codePostal" name="codePostal"
-								type="text" placeholder="Code Postal" maxlength="10"
-								pattern="^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$"
-								oninvalid="this.setCustomValidity('Le format du code postal n'est pas correct (5 chiffres)')"
-								oninput="this.setCustomValidity('')" required> <input
+								type="text" placeholder="Code Postal" maxlength="10" required> <input
 								class="form-control" id="ville" name="ville" type="text"
 								placeholder="Ville" maxlength="30" required>
 						</div>
 
 						<label for="textinput">Mot de passe</label>
 						<div class="input-group md-4 form-inline">
-							<input id="mdp" name="mdp" type="text" class="form-control md-3"
+							<input id="mdp" name="mdp" type="password" class="form-control md-3"
 								placeholder="Mot de passe" maxlength="30" required> <input
-								id="conf" name="conf" type="text" class="form-control md-3"
+								id="conf" name="conf" type="password" class="form-control md-3"
 								placeholder="Confirmation mot de passe" maxlength="30" required>
 						</div>
 

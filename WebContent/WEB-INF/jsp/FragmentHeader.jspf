@@ -101,20 +101,19 @@
 						</form>
 					</li>
 					<li class="nav-item">
-						<form 
 						<%
 						 connecte = (String)session.getAttribute("connected");
 						 if (connecte == "oui")
 						 {
 						 // affichage du bouton de déconnexion si l'utilisateur est connecté
 						 %> 
-							action="<%=request.getContextPath()%>/Deconnexion">
+							<form action="<%=request.getContextPath()%>/Deconnexion">
 							<!-- Mettre ici la servlet profil connecté -->
 							<button class="btn btn-primary mt-5 mr-2" type="submit">Deconnexion</button>
+							</form>
 							<%
 								}
 							%>
-						</form>
 					</li>
 				</ul>
 			</div>

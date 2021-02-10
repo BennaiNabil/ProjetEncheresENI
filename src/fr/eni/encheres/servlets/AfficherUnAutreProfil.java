@@ -1,6 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,12 +16,14 @@ import fr.eni.encheres.bo.Utilisateur;
  * Servlet implementation class AfficherUnAutreProfil
  */
 public class AfficherUnAutreProfil extends HttpServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Utilisateur utilisateur = new Utilisateur();
+		Utilisateur utilisateur;
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		String pseudo = request.getParameter("pseudo");
 		utilisateur = utilisateurManager.recupererUtilisateurParPseudo(pseudo);
@@ -33,6 +36,7 @@ public class AfficherUnAutreProfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

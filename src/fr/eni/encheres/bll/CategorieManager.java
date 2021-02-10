@@ -7,7 +7,7 @@ import fr.eni.encheres.dal.CategorieDAO;
 import fr.eni.encheres.dal.DAOFactory;
 
 public class CategorieManager {
-	private CategorieDAO categorieDAO;
+	private final CategorieDAO categorieDAO;
 
 	public CategorieManager() {
 		this.categorieDAO = DAOFactory.getCategorieDAO();

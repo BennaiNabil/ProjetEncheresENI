@@ -9,7 +9,7 @@ import fr.eni.encheres.dal.UtilisateurDAO;
 
 public class UtilisateurManager {
 
-	private static UtilisateurDAO daoUtilisateur;
+	private static final UtilisateurDAO daoUtilisateur;
 
 	static {
 		daoUtilisateur = DAOFactory.getUtilisateurDAO();
@@ -43,8 +43,8 @@ public class UtilisateurManager {
 	}
 
 	/**
-	 * Méthode pour récupérer les informations d'un utilisateur lors de sa
-	 * connexion avec son pseudo
+	 * Méthode pour récupérer les informations d'un utilisateur lors de sa connexion
+	 * avec son pseudo
 	 *
 	 * @param pseudo
 	 * @return
@@ -58,7 +58,7 @@ public class UtilisateurManager {
 	 * Méthode qui permet de valider les champs entrés lors de l'inscription de
 	 * l'utilisateur Longueurs compatibles avec celles fixées par la base de
 	 * données, et regex pour éviter toto comme adresse mail
-	 * 
+	 *
 	 * @param utilisateur
 	 * @return
 	 */
@@ -79,16 +79,13 @@ public class UtilisateurManager {
 		}
 
 		// Vérification
-		if (!(Pattern.matches(emailRgx, utilisateur.getEmail()) && Pattern.matches(pseudoRgx, utilisateur.getPseudo())
-				&& Pattern.matches(telephoneRgx, utilisateur.getTelephone()))) {
-			return false;
-		}
-		return true;
+		return Pattern.matches(emailRgx, utilisateur.getEmail()) && Pattern.matches(pseudoRgx, utilisateur.getPseudo())
+				&& Pattern.matches(telephoneRgx, utilisateur.getTelephone());
 	}
 
 	/**
 	 * Méthode qui vérifie l'unicité du pseudo et de l'email
-	 * 
+	 *
 	 * @param pseudo
 	 * @param email
 	 * @return
@@ -99,7 +96,7 @@ public class UtilisateurManager {
 
 	/**
 	 * Méthode qui selectionne un utilisateur par son id
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -109,7 +106,7 @@ public class UtilisateurManager {
 
 	/**
 	 * Méthode qui sélectionne un utilisateur par son pseudo
-	 * 
+	 *
 	 * @param pseudo
 	 * @return
 	 */
@@ -119,7 +116,7 @@ public class UtilisateurManager {
 
 	/**
 	 * Méthode qui sélectionne tous les utilisateurs
-	 * 
+	 *
 	 * @return
 	 */
 	public List<Utilisateur> selectionnerTousLesUtilisateurs() {
@@ -128,7 +125,7 @@ public class UtilisateurManager {
 
 	/**
 	 * Méthode qui modifie un utilisateur
-	 * 
+	 *
 	 * @param utilisateur
 	 */
 	public void modifierUtilisateur(Utilisateur utilisateur) {
@@ -137,11 +134,11 @@ public class UtilisateurManager {
 
 	/**
 	 * Méthode qui supprime un utilisateur
-	 * 
+	 *
 	 * @param utilisateur
 	 */
 	public void supprimerUtilisateur(Utilisateur utilisateur) {
 		daoUtilisateur.delete(utilisateur);
 	}
 
-};
+}

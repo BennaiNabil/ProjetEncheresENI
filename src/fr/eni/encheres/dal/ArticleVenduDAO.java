@@ -4,5 +4,4 @@ import fr.eni.encheres.bo.ArticleVendu;
 
 public interface ArticleVenduDAO extends DAO<ArticleVendu> {
 
-	
 }

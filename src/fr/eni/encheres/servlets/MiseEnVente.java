@@ -1,8 +1,10 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +23,8 @@ import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class MiseEnVente extends HttpServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
-
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -88,14 +90,14 @@ public class MiseEnVente extends HttpServlet {
 		// Ajout du retrait à la base de données.
 		RetraitManager retraitManager = new RetraitManager();
 		retraitManager.insertRetrait(retrait);
-		
 
-	if((request.getAttribute("erreur")==null))
+		if ((request.getAttribute("erreur") == null))
 
-	{
-		request.setAttribute("success", CodesResultat.CREATION_ARTICLE_SUCCESS);
+		{
+			request.setAttribute("success", CodesResultat.CREATION_ARTICLE_SUCCESS);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");
+		rd.forward(request, response);
+
 	}
-	RequestDispatcher rd = request
-			.getRequestDispatcher("/WEB-INF/jsp/PageFormulaireVente.jsp");rd.forward(request,response);
-
-}}
+}

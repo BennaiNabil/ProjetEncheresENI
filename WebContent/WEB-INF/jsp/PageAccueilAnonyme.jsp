@@ -66,7 +66,7 @@
 				test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
 				<div class="row form-inline text-left">
 					<c:forEach items="${listeInfosEncheres}" var="infos">
-						<div class="card md-5 form-inline text-left"
+						<div class="card md-5 form-inline text-left m-5"
 							style="width: 18rem; border: 2px solid black; border-radius: 10px">
 							<div class="card-body text-left">
 								<form method="GET"

@@ -1,6 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import fr.eni.encheres.bo.CodesResultat;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class Inscription extends HttpServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

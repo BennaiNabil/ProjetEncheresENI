@@ -1,5 +1,6 @@
 package fr.eni.encheres.bo;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class ArticleVendu implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private int noArticle;
@@ -240,16 +242,15 @@ public class ArticleVendu implements Serializable {
 	 * Override de la méthode toString de la superclasse Object pour la classe
 	 * ArticleVendu
 	 *
-	 * @return strArticleVendu une represéntation textuelle de l'article vendu
+	 * @return une represéntation textuelle de l'article vendu
 	 */
 	@Override
 	public String toString() {
-		String strArticleVendu = String.format(
+		return String.format(
 				"ArticleVendu{noArticle=%d, nomArticle='%s', description='%s', dateDebutEncheres=%s, "
 						+ "dateFinEncheres=%s, miseAPrix=%d, prixVente=%d, etatVente='%s', categorie=%s, "
 						+ "listeEncheres=%s, vendeur=%s, acheteur=%s, retrait=%s}",
 				getNoArticle(), getNomArticle(), description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente,
 				etatVente, categorie, listeEncheres, vendeur, acheteur, retrait);
-		return strArticleVendu;
 	}
 }

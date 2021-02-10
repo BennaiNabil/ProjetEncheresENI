@@ -1,5 +1,6 @@
 package fr.eni.encheres.bo;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public class Utilisateur implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private int noUtilisateur;
@@ -239,12 +241,11 @@ public class Utilisateur implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		String strUtilisateur = String.format(
+		return String.format(
 				"Utilisateur{noUtilisateur=%d, pseudo='%s', nom='%s', prenom='%s', email='%s', telephone='%s', "
 						+ "rue='%s', codePostal='%s', ville='%s', motDePasse='%s', credit=%d, estAdministrateur=%s, "
 						+ "vente=%s, listeArticlesAchete=%s, listeEncheres=%s}",
 				noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit,
 				estAdministrateur, vente, listeArticlesAchete, listeEncheres);
-		return strUtilisateur;
 	}
 }

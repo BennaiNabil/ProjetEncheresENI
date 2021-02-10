@@ -1,6 +1,5 @@
 package fr.eni.encheres.dal.jdbc;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,21 +10,19 @@ import java.util.List;
 import fr.eni.encheres.bo.Image;
 import fr.eni.encheres.dal.ImageDAO;
 
-public class ImageDAOJdbcImpl implements ImageDAO{
+public class ImageDAOJdbcImpl implements ImageDAO {
 	private static final String INSERT = "INSERT INTO IMAGES VALUES(?,?)";
 
 	@Override
 	public void insert(Image image) {
 		PreparedStatement preparedStatement = null;
-    	ResultSet resultSet = null;
-    	FileInputStream fis = null;
-    	try (Connection connection = ConnectionProvider.getConnection()) {
+		ResultSet resultSet = null;
+		FileInputStream fis = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
 
-    		
-    		
-    	} catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	@Override
@@ -43,13 +40,13 @@ public class ImageDAOJdbcImpl implements ImageDAO{
 	@Override
 	public void update(Image object) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(Image object) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

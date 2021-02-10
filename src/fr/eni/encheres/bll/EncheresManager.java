@@ -1,6 +1,5 @@
 package fr.eni.encheres.bll;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
@@ -9,7 +8,7 @@ import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.EnchereDAO;
 
 public class EncheresManager {
-	private EnchereDAO enchereDAO;
+	private final EnchereDAO enchereDAO;
 
 	public EncheresManager() {
 		this.enchereDAO = DAOFactory.getEnchereDAO();
@@ -33,21 +32,22 @@ public class EncheresManager {
 
 	public void insert(Enchere enchere) throws BLLException {
 		if (montantEnchereEstValide(enchere) && montantCreditEstValide(enchere)) {
-		enchereDAO.insert(enchere);
-	}
-		else {
+			enchereDAO.insert(enchere);
+		} else {
 			throw new BLLException();
 		}
 	}
 
 	public boolean montantEnchereEstValide(Enchere enchere) {
-		/*Permet de vérifier que le montant proposé par le nouvel enchérisseur
-		 est bien supérieur au montant actuel de l'article */
-		
+		/*
+		 * Permet de vérifier que le montant proposé par le nouvel enchérisseur est bien
+		 * supérieur au montant actuel de l'article
+		 */
+
 		// 1. Récupérer le montant précédent
 		int idArticle = enchere.getArticleVendu().getNoArticle();
 		EncheresManager enchereManager = new EncheresManager();
-		List<Enchere> listeEnchere = new ArrayList<>();
+		List<Enchere> listeEnchere;
 		listeEnchere = enchereManager.selectByIdArticle(idArticle);
 
 		// 2.a. Si aucune enchère n'a été réalisée - comparer les deux montants
@@ -58,16 +58,18 @@ public class EncheresManager {
 
 		// 2.b. Si il y a déjà eu des enchères - comparer les deux montants
 		else {
-			Enchere encherePrecedente = listeEnchere.get(listeEnchere.size()-1);
+			Enchere encherePrecedente = listeEnchere.get(listeEnchere.size() - 1);
 			int montantPrecedent = encherePrecedente.getMontantEnchere();
 			return (!(enchere.getMontantEnchere() <= montantPrecedent));
 		}
 	}
 
 	public boolean montantCreditEstValide(Enchere enchere) {
-		/* Récupére le montant de l'enchere et le crédit de l'utilisateur et 
-		vérifie que l'utilisateur a le crédit suffisant pour enchérir */	
-		return(!(enchere.getMontantEnchere() <= (enchere.getEncherisseur().getCredit())));
+		/*
+		 * Récupére le montant de l'enchere et le crédit de l'utilisateur et vérifie que
+		 * l'utilisateur a le crédit suffisant pour enchérir
+		 */
+		return (!(enchere.getMontantEnchere() <= (enchere.getEncherisseur().getCredit())));
 	}
 
 }

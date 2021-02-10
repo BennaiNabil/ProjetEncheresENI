@@ -1,5 +1,6 @@
 package fr.eni.encheres.bo;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -9,6 +10,7 @@ import java.time.LocalDate;
  */
 public class Enchere implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private LocalDate dateEnchere;
@@ -81,9 +83,7 @@ public class Enchere implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		String strEnchere = String.format(
-				"Enchere{dateEnchere=%s, montantEnchere=%d, encherisseur=%s, articleVendu=%s}", dateEnchere,
-				montantEnchere, encherisseur, articleVendu);
-		return strEnchere;
+		return String.format("Enchere{dateEnchere=%s, montantEnchere=%d, encherisseur=%s, articleVendu=%s}",
+				dateEnchere, montantEnchere, encherisseur, articleVendu);
 	}
 }

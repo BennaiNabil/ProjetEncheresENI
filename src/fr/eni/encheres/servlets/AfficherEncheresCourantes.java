@@ -1,7 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.Serial;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +19,7 @@ import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 
 public class AfficherEncheresCourantes extends HttpServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private boolean veutFiltrerParCategorie(HttpServletRequest req) {
@@ -37,25 +38,23 @@ public class AfficherEncheresCourantes extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
 
 		boolean aUnArticle, aUneCategorie;
-
 		int noCategorieFiltre = 0;
 		String nomArticleFiltre = null;
 
 		CategorieManager categorieManager = new CategorieManager();
 		EncheresManager encheresManager = new EncheresManager();
 
-		List<List<String>> listeInfosEncheres = new ArrayList<>();
-
 		Categorie categorieChoisie;
-
 		String choixTri = request.getParameter("tri");
 
 		aUnArticle = veutFiltrerParNomDArticle(request);
 		aUneCategorie = veutFiltrerParCategorie(request);
 
+		List<List<String>> listeInfosEncheres;
 		List<ArticleVendu> listeEncheresBrute = encheresManager.recupererEncheresCourantes();
 		List<ArticleVendu> listeEncheresEnCours;
 
@@ -91,25 +90,12 @@ public class AfficherEncheresCourantes extends HttpServlet {
 	}
 
 	private List<ArticleVendu> filtrerParCategorie(List<ArticleVendu> l, String lib) {
-//		List<ArticleVendu> listeFiltree = new ArrayList<>();
-//		for (ArticleVendu articleVendu : l) {
-//			if (articleVendu.getCategorie().getLibelle().equals(lib)) {
-//				listeFiltree.add(articleVendu);
-//			}
-//		}
-		return l.stream().filter(art -> art.getCategorie().getLibelle().equalsIgnoreCase(lib))
+		return l.stream().filter(unArticle -> unArticle.getCategorie().getLibelle().equalsIgnoreCase(lib))
 				.collect(Collectors.toList());
 	}
 
 	private List<ArticleVendu> filtrerParNomArticle(List<ArticleVendu> l, String nom) {
-//		List<ArticleVendu> listeFiltree = new ArrayList<>();
-//		for (ArticleVendu articleVendu : l) {
-//			if (articleVendu.getNomArticle().toLowerCase().indexOf(nom.toLowerCase()) != -1) {
-//				listeFiltree.add(articleVendu);
-//			}
-//		}
-
-		return l.stream().filter(art -> art.getNomArticle().toLowerCase().indexOf(nom.toLowerCase()) != -1)
+		return l.stream().filter(unArticle -> unArticle.getNomArticle().toLowerCase().contains(nom.toLowerCase()))
 				.collect(Collectors.toList());
 	}
 

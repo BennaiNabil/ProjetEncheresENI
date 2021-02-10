@@ -1,6 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.io.Serial;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.encheres.bll.CategorieManager;
 
 public class Deconnexion extends HttpServlet {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Override

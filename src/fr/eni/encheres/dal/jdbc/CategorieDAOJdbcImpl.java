@@ -17,7 +17,6 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 	private static final String SELECT_ALL = "SELECT * FROM CATEGORIES";
 	private static final String SELECT_BY_ID = "SELECT * FROM CATEGORIES WHERE no_categorie = ?";
 
-
 	@Override
 	public void insert(Categorie object) {
 
@@ -78,7 +77,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 		}
 		return categorie;
 	}
-	
+
 	@Override
 	public Categorie selectCategorieById(int idCategorie) {
 		PreparedStatement preparedStatement = null;
@@ -119,8 +118,8 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 
 }
 /*
- * 
+ *
  * libelle : String CategorieDAOJdbcImpl.selectCategorieByNom(libelle) ->
  * Categorie Categorie.getId()
- * 
+ *
  */

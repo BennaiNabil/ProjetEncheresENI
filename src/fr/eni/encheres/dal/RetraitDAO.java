@@ -4,5 +4,4 @@ import fr.eni.encheres.bo.Retrait;
 
 public interface RetraitDAO extends DAO<Retrait> {
 
-	
 }

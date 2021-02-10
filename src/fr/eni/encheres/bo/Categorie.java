@@ -1,5 +1,6 @@
 package fr.eni.encheres.bo;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public class Categorie implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private int noCategorie;
@@ -35,12 +37,12 @@ public class Categorie implements Serializable {
 		this.libelle = libelle;
 		this.articlesVendus = articlesVendus;
 	}
-	
+
 	/**
 	 * Constructeur complet de la classe Catagorie avec les paramètres suivants:
 	 *
-	 * @param noCategorie    le numéro de la catégorie
-	 * @param libelle        le libellé de la catégorie
+	 * @param noCategorie le numéro de la catégorie
+	 * @param libelle     le libellé de la catégorie
 	 */
 	public Categorie(int noCategorie, String libelle) {
 		this.noCategorie = noCategorie;
@@ -82,8 +84,7 @@ public class Categorie implements Serializable {
 
 	@Override
 	public String toString() {
-		String strCategorie = String.format("Categorie{noCategorie=%d, libelle='%s', articlesVendus=%s}", noCategorie,
-				libelle, articlesVendus);
-		return strCategorie;
+		return String.format("Categorie{noCategorie=%d, libelle='%s', articlesVendus=%s}", noCategorie, libelle,
+				articlesVendus);
 	}
 }

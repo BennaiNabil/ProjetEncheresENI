@@ -1,14 +1,13 @@
 package fr.eni.encheres.bll;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.dal.ArticleVenduDAO;
 import fr.eni.encheres.dal.DAOFactory;
 
 public class ArticleManager {
-	private ArticleVenduDAO articleDAO;
+	private final ArticleVenduDAO articleDAO;
 
 	public ArticleManager() {
 		this.articleDAO = DAOFactory.getArticleVenduDAO();
@@ -21,14 +20,14 @@ public class ArticleManager {
 			throw new BLLException();
 		}
 	}
-	
+
 	public ArticleVendu selectArticlebyId(int idArticle) {
 		return this.articleDAO.selectById(idArticle);
 	}
 
 	public boolean dateArticleEstValide(ArticleVendu article) {
-		 return (!(article.getDateDebutEncheres().isBefore(LocalDate.now()) ||
-				    article.getDateFinEncheres().isBefore(article.getDateDebutEncheres())));
+		return (!(article.getDateDebutEncheres().isBefore(LocalDate.now())
+				|| article.getDateFinEncheres().isBefore(article.getDateDebutEncheres())));
 	}
 
 	public boolean prixArticleEstValide(ArticleVendu article) {

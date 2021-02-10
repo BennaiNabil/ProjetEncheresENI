@@ -64,7 +64,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 		Statement statement = null;
 		ResultSet resultSet = null;
 		List<ArticleVendu> listeEncheresCourantes = new ArrayList<>();
-		ArticleVendu tmp = new ArticleVendu();
+		ArticleVendu tmp;
 		int noArticle;
 		String libCate;
 		try (Connection connection = ConnectionProvider.getConnection()) {
@@ -113,18 +113,19 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 		return null;
 	}
 
+	@Override
 	public List<Enchere> selectByIdArticle(int id) {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		List<Enchere> enchere = new ArrayList<>();
-		Enchere enchereTmp = new Enchere();
+		Enchere enchereTmp;
 		try (Connection connection = ConnectionProvider.getConnection()) {
 			preparedStatement = connection.prepareStatement(SELECT_BY_ID_ARTICLE);
 			preparedStatement.setInt(1, id);
 			resultSet = preparedStatement.executeQuery();
 
 			if (resultSet.next()) {
-				Utilisateur idEncherisseur = DAOFactory.getUtilisateurDAO().selectById(resultSet.getInt(1)) ;
+				Utilisateur idEncherisseur = DAOFactory.getUtilisateurDAO().selectById(resultSet.getInt(1));
 				ArticleVendu noArticle = DAOFactory.getArticleVenduDAO().selectById(resultSet.getInt(2));
 				LocalDate dateEnchere = resultSet.getDate(3).toLocalDate();
 				int montantEnchere = resultSet.getInt(4);

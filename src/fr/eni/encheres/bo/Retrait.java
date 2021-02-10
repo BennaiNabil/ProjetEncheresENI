@@ -1,5 +1,6 @@
 package fr.eni.encheres.bo;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -9,6 +10,7 @@ import java.io.Serializable;
 
 public class Retrait implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private String rue;
@@ -81,8 +83,7 @@ public class Retrait implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		String strRetrait = String.format("Retrait{rue='%s', codePostal='%s', ville='%s', articleVendu=%s}", rue,
-				codePostal, ville, articleVendu);
-		return strRetrait;
+		return String.format("Retrait{rue='%s', codePostal='%s', ville='%s', articleVendu=%s}", rue, codePostal, ville,
+				articleVendu);
 	}
 }

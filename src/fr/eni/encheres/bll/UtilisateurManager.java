@@ -3,6 +3,7 @@ package fr.eni.encheres.bll;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.UtilisateurDAO;
@@ -139,6 +140,16 @@ public class UtilisateurManager {
 	 */
 	public void supprimerUtilisateur(Utilisateur utilisateur) {
 		daoUtilisateur.delete(utilisateur);
+	}
+	
+
+	public void updateCreditDown(Utilisateur encherisseurNew, Enchere enchere) {
+		daoUtilisateur.updateCreditDown(encherisseurNew, enchere);
+	}
+
+
+	public void updateCreditUp(Utilisateur encherisseurOld, Enchere enchere) {
+		daoUtilisateur.updateCreditUp(encherisseurOld, enchere);
 	}
 
 }

@@ -98,6 +98,5 @@ public class Encherir extends HttpServlet {
 		// renvoi vers la page d'accueil.
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 		rd.forward(request, response);
-
 	}
 }

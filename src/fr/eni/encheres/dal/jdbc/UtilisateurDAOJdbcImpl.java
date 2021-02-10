@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.UtilisateurDAO;
 
@@ -22,6 +23,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=?";
 	private static final String UNIQUE_PSEUDO_EMAIL = "SELECT * FROM UTILISATEURS WHERE (pseudo=? OR email=?)";
+	private static final String UPDATE_CREDIT = "UPDATE UTILISATEURS SET credit = ?";
 
 	/**
 	 * Méthode qui vérifie l'unicité du pseudo et de l'email dans la base de donnée
@@ -285,4 +287,39 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		preparedStatement.setInt(10, utilisateur.getCredit());
 		preparedStatement.setBoolean(11, utilisateur.isEstAdministrateur());
 	}
+
+	@Override
+	public void updateCreditDown(Utilisateur encherisseurNew, Enchere enchere) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(UPDATE_CREDIT);
+			int creditOld = encherisseurNew.getCredit();
+			int montantEnchere = enchere.getMontantEnchere();
+			preparedStatement.setInt(1, (creditOld-montantEnchere));
+			preparedStatement.executeUpdate();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
+		}
+	}
+
+	@Override
+	public void updateCreditUp(Utilisateur encherisseurOld, Enchere enchere) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try (Connection connection = ConnectionProvider.getConnection()) {
+			preparedStatement = connection.prepareStatement(UPDATE_CREDIT);
+			int creditOld = encherisseurOld.getCredit();
+			int montantEnchere = enchere.getMontantEnchere();
+			preparedStatement.setInt(1, (creditOld+montantEnchere));
+			preparedStatement.executeUpdate();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		} finally {
+			closeResources(preparedStatement, resultSet);
+		}
+	}
+		
 }

@@ -50,7 +50,7 @@
 						<label class="mr-2">ET/OU Article : </label> <input type="text"
 							id="nomArticle" name="nomArticle"
 							value="${nomArticleChoisi !=null? nomArticleChoisi: null }"
-							placeholder="Entrez des mots clés pour les enchères">
+							placeholder="mots clés">
 					</div>
 
 					<div class="form-group col-auto">
@@ -74,13 +74,16 @@
 			boolean estPremiereRecherche = true;
 		%>
 	</div class="container">
+	<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
 	<div class="form-row">
 		<c:choose>
 			<c:when
 				test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
 				<div class="row form-inline text-left">
 					<c:forEach items="${listeInfosEncheres}" var="infos">
-						<div class="card md-8 form-inline text-left m-3"
+						<div class="card md-7 form-inline text-left m-3 mx-auto"
 							style="width: 18rem; border: 2px solid black; border-radius: 10px">
 							<div class="card-body text-left">
 								<form method="GET"
@@ -118,6 +121,8 @@
 			</c:when>
 			<c:otherwise>
 	</div>
+	</div>
+	<div class="col-md-1"></div>
 	</div>
 	<div class="container-fluid">
 		<p class="text-center">

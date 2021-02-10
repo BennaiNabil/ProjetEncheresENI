@@ -66,9 +66,6 @@
 							<%
 							String idArticle = String.valueOf(request.getAttribute("idArticle"));
 							%>
-							<p><%
-							out.print("id Article : " + idArticle);
-							%>
 							<input id="idArticle" name="idArticle" type="hidden"
 								value="${idArticle}">
 

@@ -1,4 +1,12 @@
 @charset "UTF-8";
+
+.foot {
+  	height : 50px;
+  	overflow:hidden;
+  	position:relative;
+	bottom:-600px;
+}
+
 .btn {
     color: #ffffff;
     border: 1px solid black;

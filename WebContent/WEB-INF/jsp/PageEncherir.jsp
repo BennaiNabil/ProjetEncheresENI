@@ -27,7 +27,7 @@
 </head>
 <body>
 
-	<%@include file="../BandeauErreurs.html"%>
+	<%@include file="BandeauErreurs.jspf"%>
 	<!-- ************** -->
 	<!-- Fenetre modale -->
 	<!-- ************** -->

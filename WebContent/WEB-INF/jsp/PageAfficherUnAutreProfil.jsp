@@ -18,7 +18,6 @@
 
 	<%@include file="FragmentHeader.jspf"%>
 	</form>
-	<%@include file="../BandeauErreurs.html"%>
 	<h4 class="text-center">Profil de ${utilisateur.getPseudo() }</h4>
 	<div class="container-fluid">
 		<div class="row">

@@ -25,7 +25,7 @@
 	<%@include file="BandeauErreurs.jspf"%>
 
 
-	<h4 class="text-center">Formulaire d'inscription</h4>
+	<h4 class="text-center mt-4">Formulaire d'inscription</h4>
 	<div class="container-fluid">
 		<form method="POST"
 			action="<%= request.getContextPath() %>/Inscription">
@@ -40,7 +40,7 @@
 								name="prenom" type="text" class="form-control"
 								placeholder="Prénom" maxlength="30" required>
 						</div>
-						<label class="input-group md-1 form-inline" for="textinput">Pseudo</label>
+						<label for="textinput" class="mt-3">Pseudo</label>
 						<div class="form-group md-4 form-inline">
 							<input id="pseudo" name="pseudo" type="text" class="form-control"
 								placeholder="Pseudo" maxlength="30" required>
@@ -76,7 +76,7 @@
 								placeholder="Ville" maxlength="30" required>
 						</div>
 
-						<label for="textinput">Mot de passe</label>
+						<label for="textinput" class="mt-3">Mot de passe</label>
 						<div class="input-group md-4 form-inline">
 							<input id="mdp" name="mdp" type="password" class="form-control md-3"
 								placeholder="Mot de passe" maxlength="30" required> <input
@@ -87,8 +87,8 @@
 						<div class="fst-italic text-danger">
 							Tous les champs sont obligatoires</br>
 						</div>
-						<div class="fst-italic text-light bg-dark">Un crédit de 100
-							points vous est offert</div>
+						<div class="fst-italic text-light text-center bg-dark mt-4">Un crédit de 100
+							points vous est offert !</div>
 						</row>
 						&nbsp;
 						<row>

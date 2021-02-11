@@ -83,14 +83,19 @@ public class Encherir extends HttpServlet {
 //		System.out.println("int id Article 3 : " + idArticlePOST);
 
 		ArticleVendu article = articleManager.selectArticlebyId(idArticle);
+		System.out.println("article : " + idArticle);
 		LocalDate dateEnchere = LocalDate.now();
 		int montantEnchere = Integer.parseInt(request.getParameter("enchereNew"));
+		System.out.println("montant enchere : " + montantEnchere);
 
 		// Création de l'objet Enchere
 		Enchere enchere = new Enchere(dateEnchere, montantEnchere, encherisseur, article);
 
 		// Ajout à la base de données de l'enchere
 		EncheresManager enchereManager = new EncheresManager();
+		EncheresManager enchereManagerARembourser = new EncheresManager();
+		Enchere enchereARembourser = new Enchere();
+
 		try {
 			enchereManager.insert(enchere);
 		} catch (BLLException e) {
@@ -99,6 +104,7 @@ public class Encherir extends HttpServlet {
 			request.setAttribute("erreurs", erreurs);
 			e.printStackTrace();
 		}
+		enchereARembourser = enchereManager.derniereEnchere(enchere);
 
 		// changement du prix de vente de l'article
 		articleManager.updatePrixVente(article, enchere);

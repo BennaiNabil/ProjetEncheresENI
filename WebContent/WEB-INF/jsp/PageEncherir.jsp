@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="fr.eni.encheres.messages.LecteurMessage"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,7 @@
 <body>
 
 	<%@include file="BandeauErreurs.jspf"%>
+	<%@include file="../BandeauValidation.html"%>
 	<!-- ************** -->
 	<!-- Fenetre modale -->
 	<!-- ************** -->
@@ -38,7 +40,7 @@
 				<!-- Header -->
 				<!-- ****** -->
 				<div class="modal-header">
-					<p>Faire une nouvelle enchère</p>
+					<p>Enchérissez sur un article</p>
 				</div>
 				<!-- **** -->
 				<!-- body -->
@@ -55,9 +57,9 @@
 				<div class="modal-body">
 					
 						<!--  Affichage de l'enchère actuelle -->
-						<div class="row">
+						<div class="row ml-2 mr-2">
 							<p>
-								Enchère actuelle :
+								Enchère actuelle : 
 								<%
 							String montantActuel = String.valueOf(request.getAttribute("montantActuel"));
 							
@@ -74,10 +76,10 @@
 
 							<!-- Value = enchère actuelle -->
 						</div>
-						<div class="row">
+						<div class="row ml-2 mr-2">
 							<!--  Champs de saisie de l'enchère de l'utilisateur -->
-							<label class="col-4" for="enchereNew">Votre enchère :</label> <input
-								class="col-6" type="text" name="enchereNew" id="enchereNew"
+							<label for="enchereNew">Votre enchère :</label> <input
+								class="form-control" type="text" name="enchereNew" id="enchereNew"
 								autofocus="autofocus" required="required" />
 						</div>
 				</div>
@@ -92,7 +94,7 @@
 							class="btn btn-primary" data-dismiss="modal">Retour</button>
 
 						<!-- Bouton de validation des infos saisie dans la modale -->
-						<button type="submit" class="btn btn-primary" value="Connexion">Enchérir</button>
+						<button type="submit" class="btn btn-secondary" value="Connexion">Enchérir</button>
 					
 				</div>
 			</div>

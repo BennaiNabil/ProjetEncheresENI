@@ -228,7 +228,7 @@ public class ArticleVendu implements Serializable {
 		infosArticle.add(this.prixVente + " crédits");
 		infosArticle.add(this.dateFinEncheres.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 		infosArticle.add(this.vendeur.getPseudo());
-		infosArticle.add(this.noArticle + "");
+//		infosArticle.add(this.noArticle + "");
 		return infosArticle;
 	}
 

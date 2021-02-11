@@ -70,6 +70,16 @@ public class Inscription extends HttpServlet {
 				request.setAttribute("utilisateur", null);
 				session.setAttribute("utilisateur", null);
 				session.setAttribute("connected", null);
+
+				request.setAttribute("pseudo", pseudo);
+				request.setAttribute("nom", nom);
+				request.setAttribute("prenom", prenom);
+				request.setAttribute("email", email);
+				request.setAttribute("tel", tel);
+				request.setAttribute("rue", rue);
+				request.setAttribute("codePostal", codePostal);
+				request.setAttribute("ville", ville);
+
 				erreurs.add(LecteurMessage.getMessageErreur(CodesResultat.CREATION_USER_ERREUR));
 				request.setAttribute("erreurs", erreurs);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
@@ -79,6 +89,16 @@ public class Inscription extends HttpServlet {
 			erreurs.add(LecteurMessage.getMessageErreur(CodesResultat.MOT_DE_PASSE_ERREUR));
 			request.setAttribute("erreurs", erreurs);
 			request.setAttribute("inscription", "oui");
+
+			request.setAttribute("pseudo", pseudo);
+			request.setAttribute("nom", nom);
+			request.setAttribute("prenom", prenom);
+			request.setAttribute("email", email);
+			request.setAttribute("tel", tel);
+			request.setAttribute("rue", rue);
+			request.setAttribute("codePostal", codePostal);
+			request.setAttribute("ville", ville);
+
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
 			rd.forward(request, response);
 		}

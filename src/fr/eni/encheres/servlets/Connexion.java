@@ -24,7 +24,9 @@ public class Connexion extends HttpServlet {
 			throws ServletException, IOException {
 
 		// Revoie vers la page de connexion.
-
+		if (request.getParameter("identifiant") != null) {
+			doPost(request, response);
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageConnexion.jsp");
 		rd.forward(request, response);
 	}

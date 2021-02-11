@@ -5,9 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
-	String erreurConnexion = (String) request.getAttribute("erreurConnexion");
-%>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -46,14 +43,6 @@
 				<!-- **** -->
 				<!-- body -->
 				<!-- **** -->
-				<%
-					if (erreurConnexion == "true") {
-				%>
-				<div class="alert alert-danger" role="alert">Les données
-					saisies sont incorrectes</div>
-				<%
-					}
-				%>
 				<div class="modal-body">
 					<form method="POST"
 						action="<%=request.getContextPath()%>/Connexion">

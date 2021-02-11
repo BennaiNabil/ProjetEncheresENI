@@ -1,6 +1,6 @@
 		
-		<% if (request.getParameter("erreurs")!=null) {
-		%>
+		
+		<c:if test="${!empty requestScope.erreurs}">
 			<div class="row">
 					<div class="col-md-1"></div>
 				<c:forEach
@@ -11,4 +11,6 @@
 				</c:forEach>
 					<div class="col-md-1"></div>
 			</div>
-		<% }%>
+		</c:if>
+		
+		

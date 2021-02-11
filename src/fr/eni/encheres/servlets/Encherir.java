@@ -119,7 +119,7 @@ public class Encherir extends HttpServlet {
 		// Transaction de crédit - L'ancien enchérisseur, s'il existe, est crédité.
 		List<Enchere> listeEnchere;
 		listeEnchere = enchereManager.selectByIdArticle(idArticle);
-		if (listeEnchere.isEmpty()) {
+		if (listeEnchere.size() < 2) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		} else {

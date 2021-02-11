@@ -102,6 +102,7 @@ public class Encherir extends HttpServlet {
 			List<String> erreurs = new ArrayList<>();
 			erreurs.add(LecteurMessage.getMessageErreur(CodesResultat.CREATION_ENCHERE_ERREUR));
 			request.setAttribute("erreurs", erreurs);
+			encherisseur.setCredit(encherisseur.getCredit() + montantEnchere);
 			e.printStackTrace();
 		}
 		enchereARembourser = enchereManager.derniereEnchere(enchere);

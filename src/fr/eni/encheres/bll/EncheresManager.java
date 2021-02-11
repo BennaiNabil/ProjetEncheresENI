@@ -56,11 +56,11 @@ public class EncheresManager {
 		 * bien supérieur au montant actuel de l'article
 		 */
 
-		// 1. Récupérer le montant précédent
-		int idArticle = enchere.getArticleVendu().getNoArticle();
-		EncheresManager enchereManager = new EncheresManager();
-		List<Enchere> listeEnchere;
-		listeEnchere = enchereManager.selectByIdArticle(idArticle);
+//		// 1. Récupérer le montant précédent
+//		int idArticle = enchere.getArticleVendu().getNoArticle();
+//		EncheresManager enchereManager = new EncheresManager();
+//		List<Enchere> listeEnchere;
+//		listeEnchere = enchereManager.selectByIdArticle(idArticle);
 		
 		int montantPrecedent = enchere.getArticleVendu().getPrixVente();
 		return (!(enchere.getMontantEnchere() <= montantPrecedent));

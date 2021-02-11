@@ -54,13 +54,13 @@
 								class="col-6" type="text" name="identifiant" id="identifiant"
 								autofocus="autofocus" required="required" value="${cookie[" MemoId"].value }"/>
 						</div>
-						<div class="row">
+						<div class="row mt-1">
 							<!--  Champs de saisie du mdp utilisateur -->
 							<label class="col-4" for="mdp">Mot de passe :</label> <input
 								class="col-6" type="password" name="mdp" id="mdp"
 								required="required" />
 						</div>
-						<div class="form-check">
+						<div class="form-check mt-3">
 							<input class="form-check-input" type="checkbox" value=""
 								id="memo" name="memo"> <label class="form-check-label"
 								for="flexCheckDefault"> Se souvenir de moi </label>
@@ -70,19 +70,26 @@
 				<!-- footer -->
 				<!-- ****** -->
 				<div class="modal-footer">
+				 <div class="container-fluid">
+					<div class= "row mb-2 justify-content-center">
 					<!-- Bouton de fermeture de la modale sans prise en compte des saisies -->
 					<button type="button"
 						onclick="window.location.href = 'http://localhost:8080/ProjetEncheresENI/';"
-						class="btn btn-primary" data-dismiss="modal">Retour</button>
+						class="btn btn-primary mr-4" data-dismiss="modal">Retour</button>
 					<!-- Bouton de validation des infos saisie dans la modale -->
-					<button type="submit" class="btn btn-primary" value="Connexion">Connexion</button>
+					<button type="submit" class="btn btn-secondary" value="Connexion">Connexion</button>
 					</form>
+					</div>
+					<div class= "row justify-content-center">
 					<form method="GET"
 						action="<%=request.getContextPath()%>/Inscription">
 						<div>
 							<button type="button"
 								onclick="window.location.href = 'http://localhost:8080/ProjetEncheresENI/Inscription';"
-								class="btn btn-secondary" data-dismiss="modal">Inscription</button>
+								class="btn btn-primary" data-dismiss="modal">Inscription</button>
+						</div>
+						</form>
+						</div>
 						</div>
 				</div>
 			</div>

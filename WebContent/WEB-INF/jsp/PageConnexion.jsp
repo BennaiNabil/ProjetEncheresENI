@@ -61,6 +61,7 @@
 								required="required" />
 						</div>
 						<div class="form-check mt-3">
+							<!-- Case à cocher pour la mémorisation de l'identifiant -->
 							<input class="form-check-input" type="checkbox" value=""
 								id="memo" name="memo"> <label class="form-check-label"
 								for="flexCheckDefault"> Se souvenir de moi </label>

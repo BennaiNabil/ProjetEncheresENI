@@ -21,9 +21,10 @@
 	href="${pageContext.request.contextPath}/css/AccueilStyle.css" />
 </head>
 <body>
-
+	<!-- inclusion des jsp concernant le bandeau d'entête et l'affichage des erreurs -->
 	<%@include file="FragmentHeader.jspf"%>
 	<%@include file="BandeauErreurs.jspf"%>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -33,7 +34,6 @@
 					action="<%=request.getContextPath()%>/AfficherEncheresCourantes"
 					class="form-inline">
 					<!-- Première ligne du formulaire : barre de recherche [catégorie - recherche - trier par - bouton submit]-->
-
 
 					<div class="form-group col-auto">
 						<select name="categorie" id="categorie">
@@ -96,7 +96,7 @@
 										</c:if>
 										<c:if test="${i != 4}">
 											<c:set var="string"
-												value="${fn:substring(infos.get(i), 0, 30)}" />
+												value="${fn:substring(infos.get(i), 0, 25)}" />
 										</c:if>
 										<c:if test="${i == 1}">
 											<c:set var="string2" value="${string} ..." />

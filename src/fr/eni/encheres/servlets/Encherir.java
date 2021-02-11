@@ -123,7 +123,7 @@ public class Encherir extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
 		} else {
-			Enchere derniereEnchere = listeEnchere.get(listeEnchere.size() - 1);
+			Enchere derniereEnchere = listeEnchere.get(listeEnchere.size() - 2);
 			utilisateurManager.updateCreditUp(derniereEnchere.getEncherisseur(), enchere);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);

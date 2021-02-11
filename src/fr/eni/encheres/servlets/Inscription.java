@@ -55,9 +55,10 @@ public class Inscription extends HttpServlet {
 		// l'utilisateur
 		if (mdp.equals(conf)) {
 			Utilisateur utilisateur = new Utilisateur(-1, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp,
-					100, false);
+					10000, false);
 			try {
 				utilisateurManager.nouvelUtilisateur(utilisateur);
+				utilisateur.setMotDePasse(null);
 				request.setAttribute("utilisateur", utilisateur);
 				session.setAttribute("utilisateur", utilisateur);
 				session.setAttribute("connected", "oui");

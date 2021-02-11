@@ -40,7 +40,7 @@
 				<h5 class="text-left fst-italic text-warning">
 					<i>${sessionScope.utilisateur.pseudo}</i>
 				</h5>
-				<h6 class="text-left text-light">votre crédit :</h6>
+				<h6 class="text-left text-light">Votre crédit :</h6>
 				<h5 class="text-left  text-warning">${sessionScope.utilisateur.credit}
 					pts</h5>
 				<%
@@ -53,7 +53,7 @@
 					<li class="nav-item">
 						<form action="<%=request.getContextPath()%>/">
 						<!-- Affichage dans tous les cas du bouton qui ramène à la page d'acceuil -->
-						<button class="btn btn-primary mt-5 mr-2" type="submit">Acceuil Enchères</button>
+						<button class="btn btn-primary mt-5 mr-2" type="submit">Accueil Enchères</button>
 						</form>
 					</li>
 					<li class="nav-item">
@@ -109,7 +109,7 @@
 						 %> 
 							<form action="<%=request.getContextPath()%>/Deconnexion">
 							<!-- Mettre ici la servlet profil connecté -->
-							<button class="btn btn-primary mt-5 mr-2" type="submit">Deconnexion</button>
+							<button class="btn btn-primary mt-5 mr-2" type="submit">Déconnexion</button>
 							</form>
 							<%
 								}

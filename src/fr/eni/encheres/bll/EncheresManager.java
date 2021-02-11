@@ -38,7 +38,7 @@ public class EncheresManager {
 		}
 	}
 
-	public Enchere dernièreEnchere(Enchere enchere) {
+	public Enchere derniereEnchere(Enchere enchere) {
 		int idArticle = enchere.getArticleVendu().getNoArticle();
 		EncheresManager enchereManager = new EncheresManager();
 		List<Enchere> listeEnchere;

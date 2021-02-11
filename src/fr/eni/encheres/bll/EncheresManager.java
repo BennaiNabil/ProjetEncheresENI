@@ -61,19 +61,22 @@ public class EncheresManager {
 		EncheresManager enchereManager = new EncheresManager();
 		List<Enchere> listeEnchere;
 		listeEnchere = enchereManager.selectByIdArticle(idArticle);
+		
+		int montantPrecedent = enchere.getArticleVendu().getPrixVente();
+		return (!(enchere.getMontantEnchere() <= montantPrecedent));
 
-		// 2.a. Si aucune enchère n'a été réalisée - comparer les deux montants
-		if (listeEnchere.isEmpty()) {
-			int montantPrecedent = enchere.getArticleVendu().getMiseAPrix();
-			return (!(enchere.getMontantEnchere() <= montantPrecedent));
-		}
-
-		// 2.b. Si il y a déjà eu des enchères - comparer les deux montants
-		else {
-			Enchere encherePrecedente = listeEnchere.get(listeEnchere.size() - 1);
-			int montantPrecedent = encherePrecedente.getMontantEnchere();
-			return (!(enchere.getMontantEnchere() <= montantPrecedent));
-		}
+//		// 2.a. Si aucune enchère n'a été réalisée - comparer les deux montants
+//		if (listeEnchere.isEmpty()) {
+//			int montantPrecedent = enchere.getArticleVendu().getMiseAPrix();
+//			return (!(enchere.getMontantEnchere() <= montantPrecedent));
+//		}
+//
+//		// 2.b. Si il y a déjà eu des enchères - comparer les deux montants
+//		else {
+//			Enchere encherePrecedente = listeEnchere.get(listeEnchere.size() - 1);
+//			int montantPrecedent = encherePrecedente.getMontantEnchere();
+//			return (!(enchere.getMontantEnchere() <= montantPrecedent));
+//		}
 	}
 
 	public boolean montantCreditEstValide(Enchere enchere) {

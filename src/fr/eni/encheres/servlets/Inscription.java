@@ -26,6 +26,7 @@ public class Inscription extends HttpServlet {
 		if (request.getParameter("nom") != null) {
 			doPost(request, response);
 		} else {
+			request.setAttribute("inscription", "oui");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
 			rd.forward(request, response);
 		}
@@ -77,6 +78,7 @@ public class Inscription extends HttpServlet {
 		} else {
 			erreurs.add(LecteurMessage.getMessageErreur(CodesResultat.MOT_DE_PASSE_ERREUR));
 			request.setAttribute("erreurs", erreurs);
+			request.setAttribute("inscription", "oui");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageInscription.jsp");
 			rd.forward(request, response);
 		}

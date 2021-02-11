@@ -96,11 +96,11 @@
 					<input type="submit" value="Valider" class="btn btn-secondary"></input>
 				</div>
 				<div class="form-group col-1,5">
-					<input type="reset" value="Réinitialiser" class="btn btn-secondary"></input>
+					<input type="reset" value="Réinitialiser" class="btn btn-primary"></input>
 				</div>
 				<div class="form-group col-1,5">
 					<a href="<%=request.getContextPath()%>"><input type="button"
-						class="btn btn-secondary" value="Annuler" /></a>
+						class="btn btn-primary" value="Annuler" /></a>
 				</div>
 			</div>
 			

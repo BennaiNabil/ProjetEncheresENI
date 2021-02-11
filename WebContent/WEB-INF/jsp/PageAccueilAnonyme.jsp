@@ -125,7 +125,7 @@
 	</div>
 	<div class="container-fluid">
 		<p class="text-center">
-		<h6 class="text-center">pas de résultats</h6>
+		<h6 class="text-center">Pas de résultats</h6>
 		</p>
 	</div>
 	</div>

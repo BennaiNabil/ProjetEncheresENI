@@ -38,7 +38,7 @@ public class Encherir extends HttpServlet {
 
 		String montantActuel = Integer.toString(article.getPrixVente());
 		request.setAttribute("montantActuel", montantActuel);
-		
+
 		// Vérifie si il y a déjà eu des enchères de faites.
 //		List<Enchere> listeEnchere;
 //		EncheresManager enchereManager = new EncheresManager();
@@ -73,7 +73,7 @@ public class Encherir extends HttpServlet {
 		ArticleManager articleManager = new ArticleManager();
 		int idArticlePOST;
 		Utilisateur encherisseur = (Utilisateur) session.getAttribute("utilisateur");
-		
+
 		int idArticle = Integer.parseInt(request.getParameter("idArticle"));
 
 //		String idArticlestring = request.getParameter("idArticle");
@@ -99,22 +99,24 @@ public class Encherir extends HttpServlet {
 			request.setAttribute("erreurs", erreurs);
 			e.printStackTrace();
 		}
-		
+
 		// changement du prix de vente de l'article
 		articleManager.updatePrixVente(article, enchere);
-		
+
 		// Transaction de crédit - L'enchérisseur est débité
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		utilisateurManager.updateCreditDown(encherisseur, enchere);
-		
+
+		Utilisateur utilTmp = (Utilisateur) session.getAttribute("utilisateur");
+		session.setAttribute("utilisateur", utilisateurManager.recupererUtilisateurParPseudo(utilTmp.getPseudo()));
+		session.setAttribute("connected", "oui");
 		// Transaction de crédit - L'ancien enchérisseur, s'il existe, est crédité.
 		List<Enchere> listeEnchere;
 		listeEnchere = enchereManager.selectByIdArticle(idArticle);
 		if (listeEnchere.isEmpty()) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");
 			rd.forward(request, response);
-		}
-		else {
+		} else {
 			Enchere derniereEnchere = listeEnchere.get(listeEnchere.size() - 1);
 			utilisateurManager.updateCreditUp(derniereEnchere.getEncherisseur(), enchere);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/PageAccueilAnonyme.jsp");

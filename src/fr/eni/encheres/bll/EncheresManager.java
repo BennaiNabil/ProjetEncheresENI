@@ -38,10 +38,22 @@ public class EncheresManager {
 		}
 	}
 
+	public Enchere derni�reEnchere(Enchere enchere) {
+		int idArticle = enchere.getArticleVendu().getNoArticle();
+		EncheresManager enchereManager = new EncheresManager();
+		List<Enchere> listeEnchere;
+		listeEnchere = enchereManager.selectByIdArticle(idArticle);
+		if (listeEnchere.isEmpty()) {
+			return enchere;
+		} else {
+			return listeEnchere.get(listeEnchere.size() - 1);
+		}
+	}
+
 	public boolean montantEnchereEstValide(Enchere enchere) {
 		/*
-		 * Permet de vérifier que le montant proposé par le nouvel enchérisseur est bien
-		 * supérieur au montant actuel de l'article
+		 * Permet de vérifier que le montant proposé par le nouvel enchérisseur est
+		 * bien supérieur au montant actuel de l'article
 		 */
 
 		// 1. Récupérer le montant précédent
@@ -66,8 +78,8 @@ public class EncheresManager {
 
 	public boolean montantCreditEstValide(Enchere enchere) {
 		/*
-		 * Récupére le montant de l'enchere et le crédit de l'utilisateur et vérifie que
-		 * l'utilisateur a le crédit suffisant pour enchérir
+		 * Récupére le montant de l'enchere et le crédit de l'utilisateur et vérifie
+		 * que l'utilisateur a le crédit suffisant pour enchérir
 		 */
 		return (!(enchere.getMontantEnchere() > (enchere.getEncherisseur().getCredit())));
 	}

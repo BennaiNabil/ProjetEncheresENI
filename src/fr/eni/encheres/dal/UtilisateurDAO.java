@@ -11,7 +11,7 @@ public interface UtilisateurDAO extends DAO<Utilisateur> {
 
 	boolean checkUnicity(String pseudo, String email);
 
-	void updateCreditDown (Utilisateur encherisseurNew, Enchere enchere);
-	
-	void updateCreditUp (Utilisateur encherisseurOld, Enchere enchere);
+	void updateCreditDown(Utilisateur encherisseurNew, Enchere enchere);
+
+	void updateCreditUp(Utilisateur encherisseurOld, Enchere enchere);
 }

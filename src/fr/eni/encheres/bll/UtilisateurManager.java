@@ -44,8 +44,8 @@ public class UtilisateurManager {
 	}
 
 	/**
-	 * Méthode pour récupérer les informations d'un utilisateur lors de sa connexion
-	 * avec son pseudo
+	 * Méthode pour récupérer les informations d'un utilisateur lors de sa
+	 * connexion avec son pseudo
 	 *
 	 * @param pseudo
 	 * @return
@@ -141,12 +141,10 @@ public class UtilisateurManager {
 	public void supprimerUtilisateur(Utilisateur utilisateur) {
 		daoUtilisateur.delete(utilisateur);
 	}
-	
 
 	public void updateCreditDown(Utilisateur encherisseurNew, Enchere enchere) {
 		daoUtilisateur.updateCreditDown(encherisseurNew, enchere);
 	}
-
 
 	public void updateCreditUp(Utilisateur encherisseurOld, Enchere enchere) {
 		daoUtilisateur.updateCreditUp(encherisseurOld, enchere);

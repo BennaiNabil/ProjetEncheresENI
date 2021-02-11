@@ -1,4 +1,4 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -60,8 +60,11 @@
 								Enchère actuelle :
 								<%
 							String montantActuel = String.valueOf(request.getAttribute("montantActuel"));
+							
 							out.print(montantActuel);
 							%>
+							<input id="montantActuel" name="montantActuel" type="hidden"
+									value="${requestScope.montantActuel}">
 							</p>
 							<%
 							String idArticle = String.valueOf(request.getAttribute("idArticle"));

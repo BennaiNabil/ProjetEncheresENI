@@ -24,97 +24,113 @@
 
 	<%@include file="FragmentHeader.jspf"%>
 	<%@include file="BandeauErreurs.jspf"%>
-	<div class="container-fluid">
-		<form method="POST"
-			action="<%=request.getContextPath()%>/AfficherEncheresCourantes" class="form-inline">
-			<!-- Première ligne du formulaire : barre de recherche [catégorie - recherche - trier par - bouton submit]-->
-			<div class="row pt-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<p class="text-center">
+				<form method="POST"
+					action="<%=request.getContextPath()%>/AfficherEncheresCourantes"
+					class="form-inline">
+					<!-- Première ligne du formulaire : barre de recherche [catégorie - recherche - trier par - bouton submit]-->
 
-				<div class="form-group col-auto">
-					<select name="categorie" id="categorie">
-						<option value="">-- Sélectionnez une catégorie --</option>
-						<c:forEach items="${listeCategories}" var="cate">
-							<option
-								${ categorieChoisie == cate.getNoCategorie() ? "selected" : ""}
-								value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
-						</c:forEach>
-					</select>
-				</div>
 
-				<div class="form-group col-auto">
-					<label class="mr-2">Article : </label>
-					<input type="text"
-						 id="nomArticle" name="nomArticle" 
-						value="${nomArticleChoisi !=null? nomArticleChoisi: null }"
-						placeholder="Entrez des mots clés pour les enchères">
-				</div>
+					<div class="form-group col-auto">
+						<select name="categorie" id="categorie">
+							<option value="">-- Sélectionnez une catégorie --</option>
+							<c:forEach items="${listeCategories}" var="cate">
+								<option
+									${ categorieChoisie == cate.getNoCategorie() ? "selected" : ""}
+									value="${cate.getNoCategorie()}">${cate.getLibelle()}</option>
+							</c:forEach>
+						</select>
+					</div>
 
-				<div class="form-group col-auto">
-					<select name="tri" id="tri">
-						<option value="triNone">-- Trier par --</option>
-						<option value="triDate">Tri par date</option>
-						<option value="triNom">Tri par nom</option>
-					</select>
-				</div>
-				<div class="form-group col-auto">
-					<button class="btn btn-primary" type="submit">Rechercher</button>
-				</div>
+					<div class="form-group col-auto">
+						<label class="mr-2">ET/OU Article : </label> <input type="text"
+							id="nomArticle" name="nomArticle"
+							value="${nomArticleChoisi !=null? nomArticleChoisi: null }"
+							placeholder="mots clés">
+					</div>
 
+					<div class="form-group col-auto">
+						<select name="tri" id="tri">
+							<option value="triNone">-- Trier par --</option>
+							<option value="triDate">Tri par date</option>
+							<option value="triNom">Tri par nom</option>
+						</select>
+					</div>
+					<div class="form-group col-auto">
+						<button class="btn btn-primary" type="submit">Rechercher</button>
+					</div>
+				</form>
+				</p>
 			</div>
-		</form>
+		</div>
+		<div class="col-md-1"></div>
+
 
 		<%
 			boolean estPremiereRecherche = true;
 		%>
-		<div class="form-row">
-			<c:choose>
-				<c:when
-					test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
-					<div class="row form-inline text-left">
-						<c:forEach items="${listeInfosEncheres}" var="infos">
-							<div class="card md-5 form-inline text-left m-5"
-								style="width: 18rem; border: 2px solid black; border-radius: 10px">
-								<div class="card-body text-left">
-									<form method="GET"
-										action="<%=request.getContextPath()%>/Encherir"
-										class="text-left">
-										<c:forEach var="i" begin="0" end="${infos.size()-1 }">
-											<c:if test="${i == 4}">
-												<a
-													href="<%=request.getContextPath()%>/Profil?pseudo=${infos.get(i)}">${infos.get(i)}</a>
-											</c:if>
-											<c:if test="${i != 4}">
-												<c:set var="string"
-													value="${fn:substring(infos.get(i), 0, 30)}" />
-											</c:if>
-											<c:if test="${i == 1}">
-												<c:set var="string2" value="${string} ..." />
-												<c:set var="string" value="${string2}" />
-											</c:if>
-											<p>${string}</p>
-										</c:forEach>
-										<input id="idArticle" name="idArticle" type="hidden"
-											value="${infos.get(infos.size()-1)}">
-										<!-- Bouton menant à Encherir -->
-										<c:set var="connect" value="${sessionScope.connected}">
-										</c:set>
-										<c:if test="${connect != null}">
-											<button type="submit" class="btn btn-primary"
-												value="encherir">Enchérir</button>
+	</div class="container">
+	<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-12">
+	<div class="form-row">
+		<c:choose>
+			<c:when
+				test="${listeInfosEncheres.size() > 0 || estPremiereRecherche }">
+				<div class="row form-inline text-left">
+					<c:forEach items="${listeInfosEncheres}" var="infos">
+						<div class="card md-7 form-inline text-left m-3 mx-auto"
+							style="width: 18rem; border: 2px solid black; border-radius: 10px">
+							<div class="card-body text-left">
+								<form method="GET"
+									action="<%=request.getContextPath()%>/Encherir"
+									class="text-left">
+									<c:forEach var="i" begin="0" end="${infos.size()-1 }">
+										<c:if test="${i == 4}">
+											<a
+												href="<%=request.getContextPath()%>/Profil?pseudo=${infos.get(i)}">${infos.get(i)}</a>
 										</c:if>
-									</form>
-								</div>
+										<c:if test="${i != 4}">
+											<c:set var="string"
+												value="${fn:substring(infos.get(i), 0, 30)}" />
+										</c:if>
+										<c:if test="${i == 1}">
+											<c:set var="string2" value="${string} ..." />
+											<c:set var="string" value="${string2}" />
+										</c:if>
+										<p>${string}</p>
+									</c:forEach>
+									<input id="idArticle" name="idArticle" type="hidden"
+										value="${infos.get(infos.size()-1)}">
+									<!-- Bouton menant à Encherir -->
+									<c:set var="connect" value="${sessionScope.connected}">
+									</c:set>
+									<c:if test="${connect != null}">
+										<button type="submit" class="btn btn-primary" value="encherir">Enchérir</button>
+									</c:if>
+								</form>
 							</div>
-						</c:forEach>
-					</div>
+						</div>
+					</c:forEach>
+				</div>
 
-				</c:when>
-				<c:otherwise>
-					<h1>Pas de résultat</h1>
-				</c:otherwise>
-			</c:choose>
-		</div>
+			</c:when>
+			<c:otherwise>
 	</div>
+	</div>
+	</div>
+	<div class="container-fluid">
+		<p class="text-center">
+		<h6 class="text-center">pas de résultats</h6>
+		</p>
+	</div>
+	</div>
+	</c:otherwise>
+	</c:choose>
 
 	<%@include file="FragmentFooter.jspf"%>
 
